@@ -11,7 +11,11 @@ public class Plane : MonoBehaviour {
     public float maxSpeed = 40;
     public float turbulance = 0.6f;
 
+    public Joystick joystick;
+
+    [HideInInspector]
     public Rigidbody Rb;
+    
 	// Use this for initialization
 	public virtual void Start () {
         Rb = GetComponent<Rigidbody>();
@@ -28,6 +32,10 @@ public class Plane : MonoBehaviour {
         if(Rb.velocity.sqrMagnitude<maxSpeed*maxSpeed)
             Rb.AddForce(Rb.mass*acceleration*transform.forward);
 
-        //Rb.AddTorque(*Rb.mass*transform.right * Input.acceleration.y);
+        //Rb.AddForce(Rb.mass*Vector3.Dot(Rb.velocity, transform.forward)*0.5f * transform.up*acceleration*joystick.Vertical);
+        Rb.AddTorque(-30*transform.right * joystick.Vertical * Rb.mass);
+
+        Rb.AddTorque(5*transform.up * Rb.mass * joystick.Horizontal);
+        Rb.AddTorque(-10*Rb.mass*transform.forward * Input.acceleration.x);
     }
 }
