@@ -23,8 +23,8 @@ public class Plane : MonoBehaviour {
 	
 	// Update is called once per frame
 	public virtual void Update () {
-        if(playerPilot)
-            PlayerPilot();
+        //if(playerPilot)
+            //PlayerPilot();
 	}
 
     void PlayerPilot()
@@ -37,5 +37,16 @@ public class Plane : MonoBehaviour {
 
         Rb.AddTorque(5*transform.up * Rb.mass * joystick.Horizontal);
         Rb.AddTorque(-10*Rb.mass*transform.forward * Input.acceleration.x);
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.transform.CompareTag("Checkpoint"))
+        {
+            col.GetComponent<AudioSource>().Play();
+            col.GetComponentInParent<Checkpoints>().NextCheckpoint(col.transform.GetSiblingIndex()+1);
+            Destroy(col.transform.GetChild(0).gameObject);
+            Destroy(col.transform.gameObject, 1);
+        }
     }
 }

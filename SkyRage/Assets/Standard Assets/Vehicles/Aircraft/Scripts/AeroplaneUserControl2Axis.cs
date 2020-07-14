@@ -30,8 +30,8 @@ namespace UnityStandardAssets.Vehicles.Aeroplane
             bool airBrakes = CrossPlatformInputManager.GetButton("Fire1");*/
 
             float roll = Input.acceleration.x;
-            float pitch = Input.acceleration.y;
-            bool airBrakes = CrossPlatformInputManager.GetButton("Fire1");
+            float pitch = -Input.acceleration.z;
+            bool airBrakes = CrossPlatformInputManager.GetAxis("Vertical") < 0 ? true : false;
 
             // auto throttle up, or down if braking.
             float throttle = airBrakes ? -1 : 1;
