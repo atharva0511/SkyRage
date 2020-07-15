@@ -39,7 +39,7 @@ namespace UnityStandardAssets.Vehicles.Aeroplane
             AdjustInputForMobileControls(ref roll, ref pitch, ref throttle);
 #endif
             // Pass the input to the aeroplane
-            m_Aeroplane.Move(roll, pitch, 0, throttle, airBrakes);
+            m_Aeroplane.Move(roll, pitch, 5000*CrossPlatformInputManager.GetAxis("Horizontal"), throttle, airBrakes);
         }
 
 

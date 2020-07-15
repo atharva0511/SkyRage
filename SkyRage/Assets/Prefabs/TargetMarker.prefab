@@ -211,6 +211,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 4648933096717318, guid: 8cb118840e8216648b6ca0e39714f4f2, type: 2}
+  radarRadius: 280
+  stayOnRadar: 1
+  mapMarker: {fileID: 1474045352606876}
 --- !u!222 &222148878541232520
 CanvasRenderer:
   m_ObjectHideFlags: 1

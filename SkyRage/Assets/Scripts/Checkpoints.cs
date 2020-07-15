@@ -8,6 +8,8 @@ public class Checkpoints : MonoBehaviour {
     public GameObject targetMarker;
     GameObject arrowTemp = null;
     GameObject markerTemp = null;
+    public int xp = 10;
+    public int finishedXP = 50;
     
 	// Use this for initialization
 	void Start () {
