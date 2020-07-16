@@ -24,6 +24,7 @@ public class playerPlane : Plane {
     {
         if (col.transform.CompareTag("Checkpoint"))
         {
+            col.enabled = false;
             Checkpoints cpoints = col.GetComponentInParent<Checkpoints>();
             StartCoroutine(AddXP(cpoints.xp));
             col.GetComponent<AudioSource>().Play();
@@ -42,7 +43,7 @@ public class playerPlane : Plane {
         xpText.CrossFadeAlpha(0, 1, false);
         while (Time.time < startTime + 1)
         {
-            xpInstance.transform.rotation = Quaternion.LookRotation(cam.position - DisplayPos.position);
+            xpInstance.transform.rotation = Quaternion.LookRotation(DisplayPos.position - cam.position, cam.up);
             yield return null;
         }
         Destroy(xpInstance);
