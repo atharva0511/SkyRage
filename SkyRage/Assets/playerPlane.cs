@@ -26,9 +26,16 @@ public class playerPlane : Plane {
         {
             col.enabled = false;
             Checkpoints cpoints = col.GetComponentInParent<Checkpoints>();
-            StartCoroutine(AddXP(cpoints.xp));
             col.GetComponent<AudioSource>().Play();
-            cpoints.NextCheckpoint(col.transform.GetSiblingIndex() + 1);
+            if (col.transform.GetSiblingIndex() != cpoints.transform.childCount - 1)
+            {
+                cpoints.NextCheckpoint(col.transform.GetSiblingIndex() + 1);
+                StartCoroutine(AddXP(cpoints.xp));
+            }
+            else
+            {
+                StartCoroutine(AddXP(cpoints.finishedXP));
+            }
             Destroy(col.transform.GetChild(0).gameObject);
             Destroy(col.transform.gameObject, 1);
         }
