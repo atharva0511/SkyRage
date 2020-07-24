@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11eb03410f37959429a62ab726bc907e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4648933096717318, guid: 8cb118840e8216648b6ca0e39714f4f2, type: 2}
+  player: {fileID: 4153058491427744, guid: adf50ff451471ea4caafdb77f6306d95, type: 2}
   radarRadius: 280
   stayOnRadar: 1
   mapMarker: {fileID: 1474045352606876}

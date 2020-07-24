@@ -73,17 +73,17 @@ public class Minigun : MonoBehaviour {
             switch (hit.transform.gameObject.layer)
             {
                 //case 4: blast = Instantiate(waterSplash, hit.point, Quaternion.LookRotation(hit.normal), hit.transform); break;
-                case 10:
+                case 0:
                     {
                         blast = Instantiate(impact, hit.point, Quaternion.LookRotation(hit.normal), hit.transform);
-                        Plane plane = hit.transform.GetComponentInParent<Plane>();
-                        if (plane != null)
+                        Destructible ob = hit.transform.GetComponentInParent<Destructible>();
+                        if ( ob!= null)
                         {
-                            plane.TakeDamage(damage, 10);
+                            ob.TakeDamage(damage, 10);
                         }
                         break;
                     }
-                default: blast = Instantiate(impact, hit.point, Quaternion.LookRotation(hit.normal), hit.transform); break;
+                default: blast = Instantiate(impact, hit.point, Quaternion.LookRotation(hit.normal));Debug.Log("hit"); break;
             }
             Rigidbody Rb = hit.transform.GetComponent<Rigidbody>();
             if (Rb != null)

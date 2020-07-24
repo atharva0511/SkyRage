@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class playerPlane : Plane {
+public class playerPlane : Destructible {
 
     public GameObject xpCanvas;
     GameObject xpInstance;
     public Transform cam;
+    public Transform DisplayPos;
 
 	// Use this for initialization
 	void Start () {

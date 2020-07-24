@@ -11,7 +11,7 @@ public class TopRightPanel : MonoBehaviour {
     public Text altitudeValue; 
 	// Use this for initialization
 	void Start () {
-        playerPlane = GetComponentInParent<Plane>().transform;
+        playerPlane = GetComponentInParent<Destructible>().transform;
 	}
 	
 	// Update is called once per frame

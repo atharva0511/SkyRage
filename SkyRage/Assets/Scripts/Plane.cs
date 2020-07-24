@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Plane : MonoBehaviour {
+public class Destructible : MonoBehaviour {
 
-    public bool playerPilot = false;
+    public float maxHealth = 100;
     public float health = 100;
-    public float damageMultiplier = 1;
-    public Transform DisplayPos;
     public bool god = false;
 
     // Use this for initialization
