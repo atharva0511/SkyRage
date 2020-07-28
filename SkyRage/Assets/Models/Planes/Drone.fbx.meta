@@ -1,0 +1,156 @@
+fileFormatVersion: 2
+guid: f8543f67ea7419d459d4b171feea7ac1
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: BackRotors
+    100002: BackRotors_end
+    100004: //RootNode
+    100006: Drone
+    100008: DroneBody
+    100010: DroneMesh_LOD0
+    100012: DroneMesh_LOD1
+    100014: DroneMesh_LOD2
+    100016: DroneMesh_LOD3
+    100018: FrontLeftRotor
+    100020: FrontLeftRotor_end
+    100022: FrontRightRotor
+    100024: FrontRightRotor_end
+    400000: BackRotors
+    400002: BackRotors_end
+    400004: //RootNode
+    400006: Drone
+    400008: DroneBody
+    400010: DroneMesh_LOD0
+    400012: DroneMesh_LOD1
+    400014: DroneMesh_LOD2
+    400016: DroneMesh_LOD3
+    400018: FrontLeftRotor
+    400020: FrontLeftRotor_end
+    400022: FrontRightRotor
+    400024: FrontRightRotor_end
+    2100000: Drone
+    2100002: BlackGlass
+    2100004: Glow
+    2100006: Steel
+    4300000: DroneMesh_LOD3
+    4300002: DroneMesh_LOD2
+    4300004: DroneMesh_LOD1
+    4300006: DroneMesh_LOD0
+    7400000: Drone|DroneIdle
+    7400002: Drone|DroneITurnL
+    7400004: Drone|DroneMoveBack
+    7400006: Drone|DroneMoveFor
+    7400008: Drone|DroneTurnR
+    9500000: //RootNode
+    13700000: DroneMesh_LOD0
+    13700002: DroneMesh_LOD1
+    13700004: DroneMesh_LOD2
+    13700006: DroneMesh_LOD3
+    20500000: //RootNode
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BlackGlass
+    second: {fileID: 2100000, guid: 433721c0eb4172941b2d6d8a82fd75c2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Drone
+    second: {fileID: 2100000, guid: 5f7d37ae0e4289943a5891fdd1136e4e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glow
+    second: {fileID: 2100000, guid: 0e4ae9ea61877fc4d8a05d986d50db6d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Steel
+    second: {fileID: 2100000, guid: c1dd7639bbdebc444acd18bc9b0727f3, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 2
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages:
+    - 0.25
+    - 0.125
+    - 0.0625
+    - 0.01
+    globalScale: 2
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
