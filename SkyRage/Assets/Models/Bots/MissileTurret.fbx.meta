@@ -24,7 +24,12 @@ ModelImporter:
     13700000: MissileLauncher_LOD0
     13700002: MissileLauncher_LOD1
     20500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MissileTurret
+    second: {fileID: 2100002, guid: f68271f04f76b934dbc99275a3a2d9a9, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

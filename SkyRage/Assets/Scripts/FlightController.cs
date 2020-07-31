@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class FlightController : Destructible {
 
+    public bool on = true;
     public float power = 10;
     public float rollSens = 0.5f;
     public float yawSens = 1f;
@@ -25,6 +26,7 @@ public class FlightController : Destructible {
     public Rigidbody Rb;
     public Animator anim;
     public SkinnedMeshRenderer rend;
+    public Weapons[] weapons;
     int pitchHash = Animator.StringToHash("Pitch");
     int rollHash = Animator.StringToHash("Roll");
 	// Use this for initialization
@@ -39,6 +41,7 @@ public class FlightController : Destructible {
 
     void FixedUpdate()
     {
+        if (!on) return; 
         //PC
         //Move(1, Input.GetAxis("Vertical"),0,Input.GetAxis("Horizontal"));
 
@@ -132,5 +135,34 @@ public class FlightController : Destructible {
             yield return null;
         }
         Destroy(xpInstance);
+    }
+
+    public void PressedFire1()
+    {
+        foreach (Weapons w in weapons)
+        {
+            w.PressedFire1();
+        }
+    }
+    public void ReleaseFire1()
+    {
+        foreach (Weapons w in weapons)
+        {
+            w.ReleaseFire1();
+        }
+    }
+    public void PressedFire2()
+    {
+        foreach (Weapons w in weapons)
+        {
+            w.PressedFire2();
+        }
+    }
+    public void ReleaseFire2()
+    {
+        foreach (Weapons w in weapons)
+        {
+            w.ReleaseFire1();
+        }
     }
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class Customizable : MonoBehaviour{
 
     public string vehicleName = "Drone";
+    public string displayName = "Drone";
+    public int price = 2000;
     public int priColorIndex = 0;
     public int secColorIndex = 1;
     public Renderer[] rends;
@@ -44,7 +46,7 @@ public class Customizable : MonoBehaviour{
         }
         else
         {
-            Debug.Log("Save Files not found");
+            Debug.Log("Customs not found");
             return null;
         }
     }

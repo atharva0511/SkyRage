@@ -13,7 +13,7 @@ public class Minigun : Weapons {
     public GameObject impact;
     public GameObject beamObject;
     public float stability = 0.5f;
-    public float damage = 10;
+    public float damage = 5;
     public float maxSpread = 1.5f;
     public float fireRate = 5;
     float fireTime = 0;
@@ -21,6 +21,10 @@ public class Minigun : Weapons {
     //public LineRenderer beam;
     public RawImage crossHair;
     
+    void Start()
+    {
+        this.owner = GetComponentInParent<Destructible>().transform;
+    }
 
     void Update()
     {
@@ -69,7 +73,8 @@ public class Minigun : Weapons {
                         Destructible ob = hit.transform.GetComponentInParent<Destructible>();
                         if ( ob!= null)
                         {
-                            ob.TakeDamage(damage, 10);
+                            ob.TakeDamage(damage,owner, 2);
+                            Debug.Log("damaged");
                         }
                         break;
                     }
@@ -93,7 +98,6 @@ public class Minigun : Weapons {
 
     IEnumerator Beam(Vector3 target)
     {
-        Debug.Log("Beam");
         float startTime = Time.time;
         GameObject beamOb = Instantiate(beamObject);
         beamOb.transform.position = transform.GetChild(0).position;

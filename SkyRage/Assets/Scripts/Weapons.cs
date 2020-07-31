@@ -8,6 +8,8 @@ public class Weapons : MonoBehaviour {
     public bool fire1 = false;
     [HideInInspector]
     public bool fire2 = false;
+
+    public Transform owner = null;
 	// Use this for initialization
 	void Start () {
 		

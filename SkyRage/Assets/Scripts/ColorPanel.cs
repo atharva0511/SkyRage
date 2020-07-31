@@ -7,7 +7,8 @@ public class ColorPanel : MonoBehaviour {
 
     public Renderer vehicleRenderer;
     public int materialIndex;
-
+    [HideInInspector]
+    public Color initColor;
     public Slider selectR;
     public Slider selectG;
     public Slider selectB;
@@ -27,6 +28,7 @@ public class ColorPanel : MonoBehaviour {
     public void ReadColor()
     {
         finalColor = vehicleRenderer.materials[materialIndex].color;
+        initColor = finalColor;
         SetRGBUI(finalColor);
     }
 
@@ -54,7 +56,7 @@ public class ColorPanel : MonoBehaviour {
         SetRenderer(color.r, color.g, color.b);
     }
 
-    void SetRenderer(float r,float g,float b)
+    public void SetRenderer(float r,float g,float b)
     {
         Material[] mats = vehicleRenderer.materials;
         mats[materialIndex].color = new Color(r, g, b);
@@ -70,4 +72,5 @@ public class ColorPanel : MonoBehaviour {
     {
         return finalColor;
     }
+
 }

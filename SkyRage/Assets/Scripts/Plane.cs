@@ -8,13 +8,11 @@ public class Destructible : MonoBehaviour {
     public float health = 100;
     public bool god = false;
     public int team = 0; //Single player character should have team =1
+    public Transform target = null;
     [HideInInspector]
     public bool dead = false;
 
-    // Use this for initialization
-    public virtual void Start () {
-
-	}
+    
 	
 	
 
@@ -30,9 +28,17 @@ public class Destructible : MonoBehaviour {
 
     public void TakeDamage(float amount, Transform hitter,float randomize = 2f)
     {
+        if (hitter.GetComponent<Destructible>() != null)
+        {
+            if (hitter.GetComponent<Destructible>().team == this.team) return;
+        }
         if (!god)
         {
             health -= (amount + Random.Range(0, randomize));
+        }
+        if (hitter != null && hitter!=this.transform)
+        {
+            this.target = hitter;
         }
         Damaged();
         if (this.health <= 0 && !dead) Die();
