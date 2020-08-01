@@ -14,7 +14,7 @@ public class MissileTurret : Destructible {
     public GameObject healthCanvas;
     public bool displayHealth = true;
     GameObject canvas = null;
-    float lastHit;
+    float lastHit = 0;
     public float baseDamage = 5;
     public int difficulty = 2;
     public float turnSpeed = 1;

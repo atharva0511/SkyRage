@@ -5,7 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour {
 
 
-    public Transform Shooter;
+    public Transform Shooter = null;
     public GameObject blast;
     public float stayTime = 6f;
     float startTime = 0;
@@ -33,7 +33,7 @@ public class Projectile : MonoBehaviour {
         {
             ob.TakeDamage(damage, Shooter);
         }
-        Instantiate(blast, transform.position,Quaternion.identity);
+        Instantiate(blast, col.contacts[0].point,Quaternion.identity);
         Destroy(this.gameObject);
     }
 }

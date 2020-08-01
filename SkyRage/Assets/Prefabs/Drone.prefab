@@ -2730,6 +2730,7 @@ MonoBehaviour:
   turnSens: 1
   thrustSlider: {fileID: 114997407491924226}
   joystick: {fileID: 114492432267923396}
+  healthBar: {fileID: 114895597822749072}
   thrustR: {fileID: 120594233128921574}
   thrustL: {fileID: 120581573349953394}
   thrustB: {fileID: 120248206838895120}
@@ -2787,6 +2788,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehicleName: Drone
+  displayName: Drone
+  price: 2000
   priColorIndex: 0
   secColorIndex: 1
   rends:
@@ -3416,18 +3419,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.26801538, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.052033424, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: e3f143e7ee1d44746b215dab244399bb, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0

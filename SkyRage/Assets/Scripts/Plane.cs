@@ -44,7 +44,7 @@ public class Destructible : MonoBehaviour {
         if (this.health <= 0 && !dead) Die();
     }
 
-    public void Heal(float amount)
+    public virtual void Heal(float amount)
     {
         if (!dead && this.health<this.maxHealth)
         {

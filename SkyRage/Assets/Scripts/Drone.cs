@@ -16,6 +16,7 @@ public class Drone : Destructible {
     float dashRefill = 0;
     public Slider thrustSlider;
     public Joystick joystick;
+    public Image healthBar;
     public LineRenderer thrustR;
     public LineRenderer thrustL;
     public LineRenderer thrustB;
@@ -38,6 +39,7 @@ public class Drone : Destructible {
 	void Start () {
         Rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        DisplayHealth();
 	}
 	
 	void FixedUpdate()
@@ -201,6 +203,22 @@ public class Drone : Destructible {
             yield return null;
         }
         Destroy(xpInstance);
+    }
+
+    public void DisplayHealth()
+    {
+        healthBar.fillAmount = health / maxHealth;
+        healthBar.color = Color.Lerp(Color.red, Color.green, health / maxHealth);
+    }
+    public override void Damaged()
+    {
+        base.Damaged();
+        DisplayHealth();
+    }
+    public override void Heal(float amount)
+    {
+        base.Heal(amount);
+        DisplayHealth();
     }
 
     public void PressedFire1()
