@@ -6,12 +6,15 @@ using UnityEngine.UI;
 public class playerPlane : Destructible {
 
     public GameObject xpCanvas;
-    GameObject xpInstance;
+    protected GameObject xpInstance;
     public Transform cam;
     public Transform DisplayPos;
+    public Weapons[] weapons;
+    public Image healthBar;
+    public ParticleSystem DamageSmoke;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -35,6 +38,7 @@ public class playerPlane : Destructible {
             }
             else
             {
+                cpoints.Completed();
                 StartCoroutine(AddXP(cpoints.finishedXP));
             }
             Destroy(col.transform.GetChild(0).gameObject);
@@ -55,5 +59,52 @@ public class playerPlane : Destructible {
             yield return null;
         }
         Destroy(xpInstance);
+    }
+
+    public void DisplayHealth()
+    {
+        healthBar.fillAmount = health / maxHealth;
+        healthBar.color = Color.Lerp(Color.red, Color.green, health / maxHealth);
+        if (health < maxHealth) DamageSmoke.emissionRate = 5 + 15 * ((maxHealth / 2) - health);
+        else DamageSmoke.emissionRate = 0;
+    }
+    public override void Damaged()
+    {
+        base.Damaged();
+        DisplayHealth();
+    }
+    public override void Heal(float amount)
+    {
+        base.Heal(amount);
+        DisplayHealth();
+    }
+
+    public void PressedFire1()
+    {
+        foreach (Weapons w in weapons)
+        {
+            w.PressedFire1();
+        }
+    }
+    public void ReleaseFire1()
+    {
+        foreach (Weapons w in weapons)
+        {
+            w.ReleaseFire1();
+        }
+    }
+    public void PressedFire2()
+    {
+        foreach (Weapons w in weapons)
+        {
+            w.PressedFire2();
+        }
+    }
+    public void ReleaseFire2()
+    {
+        foreach (Weapons w in weapons)
+        {
+            w.ReleaseFire1();
+        }
     }
 }

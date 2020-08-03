@@ -4,19 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Drone : Destructible {
+public class Drone : playerPlane {
 
     public bool On = true;
     public float maxThrust = 40;
     public float fanThrust = 10;
     public float hoverHeight = 1;
     public float turnSens = 1;
+    public float lives;
     float thrust = 0;
     float leanAngle = 0;
     float dashRefill = 0;
     public Slider thrustSlider;
     public Joystick joystick;
-    public Image healthBar;
     public LineRenderer thrustR;
     public LineRenderer thrustL;
     public LineRenderer thrustB;
@@ -25,13 +25,11 @@ public class Drone : Destructible {
     public AudioSource DashSound;
     public ParticleSystem thrustParticle;
     public Transform[] fans;
-    public Weapons[] weapons;
     Rigidbody Rb;
     Animator anim;
-    public GameObject xpCanvas;
-    GameObject xpInstance;
-    public Transform cam;
-    public Transform DisplayPos;
+    
+    //public Transform cam;
+    //public Transform DisplayPos;
     int turnHash = Animator.StringToHash("Turn");
     int moveHash = Animator.StringToHash("Forward");
 
@@ -39,6 +37,7 @@ public class Drone : Destructible {
 	void Start () {
         Rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        lives = PlayerData.lives;
         DisplayHealth();
 	}
 	
@@ -169,7 +168,7 @@ public class Drone : Destructible {
         }
     }
 
-    void OnTriggerEnter(Collider col)
+    /*void OnTriggerEnter(Collider col)
     {
         if (col.transform.CompareTag("Checkpoint"))
         {
@@ -188,65 +187,8 @@ public class Drone : Destructible {
             Destroy(col.transform.GetChild(0).gameObject);
             Destroy(col.transform.gameObject, 1);
         }
-    }
+    }*/
+    
 
-    IEnumerator AddXP(int amount)
-    {
-        float startTime = Time.time;
-        xpInstance = Instantiate(xpCanvas, DisplayPos.position, Quaternion.LookRotation(DisplayPos.position - cam.position, cam.up), DisplayPos);
-        Text xpText = xpInstance.transform.GetChild(0).GetComponent<Text>();
-        xpText.text = "+ " + amount.ToString() + " xp";
-        xpText.CrossFadeAlpha(0, 1, false);
-        while (Time.time < startTime + 1)
-        {
-            xpInstance.transform.rotation = Quaternion.LookRotation(DisplayPos.position - cam.position, cam.up);
-            yield return null;
-        }
-        Destroy(xpInstance);
-    }
-
-    public void DisplayHealth()
-    {
-        healthBar.fillAmount = health / maxHealth;
-        healthBar.color = Color.Lerp(Color.red, Color.green, health / maxHealth);
-    }
-    public override void Damaged()
-    {
-        base.Damaged();
-        DisplayHealth();
-    }
-    public override void Heal(float amount)
-    {
-        base.Heal(amount);
-        DisplayHealth();
-    }
-
-    public void PressedFire1()
-    {
-        foreach(Weapons w in weapons)
-        {
-            w.PressedFire1();
-        }
-    }
-    public void ReleaseFire1()
-    {
-        foreach (Weapons w in weapons)
-        {
-            w.ReleaseFire1();
-        }
-    }
-    public void PressedFire2()
-    {
-        foreach (Weapons w in weapons)
-        {
-            w.PressedFire2();
-        }
-    }
-    public void ReleaseFire2()
-    {
-        foreach (Weapons w in weapons)
-        {
-            w.ReleaseFire1();
-        }
-    }
+    
 }

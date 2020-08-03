@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Checkpoints : MonoBehaviour {
+public class Checkpoints : Objective {
 
     public GameObject arrow;
     public GameObject targetMarker;

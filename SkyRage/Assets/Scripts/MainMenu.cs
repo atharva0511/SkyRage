@@ -33,6 +33,7 @@ public class MainMenu : MonoBehaviour {
     public Button UnlockButton;
 	// Use this for initialization
 	void Start () {
+        Time.timeScale = 1;
         PlayerData.coins = 5000;
         UIAudio = GetComponent<AudioSource>();
         //podium.GetChild(selectionIndex).GetComponent<Customizable>().LoadCustomizations();
@@ -150,6 +151,7 @@ public class MainMenu : MonoBehaviour {
             selectionIndex -= 1;
             if (selectionIndex < 0) selectionIndex = maxVal - 1;
         }
+        PlayerPrefs.SetInt("vehicleIndex", selectionIndex);
         DisplayVehicle();
     }
 

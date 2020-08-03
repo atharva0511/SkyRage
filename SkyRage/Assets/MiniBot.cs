@@ -6,12 +6,19 @@ using UnityEngine.UI;
 public class MiniBot : Destructible {
 
     public float difficulty = 2;
+    public Vector3 zoneCentre;
+    public int zoneRadius = 100;
     public GameObject healthCanvas;
+    public GameObject thrusterL;
+    public GameObject thrusterR;
+    public GameObject thruster;
+    public GameObject spark;
     public bool displayHealth = true;
     public Transform pos1;
     public Transform pos2;
     public Transform displayPos;
     public GameObject radarMarker;
+    public Renderer[] rends;
     float lastHit = 0;
     GameObject canvas = null;
     public Rigidbody Rb;
@@ -21,15 +28,26 @@ public class MiniBot : Destructible {
     int state = 0;
     public float turnSpeed = 1;
     float lastShot = 0;
+    float lastDashed = 0;
     float rand = 1;
     bool side = true;
     // Use this for initialization
     void Start () {
         radarMarker.gameObject.SetActive(true);
-	}
+        lastDashed = Time.time;
+        lastHit = Time.time;
+        if (GetComponentInParent<BotSpawner>() != null)
+        {
+            zoneCentre = GetComponentInParent<BotSpawner>().zoneCenter;
+            zoneRadius = GetComponentInParent<BotSpawner>().zoneRadius;
+        }
+        else
+            zoneCentre = transform.position;
+    }
 	
 	// Update is called once per frame
 	void Update () {
+        if (dead) return;
         if (target != null)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(target.position - transform.position), 5*turnSpeed * Time.deltaTime);
@@ -44,6 +62,17 @@ public class MiniBot : Destructible {
                         StartCoroutine(SerialFire());
                     }
                 }
+            }
+            if(Time.time>lastDashed + 3 +rand)
+            {
+                lastDashed = Time.time;
+                if ((transform.position - zoneCentre).sqrMagnitude > zoneRadius * zoneRadius)
+                {
+                    bool dir = Vector3.Dot(zoneCentre - transform.position, transform.right) < 0;
+                    StartCoroutine(Dash(dir));
+                }
+                else
+                    StartCoroutine(Dash(rand>1));
             }
         }
 	}
@@ -63,16 +92,30 @@ public class MiniBot : Destructible {
         Rigidbody ob = col.transform.GetComponent<Rigidbody>();
         if (ob != null)
         {
-            this.TakeDamage(Vector3.Dot(ob.velocity, transform.position - ob.position)*ob.mass/5000,ob.transform);
+            this.TakeDamage(Vector3.Dot(ob.velocity, transform.position - ob.position)*ob.mass/10000,ob.transform);
         }
     }
 
     public override void Die()
     {
         base.Die();
+        Instantiate(spark, transform.position, Quaternion.identity,this.transform);
+        Rb.drag = 0;
         radarMarker.SetActive(false);
-        if(canvas!=null)Destroy(canvas);
-        Destroy(this.gameObject, 0.5f);
+        foreach (Renderer rend in rends)
+        {
+            Material[] mats = rend.materials;
+            foreach (Material mat in mats) mat.color = new Color(0.1f, 0.1f, 0f);
+            rend.materials = mats;
+        }
+        Rb.useGravity = true;
+        thruster.SetActive(false);
+        if (GetComponentInParent<BotSpawner>() != null)
+        {
+            GetComponentInParent<BotSpawner>().Died();
+        }
+        if (canvas!=null)Destroy(canvas,4f);
+        Destroy(this.gameObject, 5f);
     }
 
     public IEnumerator DisplayHealth()
@@ -116,8 +159,22 @@ public class MiniBot : Destructible {
         GameObject ms = Instantiate(laserBeam, (side?pos1:pos2).position, Quaternion.LookRotation(transform.forward));
         Projectile p = ms.GetComponent<Projectile>();
         p.speed = 140 + 20 * difficulty;
-        p.damage = baseDamage + 5f * difficulty;
+        p.damage = baseDamage + 2f * difficulty;
         p.Shooter = this.transform;
         side = !side;
+    }
+
+    public IEnumerator Dash(bool isLeft)
+    {
+        Rb.AddForce((isLeft ? -transform.right : transform.right) * Rb.mass * 50,ForceMode.Impulse);
+        thrusterL.SetActive(!isLeft);
+        thrusterR.SetActive(isLeft);
+        yield return new WaitForSeconds(0.4f);
+        thrusterR.SetActive(!isLeft);
+        thrusterL.SetActive(isLeft);
+        Rb.AddForce((isLeft ? transform.right : -transform.right) * Rb.mass * 40,ForceMode.Impulse);
+        yield return new WaitForSeconds(0.4f);
+        thrusterL.SetActive(false);
+        thrusterR.SetActive(false);
     }
 }

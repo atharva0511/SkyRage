@@ -16,7 +16,7 @@ public class SettingsPanel : MonoBehaviour {
 	void Start () {
         if (credits) return;
         LoadSettings();
-        MenuMusic.isOn = Music.volume != 0;
+        if(Music!=null)MenuMusic.isOn = Music.volume != 0;
 	}
 	
 	// Update is called once per frame
@@ -62,6 +62,7 @@ public class SettingsPanel : MonoBehaviour {
     {
         QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("GQ"));
         AudioListener.volume = PlayerPrefs.GetFloat("Vo");
+        if(Music!=null)
         Music.volume = MenuMusic.isOn ? 1 : 0;
     }
 }

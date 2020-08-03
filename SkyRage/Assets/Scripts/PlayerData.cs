@@ -5,10 +5,11 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData{
 
-    public static int coins = 0;
-    public static int xp = 0;
-    public static int xpLevel = 0;
-    public static bool[] unlockedVehicles = new bool[] { true, false };
+    public static double coins = 0;
+    public static double xp = 0;
+    public static int lives = 0;
+    public static int upgradeTokens = 0;
+    public static bool[] unlockedVehicles = new bool[] { true, false,false,false };
 
     
     public static void SaveData()
@@ -40,4 +41,5 @@ public class PlayerData{
             return null;
         }
     }
+
 }

@@ -11,8 +11,8 @@ public class Weapons : MonoBehaviour {
 
     public Transform owner = null;
 	// Use this for initialization
-	void Start () {
-		
+	void Start() { 
+
 	}
 	
 	// Update is called once per frame
