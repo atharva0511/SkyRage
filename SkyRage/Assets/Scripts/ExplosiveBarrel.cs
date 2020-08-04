@@ -24,6 +24,6 @@ public class ExplosiveBarrel : Destructible {
     public void Explode()
     {
         Instantiate(Explosion, transform.position+transform.up, Quaternion.identity);
-        Destroy(this.gameObject, 0.1f);
+        Destroy(this.gameObject, 0.2f);
     }
 }

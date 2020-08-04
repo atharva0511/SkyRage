@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Shootable
   - Checkpoint
+  - Pickup
   layers:
   - Default
   - TransparentFX

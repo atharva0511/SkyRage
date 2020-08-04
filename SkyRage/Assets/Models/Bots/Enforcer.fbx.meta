@@ -1,20 +1,29 @@
 fileFormatVersion: 2
-guid: 5a62e6339bc368c4f8fd931c1f6de4de
+guid: 040810256638fd04a9412ef900816513
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Enforcer_LOD0
+    100004: Enforcer_LOD1
+    100006: Enforcer_LOD2
     400000: //RootNode
-    2100000: Shield
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: LifePickup
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Shield
-    second: {fileID: 2100000, guid: 83b1e4cda9da86c4f816d7d77779f9a5, type: 2}
+    400002: Enforcer_LOD0
+    400004: Enforcer_LOD1
+    400006: Enforcer_LOD2
+    2100000: Material.002
+    2100002: Material.001
+    2300000: Enforcer_LOD0
+    2300002: Enforcer_LOD1
+    2300004: Enforcer_LOD2
+    3300000: Enforcer_LOD0
+    3300002: Enforcer_LOD1
+    3300004: Enforcer_LOD2
+    4300000: Enforcer_LOD2
+    4300002: Enforcer_LOD1
+    4300004: Enforcer_LOD0
+    20500000: //RootNode
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -44,8 +53,11 @@ ModelImporter:
     clipAnimations: []
     isReadable: 1
   meshes:
-    lODScreenPercentages: []
-    globalScale: 0.5
+    lODScreenPercentages:
+    - 0.25
+    - 0.125
+    - 0.01
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1

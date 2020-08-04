@@ -1490,7 +1490,7 @@ MonoBehaviour:
   ObjectiveIndex: 0
   active: 0
   XP: 20
-  stayOnComplete: 0
+  completed: 0
   DestroyOnCompletion:
   - {fileID: 1438527388235244}
   ObjectiveDescription: Destroy all the enemy bots near the docks

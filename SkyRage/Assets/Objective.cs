@@ -9,7 +9,7 @@ public class Objective : MonoBehaviour {
     public int ObjectiveIndex = 0;
     public bool active = false;
     public int XP = 20;
-    public bool stayOnComplete = false;
+    public bool completed = false;
     public GameObject[] DestroyOnCompletion;
     public string ObjectiveDescription = "Proceed to the marked location";
     public EventSettings eventSettings;
@@ -26,6 +26,7 @@ public class Objective : MonoBehaviour {
     public void Completed()
     {
         eventSettings.NextObjective();
+        completed = true;
         foreach(GameObject ob in DestroyOnCompletion)
         {
             Destroy(ob);

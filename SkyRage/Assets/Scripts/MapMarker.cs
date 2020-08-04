@@ -46,7 +46,7 @@ public class MapMarker : MonoBehaviour {
 
         if (!stayOnRadar) return;
         Vector3 dir = Vector3.ProjectOnPlane(transform.position - player.position, Vector3.up);
-        if(dir.sqrMagnitude > (radarRadius+zoneRadius)*(radarRadius+zoneRadius))
+        if(dir.sqrMagnitude > (radarRadius)*(radarRadius))
         {
             transform.GetChild(0).position = player.transform.position + dir.normalized * radarRadius;
             transform.GetChild(0).position = new Vector3(transform.GetChild(0).position.x, transform.position.y, transform.GetChild(0).position.z);

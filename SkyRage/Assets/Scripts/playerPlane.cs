@@ -6,13 +6,17 @@ using UnityEngine.UI;
 public class playerPlane : Destructible {
 
     public GameObject xpCanvas;
+    protected int coins = 0;
     protected GameObject xpInstance;
+    protected GameObject displayInstance;
     public Transform cam;
     public Transform DisplayPos;
     public Weapons[] weapons;
     public Image healthBar;
     public ParticleSystem DamageSmoke;
-
+    public AudioSource pickupAudio;
+    public Text coinDisp;
+    IEnumerator routine = null;
     // Use this for initialization
     void Start () {
 		
@@ -43,6 +47,41 @@ public class playerPlane : Destructible {
             }
             Destroy(col.transform.GetChild(0).gameObject);
             Destroy(col.transform.gameObject, 1);
+        }
+        // pickups
+        if (col.transform.CompareTag("Pickup"))
+        {
+            col.enabled = false;
+            Pickup pickup = col.GetComponent<Pickup>();
+            if(pickup.type == Pickup.pickupType.health)
+            {
+                if(routine!=null)StopCoroutine(routine);
+                if(displayInstance!=null)Destroy(displayInstance);
+                routine = DisplayText("+ " +  (pickup.health>maxHealth-health?maxHealth-health:pickup.health).ToString() + " Health", Color.green);
+                this.health = Mathf.Clamp(this.health + pickup.health, 0, maxHealth);
+                DisplayHealth();
+                StartCoroutine(routine);
+            }
+            else if (pickup.type == Pickup.pickupType.coin)
+            {
+                if (routine != null) StopCoroutine(routine);
+                if (displayInstance != null) Destroy(displayInstance);
+                routine = DisplayText("+ " + pickup.coins.ToString() + " Coins", Color.yellow);
+                coins += pickup.coins;
+                SetCoinDisplay();
+                StartCoroutine(routine);
+            }
+            else if (pickup.type == Pickup.pickupType.life)
+            {
+                if (routine != null) StopCoroutine(routine);
+                if (displayInstance != null) Destroy(displayInstance);
+                routine = DisplayText("+1 Life", Color.green);
+                StartCoroutine(routine);
+            }
+            if (pickup.isObjective) pickup.Collect();
+            pickupAudio.clip = pickup.collectSound;
+            pickupAudio.Play();
+            Destroy(col.gameObject);
         }
     }
 
@@ -106,5 +145,26 @@ public class playerPlane : Destructible {
         {
             w.ReleaseFire1();
         }
+    }
+
+    IEnumerator DisplayText(string dispText,Color dispColor)
+    {
+        float startTime = Time.time;
+        displayInstance = Instantiate(xpCanvas, DisplayPos.position, Quaternion.LookRotation(DisplayPos.position - cam.position, cam.up), DisplayPos);
+        Text dText = displayInstance.transform.GetChild(0).GetComponent<Text>();
+        dText.text = dispText;
+        dText.color = dispColor;
+        dText.CrossFadeAlpha(0, 1, false);
+        while (Time.time < startTime + 1)
+        {
+            displayInstance.transform.rotation = Quaternion.LookRotation(DisplayPos.position - cam.position, cam.up);
+            yield return null;
+        }
+        Destroy(displayInstance);
+    }
+
+    public void SetCoinDisplay()
+    {
+        coinDisp.text = this.coins.ToString();
     }
 }

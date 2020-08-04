@@ -1,20 +1,47 @@
 fileFormatVersion: 2
-guid: 5a62e6339bc368c4f8fd931c1f6de4de
+guid: 3bef7e61adbd9f54e8de54b442bbd383
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: door3
+    100004: door3Armature
+    100006: lowerDoor
+    100008: lowerDoor_end
+    100010: upperDoor
+    100012: upperDoor_end
     400000: //RootNode
-    2100000: Shield
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: LifePickup
+    400002: door3
+    400004: door3Armature
+    400006: lowerDoor
+    400008: lowerDoor_end
+    400010: upperDoor
+    400012: upperDoor_end
+    2100000: scifiPanel
+    2100002: metal_yellow1
+    2100004: glow_green
+    4300000: door3
+    7400000: door3Armature|a_door3Open
+    7400002: door3Armature|door3Close
+    7400004: door3Armature|door3Open.001
+    9500000: //RootNode
+    13700000: door3
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Shield
-    second: {fileID: 2100000, guid: 83b1e4cda9da86c4f816d7d77779f9a5, type: 2}
+      name: glow_green
+    second: {fileID: 2100000, guid: 20cf167752317d142ad12bcf9e085e75, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal_yellow1
+    second: {fileID: 2100000, guid: c253ea8dba6cf464b94f47aa37d3d798, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: scifiPanel
+    second: {fileID: 2100000, guid: f4847abb002a75246adbd5047230b773, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -45,11 +72,11 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.5
+    globalScale: 4
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
-    importBlendShapes: 1
+    importBlendShapes: 0
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
@@ -89,7 +116,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
