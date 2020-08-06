@@ -9,9 +9,9 @@ public class Destructible : MonoBehaviour {
     public bool god = false;
     public int team = 0; //Single player character should have team =1
     public Transform target = null;
-    [HideInInspector]
     public bool dead = false;
-
+    [HideInInspector]
+    public bool stunned = false;
     
 	
 	
@@ -28,18 +28,18 @@ public class Destructible : MonoBehaviour {
 
     public void TakeDamage(float amount, Transform hitter,float randomize = 2f)
     {
-        if (hitter.GetComponent<Destructible>() != null)
+        /*if (hitter.GetComponent<Destructible>() != null)
         {
             if (hitter.GetComponent<Destructible>().team == this.team) return;
-        }
+        }*/
         if (!god)
         {
             health -= (amount + Random.Range(0, randomize));
         }
-        if (hitter != null && hitter!=this.transform)
+        /*if (hitter != null && hitter!=this.transform)
         {
             this.target = hitter;
-        }
+        }*/
         Damaged();
         if (this.health <= 0 && !dead) Die();
     }
@@ -61,5 +61,12 @@ public class Destructible : MonoBehaviour {
     public virtual void Damaged()
     {
         // is "death blow" if health is -ve but dead is false
+    }
+
+    public IEnumerator Stun(float t)
+    {
+        stunned = true;
+        yield return new WaitForSeconds(t);
+        stunned = false;
     }
 }

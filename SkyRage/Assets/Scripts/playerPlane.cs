@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class playerPlane : Destructible {
 
     public GameObject xpCanvas;
-    protected int coins = 0;
+    [HideInInspector]
+    public int coins = 0;
     protected GameObject xpInstance;
     protected GameObject displayInstance;
     public Transform cam;
@@ -15,7 +16,11 @@ public class playerPlane : Destructible {
     public Image healthBar;
     public ParticleSystem DamageSmoke;
     public AudioSource pickupAudio;
+    public AudioClip lifeAudio;
     public Text coinDisp;
+    public Text lifeDisp;
+    public Text utDisp;
+    public Image deathVignette;
     IEnumerator routine = null;
     // Use this for initialization
     void Start () {
@@ -24,7 +29,13 @@ public class playerPlane : Destructible {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        RaycastHit hit;
+        if (Physics.Raycast(DisplayPos.position + 3 * transform.up, -transform.forward, out hit, 22, ~(1 << 2)))
+        {
+            cam.position = hit.point + transform.forward;
+        }
+        else
+            cam.position = DisplayPos.position + 3 * transform.up - 22 * transform.forward;
 	}
 
 
@@ -55,12 +66,16 @@ public class playerPlane : Destructible {
             Pickup pickup = col.GetComponent<Pickup>();
             if(pickup.type == Pickup.pickupType.health)
             {
+                if (health == maxHealth) return;
                 if(routine!=null)StopCoroutine(routine);
                 if(displayInstance!=null)Destroy(displayInstance);
-                routine = DisplayText("+ " +  (pickup.health>maxHealth-health?maxHealth-health:pickup.health).ToString() + " Health", Color.green);
+                routine = DisplayText("+ " + Mathf.Ceil(pickup.health>maxHealth-health?maxHealth-health:pickup.health).ToString() + " Health", Color.green);
                 this.health = Mathf.Clamp(this.health + pickup.health, 0, maxHealth);
                 DisplayHealth();
                 StartCoroutine(routine);
+                pickupAudio.clip = pickup.collectSound;
+                pickupAudio.Play();
+                Destroy(col.gameObject);
             }
             else if (pickup.type == Pickup.pickupType.coin)
             {
@@ -70,18 +85,36 @@ public class playerPlane : Destructible {
                 coins += pickup.coins;
                 SetCoinDisplay();
                 StartCoroutine(routine);
+                pickupAudio.clip = pickup.collectSound;
+                pickupAudio.Play();
+                Destroy(col.gameObject);
             }
             else if (pickup.type == Pickup.pickupType.life)
             {
+                if (PlayerData.lives == 5) return;
+                PlayerData.lives += 1;
+                SetLifeDisp();
                 if (routine != null) StopCoroutine(routine);
                 if (displayInstance != null) Destroy(displayInstance);
                 routine = DisplayText("+1 Life", Color.green);
                 StartCoroutine(routine);
+                pickupAudio.clip = pickup.collectSound;
+                pickupAudio.Play();
+                Destroy(col.gameObject);
+            }
+            else if(pickup.type == Pickup.pickupType.upgradeToken)
+            {
+                PlayerData.upgradeTokens += 1;
+                SetUpgradeTokenDisp();
+                if (routine != null) StopCoroutine(routine);
+                if (displayInstance != null) Destroy(displayInstance);
+                routine = DisplayText("+1 Upgrade Token", Color.blue);
+                StartCoroutine(routine);
+                pickupAudio.clip = pickup.collectSound;
+                pickupAudio.Play();
+                Destroy(col.gameObject);
             }
             if (pickup.isObjective) pickup.Collect();
-            pickupAudio.clip = pickup.collectSound;
-            pickupAudio.Play();
-            Destroy(col.gameObject);
         }
     }
 
@@ -104,7 +137,7 @@ public class playerPlane : Destructible {
     {
         healthBar.fillAmount = health / maxHealth;
         healthBar.color = Color.Lerp(Color.red, Color.green, health / maxHealth);
-        if (health < maxHealth) DamageSmoke.emissionRate = 5 + 15 * ((maxHealth / 2) - health);
+        if (health < maxHealth/2) DamageSmoke.emissionRate = 20 * ((maxHealth / 2) - health)/(maxHealth/2);
         else DamageSmoke.emissionRate = 0;
     }
     public override void Damaged()
@@ -143,7 +176,7 @@ public class playerPlane : Destructible {
     {
         foreach (Weapons w in weapons)
         {
-            w.ReleaseFire1();
+            w.ReleaseFire2();
         }
     }
 
@@ -166,5 +199,45 @@ public class playerPlane : Destructible {
     public void SetCoinDisplay()
     {
         coinDisp.text = this.coins.ToString();
+    }
+    public void SetLifeDisp()
+    {
+        Mathf.Clamp(PlayerData.lives,0, 5);
+        lifeDisp.text = PlayerData.lives.ToString();
+    }
+    public void SetUpgradeTokenDisp()
+    {
+        utDisp.text = PlayerData.upgradeTokens.ToString();
+    }
+
+
+    public override void Die()
+    {
+        if (PlayerData.lives > 0)
+        {
+            StartCoroutine(UseLife());
+        }
+        else
+        {
+            dead = true;
+        }
+    }
+
+    public IEnumerator UseLife()
+    {
+        dead = false;
+        this.health = this.maxHealth;
+        float startTime = Time.time;
+        PlayerData.lives -= 1;
+        SetLifeDisp();
+        pickupAudio.clip = lifeAudio;
+        pickupAudio.Play();
+        deathVignette.gameObject.SetActive(true);
+        deathVignette.color = new Color(0.7f, 0.77f, 0.65f, 1);
+        deathVignette.CrossFadeAlpha(0, 4,false);
+        this.god = true;
+        yield return new WaitForSeconds(4);
+        this.god = false;
+        deathVignette.gameObject.SetActive(false);
     }
 }

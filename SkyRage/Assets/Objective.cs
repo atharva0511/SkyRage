@@ -11,6 +11,7 @@ public class Objective : MonoBehaviour {
     public int XP = 20;
     public bool completed = false;
     public GameObject[] DestroyOnCompletion;
+    public GameObject[] ActivateOnCompletion;
     public string ObjectiveDescription = "Proceed to the marked location";
     public EventSettings eventSettings;
 	// Use this for initialization
@@ -30,6 +31,10 @@ public class Objective : MonoBehaviour {
         foreach(GameObject ob in DestroyOnCompletion)
         {
             Destroy(ob);
+        }
+        foreach (GameObject ob in ActivateOnCompletion)
+        {
+            ob.SetActive(true);
         }
     }
 

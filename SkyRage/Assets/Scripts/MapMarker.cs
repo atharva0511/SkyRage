@@ -18,8 +18,8 @@ public class MapMarker : MonoBehaviour {
         {
             zoneMarker.gameObject.SetActive(true);
             zoneRadius = spawner.zoneRadius;
-            zoneMarker.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 2*zoneRadius);
-            zoneMarker.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 2 * zoneRadius);
+            zoneMarker.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 4*zoneRadius);
+            zoneMarker.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 4 * zoneRadius);
         }
     }
 	

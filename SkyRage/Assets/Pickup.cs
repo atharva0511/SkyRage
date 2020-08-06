@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour {
 
-    public enum pickupType { health,coin,life,ammo};
+    public enum pickupType { health,coin,life,ammo,upgradeToken};
     public pickupType type;
     public bool isObjective = false;
     public int health = 0;

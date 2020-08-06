@@ -12,6 +12,7 @@ public class UISettings : MonoBehaviour {
     public GameObject warnPanel;
     public GameObject restartWarnPanel;
     public GameObject LoadingPanel;
+    public GameObject FinishPanel;
     public Image loadingProgress;
     public Text ObjectiveDesc;
     public GameObject DisplayObj;
@@ -96,9 +97,12 @@ public class UISettings : MonoBehaviour {
         }
     }
 
-    public void OnFinish()
+    public void OnFinish(int coins)
     {
         Debug.Log("Mission Completed");
+        Time.timeScale = 0;
+        FinishPanel.SetActive(true);
+        FinishPanel.GetComponent<FinishPanel>().SetText(coins);
     }
 
     public void SetObDescription(string desc)

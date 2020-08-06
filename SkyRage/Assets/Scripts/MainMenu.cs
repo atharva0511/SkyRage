@@ -34,6 +34,7 @@ public class MainMenu : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Time.timeScale = 1;
+        //############################################################
         PlayerData.coins = 5000;
         UIAudio = GetComponent<AudioSource>();
         //podium.GetChild(selectionIndex).GetComponent<Customizable>().LoadCustomizations();
@@ -80,6 +81,9 @@ public class MainMenu : MonoBehaviour {
         Customizable Cu = podium.GetChild(selectionIndex).GetComponent<Customizable>();
         Customizations custms = new Customizations(Cu.rends[0].materials[0].color,Cu.rends[0].materials[1].color);
         Cu.SaveCustomizations(custms);
+        CustomizePanel.SetActive(false);
+        PlayPanel.SetActive(true);
+        SingleplayerPanel.SetActive(true);
     }
     
     public void SelectColor1()

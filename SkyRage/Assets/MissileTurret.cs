@@ -25,10 +25,12 @@ public class MissileTurret : Destructible {
     // Use this for initialization
     void Start () {
         turnSpeed += (3 / difficulty);
+        this.target = EventSettings.currentPlayer;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (stunned) return;
         if (target != null && !dead)
         {
             aimer.rotation = Quaternion.Slerp(aimer.rotation, Quaternion.LookRotation(target.position - aimer.position),turnSpeed*Time.deltaTime);

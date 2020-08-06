@@ -33,6 +33,7 @@ public class MiniBot : Destructible {
     bool side = true;
     // Use this for initialization
     void Start () {
+        target = EventSettings.currentPlayer;
         radarMarker.gameObject.SetActive(true);
         lastDashed = Time.time;
         lastHit = Time.time;
@@ -48,6 +49,7 @@ public class MiniBot : Destructible {
 	// Update is called once per frame
 	void Update () {
         if (dead) return;
+        if (stunned) return;
         if (target != null)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(target.position - transform.position), 5*turnSpeed * Time.deltaTime);

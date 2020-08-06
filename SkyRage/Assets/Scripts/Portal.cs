@@ -7,6 +7,7 @@ public class Portal : MonoBehaviour {
     public Transform destination;
     public bool setRot = true;
     public bool uniDir = true;
+    public bool objective = false;
 	// Use this for initialization
 	void Start () {
 		
@@ -24,6 +25,7 @@ public class Portal : MonoBehaviour {
         {
             OnEnter(ob.transform); 
         }
+        GetComponent<Objective>().Completed();
     }
 
     public virtual void OnEnter(Transform ob)

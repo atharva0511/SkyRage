@@ -189,6 +189,4 @@ public class Drone : playerPlane {
         }
     }*/
     
-
-    
 }

@@ -6,22 +6,23 @@ public class EventSettings : MonoBehaviour {
 
     public int currentObjective = 0;
     public Objective[] objectives;
-    
 
 
+    public static Transform currentPlayer;
     public Transform player;
-
+    playerPlane character;
     public UISettings uiSettings;
 	// Use this for initialization
+    void Awake()
+    {
+        currentPlayer = player;
+    }
+
 	void Start () {
         Time.timeScale = 1;
         Application.targetFrameRate = 60;
-        if (PlayerPrefs.HasKey("Objective"))
-        {
-            currentObjective = PlayerPrefs.GetInt("Objective");
-            LoadObjective(currentObjective);
-        }
         objectives[0].Activate();
+        character = player.GetComponent<playerPlane>();
 	}
 	
 	// Update is called once per frame
@@ -31,8 +32,7 @@ public class EventSettings : MonoBehaviour {
 
     public void Finished()
     {
-        PlayerPrefs.SetInt("Objective", 0);
-        uiSettings.OnFinish();
+        uiSettings.OnFinish(character.coins);
     }
 
     public void NextObjective()
