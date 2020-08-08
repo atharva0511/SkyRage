@@ -6,6 +6,7 @@ public class PauseButton : MonoBehaviour {
 
     public GameObject pausePanel;
     public AudioSource audioSource;
+    public EventSettings evSettings;
 	// Use this for initialization
 	void Start () {
 		
@@ -20,6 +21,11 @@ public class PauseButton : MonoBehaviour {
     {
         Time.timeScale = 0;
         audioSource.Play();
+        AudioSource[] pauseAudio = evSettings.player.GetComponent<playerPlane>().pauseAudio;
+        foreach(AudioSource aud in pauseAudio)
+        {
+            aud.Pause();
+        }
         pausePanel.SetActive(true);
     }
 }

@@ -12,6 +12,7 @@ public class playerPlane : Destructible {
     protected GameObject displayInstance;
     public Transform cam;
     public Transform DisplayPos;
+    public AudioSource[] pauseAudio;
     public Weapons[] weapons;
     public Image healthBar;
     public ParticleSystem DamageSmoke;
@@ -23,8 +24,9 @@ public class playerPlane : Destructible {
     public Image deathVignette;
     IEnumerator routine = null;
     // Use this for initialization
-    void Start () {
-		
+    void Awake () {
+        SetLifeDisp();
+        SetUpgradeTokenDisp();
 	}
 	
 	// Update is called once per frame
@@ -204,6 +206,7 @@ public class playerPlane : Destructible {
     {
         Mathf.Clamp(PlayerData.lives,0, 5);
         lifeDisp.text = PlayerData.lives.ToString();
+        Debug.Log(PlayerData.lives);
     }
     public void SetUpgradeTokenDisp()
     {
@@ -227,6 +230,7 @@ public class playerPlane : Destructible {
     {
         dead = false;
         this.health = this.maxHealth;
+        DisplayHealth();
         float startTime = Time.time;
         PlayerData.lives -= 1;
         SetLifeDisp();

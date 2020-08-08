@@ -11,6 +11,9 @@ public class Projectile : MonoBehaviour {
     float startTime = 0;
     public float damage = 5;
     public bool moveLinearly = false;
+    public bool homing = false;
+    public Transform target = null;
+    public float turnRate = 1;
     public float speed = 5;
 	// Use this for initialization
 	void Start () {
@@ -23,8 +26,15 @@ public class Projectile : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Time.time > startTime + stayTime) Destroy(this.gameObject);
-	}
+        if (Time.time > startTime + stayTime)
+        {
+            Instantiate(blast, this.transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
+        if (!homing) return;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(target.position - transform.position), turnRate * Time.deltaTime);
+        GetComponent<Rigidbody>().velocity = transform.forward * speed;
+    }
 
     void OnCollisionEnter(Collision col)
     {

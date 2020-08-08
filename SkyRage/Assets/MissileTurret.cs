@@ -72,7 +72,7 @@ public class MissileTurret : Destructible {
         audioSource.Play();
         GameObject ms = Instantiate(missile, pos.position, Quaternion.LookRotation(aimer.forward));
         Projectile p = ms.GetComponent<Projectile>();
-        p.speed = 140 + 20 * difficulty;
+        p.speed = 100 + 20 * difficulty;
         p.damage = baseDamage + 2.5f * difficulty;
         p.Shooter = this.transform;
     }

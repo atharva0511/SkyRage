@@ -40,7 +40,19 @@ public class MainMenu : MonoBehaviour {
         //podium.GetChild(selectionIndex).GetComponent<Customizable>().LoadCustomizations();
         DisplayVehicle();
         ApplySettings();
-        StartCoroutine(ChangeCamPos(camPos0));
+        if(PlayerPrefs.HasKey("vehicleIndex"))selectionIndex = PlayerPrefs.GetInt("vehicleIndex");
+        if (PlayerPrefs.HasKey("SetMenu"))
+        {
+            if (PlayerPrefs.GetInt("SetMenu") != 0)
+            {
+                cam.position = camPos1.position;
+                SPMenu.SetActive(false);
+                PlayPanel.SetActive(true);
+                PlayerPrefs.SetInt("SetMenu", 0);
+            }
+        }
+        PlayerData.LoadData();
+        Debug.Log(PlayerData.lives);
     }
 	
 	// Update is called once per frame

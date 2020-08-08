@@ -12,10 +12,11 @@ public class Drone : playerPlane {
     public float hoverHeight = 1;
     public float turnSens = 1;
     public float lives;
-    float thrust = 0;
+    bool thrust = false;
     float leanAngle = 0;
-    float dashRefill = 0;
-    public Slider thrustSlider;
+    public Image dashRefill;
+    public float thrustRechargeRate = 0.1f;
+    public Image thrustFill;
     public Joystick joystick;
     public LineRenderer thrustR;
     public LineRenderer thrustL;
@@ -45,7 +46,14 @@ public class Drone : playerPlane {
     {
         if (!On) return;
         //refill dash
-        if (dashRefill < 1) dashRefill += Time.deltaTime*0.75f;
+        if (dashRefill.fillAmount < 1) dashRefill.fillAmount += Time.deltaTime*0.75f;
+        if (thrustFill.fillAmount < 1) thrustFill.fillAmount += Time.deltaTime * thrustRechargeRate;
+        if (thrust && thrustFill.fillAmount < 0.05f)
+        {
+            thrust = false;
+            thrustB.transform.localScale = new Vector3(1, 1, 1 + (thrust ? 4 : 0));
+        }
+        else if (thrust) thrustFill.fillAmount -= Time.deltaTime * 0.15f;
         //pass inputs
         //MoveDrone(thrust,joystick.Horizontal, joystick.Vertical,Input.acceleration.x,Input.acceleration.z);
 
@@ -61,12 +69,13 @@ public class Drone : playerPlane {
 
     public void ThrustInput()
     {
-        thrust = thrustSlider.normalizedValue * maxThrust;
-        thrustB.transform.localScale = new Vector3(1, 1, 1 + thrustSlider.normalizedValue * 5);
-        thrustParticle.emissionRate = thrustSlider.normalizedValue * 10;
+        thrust = !thrust;
+        if (thrustFill.fillAmount < 0.05f) thrust = false;
+        thrustB.transform.localScale = new Vector3(1, 1, 1 + (thrust?4:0));
+        thrustParticle.emissionRate = thrust?8:0;
     }
 
-    void MoveDrone(float thrust,float hor,float ver,float turn,float lean)
+    void MoveDrone(bool thrust,float hor,float ver,float turn,float lean)
     {
         //Hover above surface
         if (Physics.Raycast(transform.position, -transform.up, 0.5f+hoverHeight))
@@ -75,7 +84,7 @@ public class Drone : playerPlane {
         }
         Rb.AddForce(-Rb.mass * Physics.gravity);
         //Apply thrust
-        Rb.AddForce(Rb.mass*transform.forward * (thrust+fanThrust*ver));
+        Rb.AddForce(Rb.mass*transform.forward * ((thrust?40:0)+fanThrust*ver));
         Rb.AddForce(Rb.mass * transform.right * fanThrust * hor);
 
         //Turn
@@ -98,15 +107,15 @@ public class Drone : playerPlane {
         anim.SetFloat(moveHash, forward);
     }
 
-    void UpdateAudio(float hor,float ver,float thrust)
+    void UpdateAudio(float hor,float ver,bool thrust)
     {
         PropellerSound.pitch = 1.5f + 0.5f * (hor * hor + ver * ver);
-        EngineSound.volume = Mathf.Lerp(EngineSound.volume,thrust,Time.deltaTime);
+        EngineSound.volume = Mathf.Lerp(EngineSound.volume,thrust?0.6f:0,Time.deltaTime);
     }
 
     public void PressDash(bool mobileInput = true)
     {
-        if (dashRefill < 1) return;
+        if (dashRefill.fillAmount < 1) return;
         if (mobileInput)
         {
             if (joystick.Horizontal < 0.1f) StartCoroutine(Dash(true));
@@ -121,7 +130,7 @@ public class Drone : playerPlane {
     IEnumerator Dash(bool leftSide)
     {
         float startTime = Time.time;
-        dashRefill = 0;
+        dashRefill.fillAmount = 0;
         if (leftSide)
         {
             thrustR.enabled = true;
@@ -138,7 +147,7 @@ public class Drone : playerPlane {
             DashSound.Play();
             while (Time.time < startTime + 0.6f)
             {
-                Rb.AddForce(Rb.mass * transform.right * 13000*Time.deltaTime);
+                Rb.AddForce(Rb.mass * transform.right * 12000*Time.deltaTime);
                 thrustL.startColor = new Color(thrustL.startColor.r, thrustL.startColor.g, thrustL.startColor.b, (startTime + 0.6f - Time.time) / 0.2f);
                 yield return null;
             }
@@ -160,7 +169,7 @@ public class Drone : playerPlane {
             DashSound.Play();
             while (Time.time < startTime + 0.6f)
             {
-                Rb.AddForce(-Rb.mass * transform.right * 13000*Time.deltaTime);
+                Rb.AddForce(-Rb.mass * transform.right * 12000*Time.deltaTime);
                 thrustR.startColor = new Color(thrustR.startColor.r, thrustR.startColor.g, thrustR.startColor.b, (startTime + 0.6f - Time.time) / 0.2f);
                 yield return null;
             }

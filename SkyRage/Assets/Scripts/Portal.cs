@@ -23,9 +23,10 @@ public class Portal : MonoBehaviour {
         Destructible ob = col.GetComponentInParent<Destructible>();
         if (ob != null)
         {
-            OnEnter(ob.transform); 
+            OnEnter(ob.transform);
+            if (objective && ob.GetComponentInParent<playerPlane>()!=null) GetComponent<Objective>().Completed();
         }
-        GetComponent<Objective>().Completed();
+        
     }
 
     public virtual void OnEnter(Transform ob)

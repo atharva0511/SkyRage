@@ -4,11 +4,21 @@ ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Camera
+    100004: CoinPickup
+    100006: Hemi
     400000: //RootNode
+    400002: Camera
+    400004: CoinPickup
+    400006: Hemi
+    2000000: Camera
     2100000: coin
     2300000: //RootNode
+    2300002: CoinPickup
     3300000: //RootNode
+    3300002: CoinPickup
     4300000: CoinPickup
+    10800000: Hemi
   externalObjects:
   - first:
       type: UnityEngine:Material

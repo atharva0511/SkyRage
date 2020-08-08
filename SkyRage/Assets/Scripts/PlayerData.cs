@@ -10,36 +10,65 @@ public class PlayerData{
     public static int lives = 0;
     public static int upgradeTokens = 0;
     public static bool[] unlockedVehicles = new bool[] { true, false,false,false };
-
+    public static int[] levelProgression = new int[] { 0, 0, 0, 0 };
     
     public static void SaveData()
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/playerData.amg";
         FileStream file = new FileStream(path, FileMode.Create);
-        
-        formatter.Serialize(file, new PlayerData());
+        GameData data = new GameData();
+        data.SaveValues();
+        formatter.Serialize(file, data);
         Debug.Log("Saved player data");
         file.Close();
     }
 
-    public static PlayerData LoadData()
+    public static void LoadData()
     {
         string path = Application.persistentDataPath + "/playerData.amg";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream file = new FileStream(path, FileMode.Open);
-            PlayerData data = formatter.Deserialize(file) as PlayerData;
-            
+            GameData data = formatter.Deserialize(file) as GameData;
+            data.LoadValues();
             file.Close();
-            return data;
         }
         else
         {
             Debug.Log("Save Files not found");
-            return null;
         }
     }
+}
 
+[System.Serializable]
+public class GameData
+{
+    public double coins = 0;
+    public double xp = 0;
+    public int lives = 0;
+    public int upgradeTokens = 0;
+    public bool[] unlockedVehicles = new bool[] { true, false, false, false };
+    public int[] levelProgression = new int[] { 0, 0, 0, 0 };
+
+    public void SaveValues()
+    {
+        this.coins = PlayerData.coins;
+        this.xp = PlayerData.xp;
+        this.lives = PlayerData.lives;
+        this.upgradeTokens = PlayerData.upgradeTokens;
+        this.unlockedVehicles = PlayerData.unlockedVehicles;
+        this.levelProgression = PlayerData.levelProgression;
+    }
+
+    public void LoadValues()
+    {
+        PlayerData.coins = this.coins;
+        PlayerData.xp = this.xp;
+        PlayerData.lives = this.lives;
+        PlayerData.upgradeTokens = this.upgradeTokens;
+        PlayerData.unlockedVehicles = this.unlockedVehicles;
+        PlayerData.levelProgression = this.levelProgression;
+    }
 }

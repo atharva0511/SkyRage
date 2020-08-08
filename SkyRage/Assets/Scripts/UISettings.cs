@@ -16,7 +16,7 @@ public class UISettings : MonoBehaviour {
     public Image loadingProgress;
     public Text ObjectiveDesc;
     public GameObject DisplayObj;
-
+    public EventSettings evSettings;
 	// Use this for initialization
 	void Start () {
 
@@ -42,6 +42,11 @@ public class UISettings : MonoBehaviour {
     public void Resume()
     {
         Time.timeScale = 1;
+        AudioSource[] pauseAudio = evSettings.player.GetComponent<playerPlane>().pauseAudio;
+        foreach (AudioSource aud in pauseAudio)
+        {
+            aud.UnPause();
+        }
         PausePanel.SetActive(false);
     }
     

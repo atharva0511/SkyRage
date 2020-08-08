@@ -2514,7 +2514,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1854739899829608
 GameObject:
   m_ObjectHideFlags: 1
@@ -3945,6 +3945,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 1372051816062970}
   audioSource: {fileID: 82614688887979096}
+  evSettings: {fileID: 114144603416077112}
 --- !u!114 &114093443677020606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4449,8 +4450,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 114382364483497468}
-        m_MethodName: ToMainMenu
+      - m_Target: {fileID: 114152031216633896}
+        m_MethodName: ProceedToMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5785,6 +5786,7 @@ MonoBehaviour:
   loadingProgress: {fileID: 114687483352688362}
   ObjectiveDesc: {fileID: 114944231050810656}
   DisplayObj: {fileID: 1852530848160910}
+  evSettings: {fileID: 0}
 --- !u!114 &114387716074983326
 MonoBehaviour:
   m_ObjectHideFlags: 1

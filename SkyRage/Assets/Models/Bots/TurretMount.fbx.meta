@@ -1,25 +1,26 @@
 fileFormatVersion: 2
-guid: 51b88def8e6e88145856b473b42ad9a5
+guid: 629a0ca7ed16d1744b3fac24d8f6f507
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Turret_LOD0
-    100004: Turret_LOD1
     400000: //RootNode
-    400002: Turret_LOD0
-    400004: Turret_LOD1
-    2100000: Turret__Turret
-    2300000: Turret_LOD0
-    2300002: Turret_LOD1
-    3300000: Turret_LOD0
-    3300002: Turret_LOD1
-    4300000: Turret_LOD1
-    4300002: Turret_LOD0
-    7400000: Default Take
-    9500000: //RootNode
-    20500000: //RootNode
-  externalObjects: {}
+    2100000: TurretMount
+    2100002: GlowOrange
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Cylinder
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GlowOrange
+    second: {fileID: 2100000, guid: d5aafb38cadaa0a4dac3cc46cb539933, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TurretMount
+    second: {fileID: 2100000, guid: 4c7a52d84e4080444af4be01bf8aa049, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -49,14 +50,12 @@ ModelImporter:
     clipAnimations: []
     isReadable: 1
   meshes:
-    lODScreenPercentages:
-    - 0.25
-    - 0.01
-    globalScale: 1
+    lODScreenPercentages: []
+    globalScale: 3.5
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
-    importBlendShapes: 1
+    importBlendShapes: 0
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
@@ -77,7 +76,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -96,7 +95,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

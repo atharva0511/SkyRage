@@ -34,6 +34,7 @@ public class MiniBot : Destructible {
     // Use this for initialization
     void Start () {
         target = EventSettings.currentPlayer;
+
         radarMarker.gameObject.SetActive(true);
         lastDashed = Time.time;
         lastHit = Time.time;
@@ -160,7 +161,7 @@ public class MiniBot : Destructible {
         fireAudio.Play();
         GameObject ms = Instantiate(laserBeam, (side?pos1:pos2).position, Quaternion.LookRotation(transform.forward));
         Projectile p = ms.GetComponent<Projectile>();
-        p.speed = 140 + 20 * difficulty;
+        p.speed = 120 + 20 * difficulty;
         p.damage = baseDamage + 2f * difficulty;
         p.Shooter = this.transform;
         side = !side;

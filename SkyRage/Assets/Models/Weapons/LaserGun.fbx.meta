@@ -1,18 +1,26 @@
 fileFormatVersion: 2
-guid: 9895c0478ac16324eae9831c511d12ef
+guid: 418762f80569fd645a6a144b855eb745
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: TurretMount__TurretMount_jpg
-    2100002: GlowOrange__TurretMount_jpg
+    2100000: LaserGun
+    2100002: Glow
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Cylinder
-    7400000: Default Take
-    9500000: //RootNode
-  externalObjects: {}
+    4300000: LaserGun
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glow
+    second: {fileID: 2100000, guid: 0e4ae9ea61877fc4d8a05d986d50db6d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LaserGun
+    second: {fileID: 2100000, guid: aac1745cb35e6014b9f03fefdaf75729, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -43,11 +51,11 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 4
+    globalScale: 1.5
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
-    importBlendShapes: 1
+    importBlendShapes: 0
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
@@ -68,7 +76,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -87,7 +95,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
