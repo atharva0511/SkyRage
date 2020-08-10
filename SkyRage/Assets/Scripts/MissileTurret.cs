@@ -24,9 +24,14 @@ public class MissileTurret : Destructible {
     public Renderer[] rends;
     // Use this for initialization
     void Start () {
-        turnSpeed += (3 / difficulty);
+        if (PlayerPrefs.HasKey("Difficulty"))
+        {
+            this.difficulty = PlayerPrefs.GetInt("Difficulty");
+        }
+        turnSpeed += difficulty/3;
         this.target = EventSettings.currentPlayer;
-	}
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {

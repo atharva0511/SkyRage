@@ -44,7 +44,7 @@ public class Drone : playerPlane {
 	
 	void FixedUpdate()
     {
-        if (!On) return;
+        if (!On || dead) return;
         //refill dash
         if (dashRefill.fillAmount < 1) dashRefill.fillAmount += Time.deltaTime*0.75f;
         if (thrustFill.fillAmount < 1) thrustFill.fillAmount += Time.deltaTime * thrustRechargeRate;
@@ -116,14 +116,17 @@ public class Drone : playerPlane {
     public void PressDash(bool mobileInput = true)
     {
         if (dashRefill.fillAmount < 1) return;
+        Debug.Log(joystick.Horizontal);
         if (mobileInput)
         {
-            if (joystick.Horizontal < 0.1f) StartCoroutine(Dash(true));
+            if (Mathf.Abs(joystick.Horizontal) < 0.1f) return;
+            else if (joystick.Horizontal < 0.1f) StartCoroutine(Dash(true));
             else if (joystick.Horizontal > 0.1f) StartCoroutine(Dash(false));
         }
         else
         {
-            if (Input.GetAxis("Horizontal") < 0.1f) StartCoroutine(Dash(true));
+            if (Mathf.Abs(Input.GetAxis("Horizontal")) < 0.1f) return;
+            else if (Input.GetAxis("Horizontal") < 0.1f) StartCoroutine(Dash(true));
             else if (Input.GetAxis("Horizontal") > 0.1f) StartCoroutine(Dash(false));
         }
     }

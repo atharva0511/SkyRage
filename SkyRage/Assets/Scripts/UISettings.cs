@@ -13,6 +13,7 @@ public class UISettings : MonoBehaviour {
     public GameObject restartWarnPanel;
     public GameObject LoadingPanel;
     public GameObject FinishPanel;
+    public GameObject DeadPanel;
     public Image loadingProgress;
     public Text ObjectiveDesc;
     public GameObject DisplayObj;
@@ -82,9 +83,11 @@ public class UISettings : MonoBehaviour {
 
     public void Restart()
     {
+        DeadPanel.SetActive(false);
+        FinishPanel.SetActive(false);
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().name));
     }
-
+    
     IEnumerator LoadLevel(string sceneName)
     {
         PausePanel.SetActive(false);
@@ -133,5 +136,11 @@ public class UISettings : MonoBehaviour {
         }
         yield return new WaitForSeconds(3f);
         DisplayObj.SetActive(false);
+    }
+
+    public void PlayerDead()
+    {
+        Time.timeScale = 0;
+        DeadPanel.SetActive(true);
     }
 }

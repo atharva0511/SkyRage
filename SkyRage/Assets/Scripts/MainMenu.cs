@@ -32,13 +32,16 @@ public class MainMenu : MonoBehaviour {
     public GameObject LockPanel;
     public Button UnlockButton;
 	// Use this for initialization
+
+    void Awake()
+    {
+        PlayerData.LoadData();
+    }
 	void Start () {
         Time.timeScale = 1;
-        //############################################################
-        PlayerData.coins = 5000;
         UIAudio = GetComponent<AudioSource>();
         //podium.GetChild(selectionIndex).GetComponent<Customizable>().LoadCustomizations();
-        DisplayVehicle();
+        
         ApplySettings();
         if(PlayerPrefs.HasKey("vehicleIndex"))selectionIndex = PlayerPrefs.GetInt("vehicleIndex");
         if (PlayerPrefs.HasKey("SetMenu"))
@@ -49,10 +52,11 @@ public class MainMenu : MonoBehaviour {
                 SPMenu.SetActive(false);
                 PlayPanel.SetActive(true);
                 PlayerPrefs.SetInt("SetMenu", 0);
+                PlayerPrefs.Save();
             }
         }
-        PlayerData.LoadData();
-        Debug.Log(PlayerData.lives);
+        DisplayVehicle();
+        Debug.Log(PlayerData.levelProgression.ToString());
     }
 	
 	// Update is called once per frame

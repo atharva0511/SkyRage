@@ -21,19 +21,19 @@ public class Weapons : MonoBehaviour {
 		
 	}
 
-    public void PressedFire1()
+    public virtual void PressedFire1()
     {
         fire1 = true;
     }
-    public void ReleaseFire1()
+    public virtual void ReleaseFire1()
     {
         fire1 = false;
     }
-    public void PressedFire2()
+    public virtual void PressedFire2()
     {
         fire2 = true;
     }
-    public void ReleaseFire2()
+    public virtual void ReleaseFire2()
     {
         fire2 = false;
     }

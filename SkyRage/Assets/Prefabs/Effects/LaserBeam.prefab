@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4386824479628958}
   - component: {fileID: 122808779407315002}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Halo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 54965047060065202}
   - component: {fileID: 65060515807961058}
   - component: {fileID: 114819027631383540}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LaserBeam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,6 +116,9 @@ MonoBehaviour:
   stayTime: 6
   damage: 5
   moveLinearly: 1
+  homing: 0
+  target: {fileID: 0}
+  turnRate: 1
   speed: 5
 --- !u!120 &120934746566872224
 LineRenderer:

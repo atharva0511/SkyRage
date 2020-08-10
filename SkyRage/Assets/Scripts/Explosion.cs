@@ -34,7 +34,8 @@ public class Explosion : MonoBehaviour {
         yield return null;
         foreach (var rb in rigidbodies)
         {
-            rb.AddExplosionForce(explosionForce * multiplier, transform.position, r, 1 * multiplier, ForceMode.Impulse);
+            if(rb!=null)
+                rb.AddExplosionForce(explosionForce * multiplier, transform.position, r, 1 * multiplier, ForceMode.Impulse);
         }
 
         //TODO

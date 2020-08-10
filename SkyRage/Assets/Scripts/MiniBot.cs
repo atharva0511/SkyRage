@@ -3,22 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Enforcer : Destructible {
+public class MiniBot : Destructible {
 
     public float difficulty = 2;
     public Vector3 zoneCentre;
     public int zoneRadius = 100;
     public GameObject healthCanvas;
-    public GameObject Explosion;
-    public GameObject Flare;
-    //public GameObject thrusterL;
-    //public GameObject thrusterR;
-    //public GameObject thruster;
+    public GameObject thrusterL;
+    public GameObject thrusterR;
+    public GameObject thruster;
     public GameObject spark;
     public bool displayHealth = true;
     public Transform pos1;
     public Transform pos2;
-    public Transform pos3;
     public Transform displayPos;
     public GameObject radarMarker;
     public Renderer[] rends;
@@ -27,24 +24,23 @@ public class Enforcer : Destructible {
     public Rigidbody Rb;
     public AudioSource fireAudio;
     public GameObject laserBeam;
-    public GameObject homingMissile;
     public int baseDamage = 3;
     int state = 0;
     public float turnSpeed = 1;
     float lastShot = 0;
     float lastDashed = 0;
-    float lastDisappeared = 0;
     float rand = 1;
     bool side = true;
     // Use this for initialization
-    void Start()
-    {
+    void Start () {
         target = EventSettings.currentPlayer;
-
+        if (PlayerPrefs.HasKey("Difficulty"))
+        {
+            this.difficulty = PlayerPrefs.GetInt("Difficulty");
+        }
         radarMarker.gameObject.SetActive(true);
         lastDashed = Time.time;
         lastHit = Time.time;
-        lastDisappeared = Time.time;
         if (GetComponentInParent<BotSpawner>() != null)
         {
             zoneCentre = GetComponentInParent<BotSpawner>().zoneCenter;
@@ -53,17 +49,15 @@ public class Enforcer : Destructible {
         else
             zoneCentre = transform.position;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
+	
+	// Update is called once per frame
+	void Update () {
         if (dead) return;
         if (stunned) return;
         if (target != null)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(target.position - transform.position), 5 * turnSpeed * Time.deltaTime);
-            if (Time.time > lastShot + 4 - difficulty + rand)
-            {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(target.position - transform.position), 5*turnSpeed * Time.deltaTime);
+            if (Time.time > lastShot + 4 - difficulty + rand){
                 rand = 2 * Random.value;
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, target.position - transform.position, out hit, 300, ~(1 << 2)))
@@ -71,12 +65,11 @@ public class Enforcer : Destructible {
                     if (hit.transform == target)
                     {
                         lastShot = Time.time;
-                        if (rand > 0.5f) StartCoroutine(SerialFire());
-                        else FireMissile();
+                        StartCoroutine(SerialFire());
                     }
                 }
             }
-            if (Time.time > lastDashed + 5 + rand)
+            if(Time.time>lastDashed + 3 +rand)
             {
                 lastDashed = Time.time;
                 if ((transform.position - zoneCentre).sqrMagnitude > zoneRadius * zoneRadius)
@@ -85,14 +78,10 @@ public class Enforcer : Destructible {
                     StartCoroutine(Dash(dir));
                 }
                 else
-                    StartCoroutine(Dash(rand > 1));
-            }
-            if (Time.time > lastDisappeared + 12)
-            {
-                StartCoroutine(Disappear());
+                    StartCoroutine(Dash(rand>1));
             }
         }
-    }
+	}
 
     public override void Damaged()
     {
@@ -109,15 +98,14 @@ public class Enforcer : Destructible {
         Rigidbody ob = col.transform.GetComponent<Rigidbody>();
         if (ob != null)
         {
-            this.TakeDamage(Vector3.Dot(ob.velocity, transform.position - ob.position) * ob.mass / 10000, ob.transform);
+            this.TakeDamage(Vector3.Dot(ob.velocity, transform.position - ob.position)*ob.mass/10000,ob.transform);
         }
     }
 
     public override void Die()
     {
         base.Die();
-        Instantiate(Explosion, transform.position, Quaternion.identity);
-        Instantiate(spark, transform.position, Quaternion.identity, this.transform);
+        Instantiate(spark, transform.position, Quaternion.identity,this.transform);
         Rb.drag = 0;
         radarMarker.SetActive(false);
         foreach (Renderer rend in rends)
@@ -127,12 +115,12 @@ public class Enforcer : Destructible {
             rend.materials = mats;
         }
         Rb.useGravity = true;
-        //thruster.SetActive(false);
+        thruster.SetActive(false);
         if (GetComponentInParent<BotSpawner>() != null)
         {
             GetComponentInParent<BotSpawner>().Died();
         }
-        if (canvas != null) Destroy(canvas, 4f);
+        if (canvas!=null)Destroy(canvas,4f);
         Destroy(this.gameObject, 5f);
     }
 
@@ -157,14 +145,14 @@ public class Enforcer : Destructible {
             healthBar.color = Color.Lerp(Color.red, Color.green, health / maxHealth);
             yield return null;
         }
-        if (canvas != null)
+        if(canvas!=null)
             Destroy(canvas);
         canvas = null;
     }
 
     public IEnumerator SerialFire()
     {
-        for (int i = 0; i < Random.Range(3, 6); i++)
+        for(int i = 0; i < Random.Range(3, 6); i++)
         {
             Fire();
             yield return new WaitForSeconds(0.2f);
@@ -174,9 +162,9 @@ public class Enforcer : Destructible {
     public void Fire()
     {
         fireAudio.Play();
-        GameObject ms = Instantiate(laserBeam, (side ? pos1 : pos2).position, Quaternion.LookRotation(target.position - (side ? pos1 : pos2).position));
+        GameObject ms = Instantiate(laserBeam, (side?pos1:pos2).position, Quaternion.LookRotation(transform.forward));
         Projectile p = ms.GetComponent<Projectile>();
-        p.speed = 140 + 20 * difficulty;
+        p.speed = 120 + 20 * difficulty;
         p.damage = baseDamage + 2f * difficulty;
         p.Shooter = this.transform;
         side = !side;
@@ -184,41 +172,15 @@ public class Enforcer : Destructible {
 
     public IEnumerator Dash(bool isLeft)
     {
-        Rb.AddForce((isLeft ? -transform.right : transform.right) * Rb.mass * 80, ForceMode.Impulse);
-        //thrusterL.SetActive(!isLeft);
-        //thrusterR.SetActive(isLeft);
+        Rb.AddForce((isLeft ? -transform.right : transform.right) * Rb.mass * 50,ForceMode.Impulse);
+        thrusterL.SetActive(!isLeft);
+        thrusterR.SetActive(isLeft);
         yield return new WaitForSeconds(0.4f);
-        //thrusterR.SetActive(!isLeft);
-        //thrusterL.SetActive(isLeft);
-        Rb.AddForce((isLeft ? transform.right : -transform.right) * Rb.mass * 60, ForceMode.Impulse);
+        thrusterR.SetActive(!isLeft);
+        thrusterL.SetActive(isLeft);
+        Rb.AddForce((isLeft ? transform.right : -transform.right) * Rb.mass * 40,ForceMode.Impulse);
         yield return new WaitForSeconds(0.4f);
-        //thrusterL.SetActive(false);
-        //thrusterR.SetActive(false);
-    }
-
-    public IEnumerator Disappear()
-    {
-        lastDisappeared = Time.time;
-        Instantiate(Flare, transform.position, Quaternion.identity);
-        foreach (Renderer rend in rends)
-        {
-            rend.enabled = false;
-        }
-        yield return new WaitForSeconds(8);
-        Instantiate(Flare, transform.position, Quaternion.identity);
-        foreach (Renderer rend in rends)
-        {
-
-            rend.enabled = true;
-        }
-        lastDisappeared = Time.time;
-    }
-
-    public void FireMissile()
-    {
-        Projectile p = Instantiate(homingMissile, pos3.position, Quaternion.LookRotation(target.position - pos3.position)).GetComponent<Projectile>();
-        p.damage = 5 + 2 * difficulty;
-        p.target = this.target;
-        p.speed = 30 + 20 * difficulty;
+        thrusterL.SetActive(false);
+        thrusterR.SetActive(false);
     }
 }

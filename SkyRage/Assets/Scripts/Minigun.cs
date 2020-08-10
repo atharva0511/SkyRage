@@ -64,22 +64,15 @@ public class Minigun : Weapons {
         {
             StartCoroutine(Beam(hit.point - transform.GetChild(0).position));
             GameObject blast;
-            switch (hit.transform.gameObject.layer)
+            
+            blast = Instantiate(impact, hit.point, Quaternion.LookRotation(hit.normal), hit.transform);
+            Destructible ob = hit.transform.GetComponentInParent<Destructible>();
+            if ( ob!= null)
             {
-                //case 4: blast = Instantiate(waterSplash, hit.point, Quaternion.LookRotation(hit.normal), hit.transform); break;
-                case 0:
-                    {
-                        blast = Instantiate(impact, hit.point, Quaternion.LookRotation(hit.normal), hit.transform);
-                        Destructible ob = hit.transform.GetComponentInParent<Destructible>();
-                        if ( ob!= null)
-                        {
-                            ob.TakeDamage(damage,owner, 2);
-                            Debug.Log("damaged");
-                        }
-                        break;
-                    }
-                default: blast = Instantiate(impact, hit.point, Quaternion.LookRotation(hit.normal));Debug.Log("hit"); break;
-            }
+                ob.TakeDamage(damage,owner, 2);
+                Debug.Log("damaged");
+            }      
+            
             Rigidbody Rb = hit.transform.GetComponent<Rigidbody>();
             if (Rb != null)
             {

@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4044490857684912}
   - component: {fileID: 120932945128418354}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4668608768971648}
   - component: {fileID: 54977051585083860}
   - component: {fileID: 114230040680916300}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MissileSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,6 +188,9 @@ MonoBehaviour:
   stayTime: 6
   damage: 5
   moveLinearly: 1
+  homing: 0
+  target: {fileID: 0}
+  turnRate: 1
   speed: 200
 --- !u!120 &120932945128418354
 LineRenderer:

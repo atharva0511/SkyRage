@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33489308471856508}
   - component: {fileID: 23765655026946256}
   - component: {fileID: 135018741855349702}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: MiniBot_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1333276682883476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 209, y: 18.44, z: 101.1}
+  m_LocalPosition: {x: 214.01608, y: -0.74320966, z: 95.57812}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4979550036890986}
@@ -643,6 +643,7 @@ MonoBehaviour:
   team: 0
   target: {fileID: 0}
   dead: 0
+  stunned: 0
   difficulty: 2
   zoneCentre: {x: 0, y: 0, z: 0}
   zoneRadius: 100
@@ -651,6 +652,7 @@ MonoBehaviour:
   thrusterL: {fileID: 1488924872916142}
   thrusterR: {fileID: 1386721298631142}
   thruster: {fileID: 1154732623812580}
+  spark: {fileID: 1557672453810280, guid: 482cfe0c2b5b21c4ca27c8d192e19a2e, type: 2}
   displayHealth: 1
   pos1: {fileID: 4811116376228856}
   pos2: {fileID: 4602378249896790}

@@ -7,7 +7,6 @@ public class EventSettings : MonoBehaviour {
     public int currentObjective = 0;
     public Objective[] objectives;
 
-
     public static Transform currentPlayer;
     public Transform player;
     playerPlane character;
@@ -50,6 +49,10 @@ public class EventSettings : MonoBehaviour {
         }
     }
     
+    public void PlayerDead()
+    {
+        uiSettings.PlayerDead();
+    }
 
     void LoadObjective(int index)
     {

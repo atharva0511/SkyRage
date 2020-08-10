@@ -61,19 +61,11 @@ public class LaserGun : Weapons {
         Vector3 dir = cam.forward;
         if (Physics.Raycast(cam.position, dir, out hit, 300f, ~(1 << 2 | 1 << 9)))
         {
-            switch (hit.transform.gameObject.layer)
+            Destructible ob = hit.transform.GetComponentInParent<Destructible>();
+            if (ob != null)
             {
-                //case 4: blast = Instantiate(waterSplash, hit.point, Quaternion.LookRotation(hit.normal), hit.transform); break;
-                default:
-                    {
-                        Destructible ob = hit.transform.GetComponentInParent<Destructible>();
-                        if (ob != null)
-                        {
-                            ob.TakeDamage(damageRate, owner, 0);
-                        }
-                        break;
-                    }
-            }
+                 ob.TakeDamage(damageRate, owner, 0);
+            }        
             Rigidbody Rb = hit.transform.GetComponent<Rigidbody>();
             if (Rb != null)
             {

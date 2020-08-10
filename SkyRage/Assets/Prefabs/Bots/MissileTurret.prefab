@@ -100,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4333734601843960}
   - component: {fileID: 65815471246211208}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: MissileAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -546,6 +546,7 @@ MonoBehaviour:
   team: 0
   target: {fileID: 0}
   dead: 0
+  stunned: 0
   aimer: {fileID: 4058520537040450}
   pos1: {fileID: 4135379117831716}
   pos2: {fileID: 4194271452310964}

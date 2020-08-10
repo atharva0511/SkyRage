@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65164342727450100}
   - component: {fileID: 122255602648607408}
   - component: {fileID: 114078014620253626}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: UpgradeToken
   m_TagString: Pickup
   m_Icon: {fileID: 0}

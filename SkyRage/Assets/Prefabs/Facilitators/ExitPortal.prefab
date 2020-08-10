@@ -95,7 +95,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1666702959565730
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,6 +533,7 @@ MonoBehaviour:
   setRot: 1
   uniDir: 0
   objective: 1
+  Flare: {fileID: 1587412269697708, guid: 5d273b1bb52fd67428de4464443c4a59, type: 2}
 --- !u!114 &114039313804948192
 MonoBehaviour:
   m_ObjectHideFlags: 1

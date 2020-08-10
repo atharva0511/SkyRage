@@ -10,6 +10,7 @@ public class playerPlane : Destructible {
     public int coins = 0;
     protected GameObject xpInstance;
     protected GameObject displayInstance;
+    public GameObject spark;
     public Transform cam;
     public Transform DisplayPos;
     public AudioSource[] pauseAudio;
@@ -31,13 +32,14 @@ public class playerPlane : Destructible {
 	
 	// Update is called once per frame
 	void Update () {
+        // 3 ,22
         RaycastHit hit;
-        if (Physics.Raycast(DisplayPos.position + 3 * transform.up, -transform.forward, out hit, 22, ~(1 << 2)))
+        if (Physics.Raycast(DisplayPos.position + 0.75f * transform.up, -transform.forward, out hit, 16, ~(1 << 2)))
         {
             cam.position = hit.point + transform.forward;
         }
         else
-            cam.position = DisplayPos.position + 3 * transform.up - 22 * transform.forward;
+            cam.position = DisplayPos.position + 0.75f * transform.up - 16 * transform.forward;
 	}
 
 
@@ -181,7 +183,7 @@ public class playerPlane : Destructible {
             w.ReleaseFire2();
         }
     }
-
+    
     IEnumerator DisplayText(string dispText,Color dispColor)
     {
         float startTime = Time.time;
@@ -206,7 +208,6 @@ public class playerPlane : Destructible {
     {
         Mathf.Clamp(PlayerData.lives,0, 5);
         lifeDisp.text = PlayerData.lives.ToString();
-        Debug.Log(PlayerData.lives);
     }
     public void SetUpgradeTokenDisp()
     {
@@ -223,6 +224,7 @@ public class playerPlane : Destructible {
         else
         {
             dead = true;
+            StartCoroutine(DeathSequence());
         }
     }
 
@@ -243,5 +245,31 @@ public class playerPlane : Destructible {
         yield return new WaitForSeconds(4);
         this.god = false;
         deathVignette.gameObject.SetActive(false);
+    }
+
+    public IEnumerator DeathSequence()
+    {
+        foreach(Weapons w in weapons)
+        {
+            w.enabled = false;
+        }
+        foreach (AudioSource aud in pauseAudio)
+        {
+            aud.Pause();
+        }
+        //radarMarker.SetActive(false);
+        deathVignette.gameObject.SetActive(true);
+        deathVignette.color = new Color(1f, 0.2f, 0, 1);
+        deathVignette.CrossFadeAlpha(0, 3, false);
+        Instantiate(spark, transform.position, Quaternion.identity, this.transform);
+        Renderer[] rends = GetComponent<Customizable>().rends;
+        foreach (Renderer rend in rends)
+        {
+            Material[] mats = rend.materials;
+            foreach (Material mat in mats) mat.color = new Color(0.1f, 0.1f, 0f);
+            rend.materials = mats;
+        }
+        yield return new WaitForSeconds(3f);
+        FindObjectOfType<EventSettings>().PlayerDead();
     }
 }

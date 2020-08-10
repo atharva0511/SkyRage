@@ -9,6 +9,7 @@ public class FinishPanel : MonoBehaviour {
     public Text coinText;
     public Text utText;
     public Text lifeText;
+    public UISettings uiSettings;
 	// Use this for initialization
 	void Start () {
 		
@@ -47,5 +48,27 @@ public class FinishPanel : MonoBehaviour {
         PlayerData.SaveData();
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void SaveAndRestart()
+    {
+        string[] mission = SceneManager.GetActiveScene().name.Split('_');
+        int i = 0;
+        switch (mission[1])
+        {
+            case "A": i = 0; break;
+            case "B": i = 1; break;
+            case "C": i = 2; break;
+            case "D": i = 3; break;
+            default: i = 0; break;
+        }
+        if (int.Parse(mission[2]) > PlayerData.levelProgression[i])
+        {
+            PlayerData.levelProgression[i] = int.Parse(mission[2]);
+        }
+        PlayerData.coins += int.Parse(coinText.text);
+        PlayerData.SaveData();
+        Time.timeScale = 1;
+        uiSettings.Restart();
     }
 }

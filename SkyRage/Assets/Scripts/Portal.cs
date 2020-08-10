@@ -8,6 +8,7 @@ public class Portal : MonoBehaviour {
     public bool setRot = true;
     public bool uniDir = true;
     public bool objective = false;
+    public GameObject Flare;
 	// Use this for initialization
 	void Start () {
 		
@@ -24,7 +25,13 @@ public class Portal : MonoBehaviour {
         if (ob != null)
         {
             OnEnter(ob.transform);
-            if (objective && ob.GetComponentInParent<playerPlane>()!=null) GetComponent<Objective>().Completed();
+            if(ob.GetComponentInParent<playerPlane>() != null)
+            {
+                Instantiate(Flare, destination.position, Quaternion.identity);
+                if (objective)
+                    GetComponent<Objective>().Completed();
+            }
+            
         }
         
     }

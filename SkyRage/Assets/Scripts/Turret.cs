@@ -32,6 +32,10 @@ public class Turret : Destructible {
     // Use this for initialization
     void Start() {
         target = EventSettings.currentPlayer;
+        if (PlayerPrefs.HasKey("Difficulty"))
+        {
+            this.difficulty = PlayerPrefs.GetInt("Difficulty");
+        }
     }
 
 	// Update is called once per frame
