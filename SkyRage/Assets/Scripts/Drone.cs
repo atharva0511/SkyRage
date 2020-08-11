@@ -16,7 +16,7 @@ public class Drone : playerPlane {
     float leanAngle = 0;
     public Image dashRefill;
     public float thrustRechargeRate = 0.1f;
-    public Image thrustFill;
+    
     public Joystick joystick;
     public LineRenderer thrustR;
     public LineRenderer thrustL;
@@ -54,19 +54,20 @@ public class Drone : playerPlane {
             thrustB.transform.localScale = new Vector3(1, 1, 1 + (thrust ? 4 : 0));
         }
         else if (thrust) thrustFill.fillAmount -= Time.deltaTime * 0.15f;
+        
         //pass inputs
-        //MoveDrone(thrust,joystick.Horizontal, joystick.Vertical,Input.acceleration.x,Input.acceleration.z);
+        //MoveDrone(thrust,joystick.Horizontal, joystick.Vertical, CrossPlatformInputManager.GetAxis("Mouse X"), CrossPlatformInputManager.GetAxis("Mouse Y"), CrossPlatformInputManager.GetAxis("UpDown"));
 
         //PC Input
         if (Input.GetKeyDown(KeyCode.LeftShift)) PressDash(false);
-        MoveDrone(thrust, Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        MoveDrone(thrust, Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"),CrossPlatformInputManager.GetAxis("UpDown"));
         
         foreach(Transform fan in fans)
         {
             fan.Rotate(0, 0, 120);
         }
     }
-
+    
     public void ThrustInput()
     {
         thrust = !thrust;
@@ -75,7 +76,7 @@ public class Drone : playerPlane {
         thrustParticle.emissionRate = thrust?8:0;
     }
 
-    void MoveDrone(bool thrust,float hor,float ver,float turn,float lean)
+    void MoveDrone(bool thrust,float hor,float ver,float turn,float lean,float upDown)
     {
         //Hover above surface
         if (Physics.Raycast(transform.position, -transform.up, 0.5f+hoverHeight))
@@ -88,14 +89,25 @@ public class Drone : playerPlane {
         Rb.AddForce(Rb.mass * transform.right * fanThrust * hor);
 
         //Turn
-        Rb.AddTorque(Vector3.up * turn * 200*Rb.mass*turnSens);
+        //Rb.AddTorque(Vector3.up * turn * 200*Rb.mass*turnSens);
 
         //Lean
         //leanAngle = Mathf.Clamp(-Mathf.Rad2Deg*Mathf.Asin(lean),-70,70);
         leanAngle = -60 * lean;
         //Debug.Log(leanAngle);
-        Rb.rotation = Quaternion.Slerp(Rb.rotation, Quaternion.Euler(leanAngle, transform.eulerAngles.y, 0),Time.deltaTime*2);
+        //Rb.rotation = Quaternion.Slerp(Rb.rotation, Quaternion.Euler(leanAngle, transform.eulerAngles.y, 0),Time.deltaTime*2);
         //Rb.AddTorque(transform.right * lean * 80 * Rb.mass);
+
+        //MouseLook
+        Vector3 target = Quaternion.AngleAxis(-lean, this.transform.right) * transform.forward;
+        transform.rotation = Quaternion.LookRotation(Quaternion.AngleAxis(turn, Vector3.up) * target);
+        Vector3 camRot = transform.eulerAngles;
+        if (camRot.x > 60f && camRot.x < 90f) camRot.x = 60f;
+        if (camRot.x < 300f && camRot.x > 270f) camRot.x = 300f;
+        transform.eulerAngles = new Vector3(camRot.x, camRot.y, 0);
+
+        //UpDown
+        Rb.AddForce(Rb.mass * Vector3.up * 250 * upDown);
 
         UpdateAnimator(turn, ver);
         UpdateAudio(hor, ver, thrust);

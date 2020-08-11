@@ -143,4 +143,12 @@ public class UISettings : MonoBehaviour {
         Time.timeScale = 0;
         DeadPanel.SetActive(true);
     }
+
+    public void PauseAudio()
+    {
+        foreach(AudioSource aud in evSettings.player.GetComponent<playerPlane>().pauseAudio)
+        {
+            aud.Pause();
+        }
+    }
 }

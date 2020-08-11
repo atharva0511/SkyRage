@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MapMarker : MonoBehaviour {
 
-    public Transform player;
+    Transform player;
     public float radarRadius = 280;
     public bool stayOnRadar = true;
     public bool zone = false;

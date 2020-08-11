@@ -56,7 +56,6 @@ public class MainMenu : MonoBehaviour {
             }
         }
         DisplayVehicle();
-        Debug.Log(PlayerData.levelProgression.ToString());
     }
 	
 	// Update is called once per frame

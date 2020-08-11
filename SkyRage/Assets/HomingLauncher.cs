@@ -34,15 +34,17 @@ public class HomingLauncher : Weapons {
             Collider[] cols = Physics.OverlapSphere(transform.position+transform.forward * 150, 140, layerMask);
             float dot = 0;
             if (cols.Length == 0) targetCol = null;
-            Debug.Log(cols.Length);
             foreach (Collider col in cols)
             {
+                
                 if (Vector3.Dot((col.transform.position - transform.position).normalized, transform.forward) > dot)
                 {
-                    if (targetCol != col)
-                    {
-                        targetCol = col;
-                    }
+                    dot = Vector3.Dot((col.transform.position - transform.position).normalized, transform.forward);
+                    //if (targetCol != col)
+                    //{
+                    //    targetCol = col;
+                    //}
+                    targetCol = col;
                 }
             }
             if (targetCol != null)
@@ -51,6 +53,7 @@ public class HomingLauncher : Weapons {
                 {
                     lockTime = Time.time;
                     tempCol = targetCol;
+                    if (lockInstance != null) lockInstance.GetComponent<AudioSource>().Play();
                 }
                 if (lockInstance == null)
                     lockInstance = Instantiate(LockCanvas, targetCol.transform.position, Quaternion.identity);
@@ -61,7 +64,6 @@ public class HomingLauncher : Weapons {
                 {
                     target = targetCol.transform;
                 }
-                Debug.Log(targetCol.name);
             }
             else
             {

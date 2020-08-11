@@ -17,6 +17,7 @@ public class playerPlane : Destructible {
     public Weapons[] weapons;
     public Image healthBar;
     public ParticleSystem DamageSmoke;
+    public Image thrustFill;
     public AudioSource pickupAudio;
     public AudioClip lifeAudio;
     public Text coinDisp;
@@ -118,6 +119,17 @@ public class playerPlane : Destructible {
                 pickupAudio.Play();
                 Destroy(col.gameObject);
             }
+            else if(pickup.type == Pickup.pickupType.Nitro)
+            {
+                if (routine != null) StopCoroutine(routine);
+                if (displayInstance != null) Destroy(displayInstance);
+                routine = DisplayText("Nitro Refilled", Color.red);
+                thrustFill.fillAmount = 1;
+                StartCoroutine(routine);
+                pickupAudio.clip = pickup.collectSound;
+                pickupAudio.Play();
+                Destroy(col.gameObject);
+            }
             if (pickup.isObjective) pickup.Collect();
         }
     }
@@ -157,6 +169,7 @@ public class playerPlane : Destructible {
 
     public void PressedFire1()
     {
+        if (dead) return;
         foreach (Weapons w in weapons)
         {
             w.PressedFire1();
@@ -164,6 +177,7 @@ public class playerPlane : Destructible {
     }
     public void ReleaseFire1()
     {
+        if (dead) return;
         foreach (Weapons w in weapons)
         {
             w.ReleaseFire1();
@@ -171,6 +185,7 @@ public class playerPlane : Destructible {
     }
     public void PressedFire2()
     {
+        if (dead) return;
         foreach (Weapons w in weapons)
         {
             w.PressedFire2();
@@ -178,6 +193,7 @@ public class playerPlane : Destructible {
     }
     public void ReleaseFire2()
     {
+        if (dead) return;
         foreach (Weapons w in weapons)
         {
             w.ReleaseFire2();

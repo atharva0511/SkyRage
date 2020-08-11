@@ -12,7 +12,7 @@ public class FinishPanel : MonoBehaviour {
     public UISettings uiSettings;
 	// Use this for initialization
 	void Start () {
-		
+        uiSettings.PauseAudio();
 	}
 	
 	// Update is called once per frame

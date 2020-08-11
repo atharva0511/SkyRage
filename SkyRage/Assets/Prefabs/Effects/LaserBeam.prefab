@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Shooter: {fileID: 0}
   blast: {fileID: 1340252739010232, guid: 4ca4f841f52b00b4ea498b5165f11de6, type: 2}
-  stayTime: 6
+  stayTime: 5
   damage: 5
   moveLinearly: 1
   homing: 0

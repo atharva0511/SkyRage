@@ -9,7 +9,6 @@ public class Explosion : MonoBehaviour {
 
     private IEnumerator Start()
     {
-        Debug.Log("Exploded");
         // wait one frame because some explosions instantiate debris which should then
         // be pushed by physics force
         //yield return null;

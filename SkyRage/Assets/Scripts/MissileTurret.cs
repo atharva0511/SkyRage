@@ -58,7 +58,6 @@ public class MissileTurret : Destructible {
 
     IEnumerator SerialFire()
     {
-        Debug.Log("Firing");
         LaunchMissile(pos1);
         yield return new WaitForSeconds(0.25f);
         LaunchMissile(pos1);
@@ -77,7 +76,7 @@ public class MissileTurret : Destructible {
         audioSource.Play();
         GameObject ms = Instantiate(missile, pos.position, Quaternion.LookRotation(aimer.forward));
         Projectile p = ms.GetComponent<Projectile>();
-        p.speed = 100 + 20 * difficulty;
+        p.speed = 80 + 20 * difficulty;
         p.damage = baseDamage + 2.5f * difficulty;
         p.Shooter = this.transform;
     }
