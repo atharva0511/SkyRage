@@ -560,7 +560,7 @@ MonoBehaviour:
   baseDamage: 5
   difficulty: 2
   turnSpeed: 2
-  reloadTime: 4
+  reloadTime: 5
   audioSource: {fileID: 82153189246534668}
   rends:
   - {fileID: 137828781372237068}

@@ -9,6 +9,7 @@ public class BuyPanel : MonoBehaviour {
     public Text detailsText;
     public Button buyButton;
     public int price = 100;
+    public byte vehicleIndex = 0;
     
     public void Start()
     {
@@ -17,7 +18,10 @@ public class BuyPanel : MonoBehaviour {
 	
     public virtual void OnPressedBuy()
     {
-
+        foreach(BuyPanel bp in transform.parent.GetComponentsInChildren<BuyPanel>())
+        {
+            bp.RefreshPanel();
+        }
     }
 
     public virtual void RefreshPanel()

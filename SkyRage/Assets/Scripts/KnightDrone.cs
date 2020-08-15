@@ -21,7 +21,6 @@ public class KnightDrone : Destructible {
     public AudioSource fireAudio;
     public GameObject laserBeam;
     public int baseDamage = 3;
-    int state = 0;
     public float turnSpeed = 1;
     float lastShot = 0;
     float lastDashed = 0;
@@ -40,7 +39,7 @@ public class KnightDrone : Destructible {
         lastHit = Time.time;
         if (GetComponentInParent<BotSpawner>() != null)
         {
-            zoneCentre = GetComponentInParent<BotSpawner>().zoneCenter;
+            zoneCentre = GetComponentInParent<BotSpawner>().transform.position;
             zoneRadius = GetComponentInParent<BotSpawner>().zoneRadius;
         }
         else

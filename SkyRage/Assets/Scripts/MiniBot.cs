@@ -42,7 +42,7 @@ public class MiniBot : Destructible {
         lastHit = Time.time;
         if (GetComponentInParent<BotSpawner>() != null)
         {
-            zoneCentre = GetComponentInParent<BotSpawner>().zoneCenter;
+            zoneCentre = GetComponentInParent<BotSpawner>().transform.position;
             zoneRadius = GetComponentInParent<BotSpawner>().zoneRadius;
         }
         else

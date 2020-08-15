@@ -9,6 +9,7 @@ public class Weapons : MonoBehaviour {
     [HideInInspector]
     public bool fire2 = false;
     public byte slot = 1;
+    public bool equipped = true;
 
     public Transform owner = null;
 	// Use this for initialization
@@ -23,18 +24,22 @@ public class Weapons : MonoBehaviour {
 
     public virtual void PressedFire1()
     {
+        if (!equipped) return;
         fire1 = true;
     }
     public virtual void ReleaseFire1()
     {
+        if (!equipped) return;
         fire1 = false;
     }
     public virtual void PressedFire2()
     {
+        if (!equipped) return;
         fire2 = true;
     }
     public virtual void ReleaseFire2()
     {
+        if (!equipped) return;
         fire2 = false;
     }
 }

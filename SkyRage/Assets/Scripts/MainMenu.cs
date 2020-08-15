@@ -36,6 +36,7 @@ public class MainMenu : MonoBehaviour {
     void Awake()
     {
         PlayerData.LoadData();
+        Upgrades.Load();
     }
 	void Start () {
         Time.timeScale = 1;
@@ -54,6 +55,12 @@ public class MainMenu : MonoBehaviour {
                 PlayerPrefs.SetInt("SetMenu", 0);
                 PlayerPrefs.Save();
             }
+        }
+        else
+        {
+            cam.position = camPos0.position;
+            PlayPanel.SetActive(false);
+            SPMenu.SetActive(true);
         }
         DisplayVehicle();
     }
@@ -196,6 +203,7 @@ public class MainMenu : MonoBehaviour {
     {
         PlayerData.coins -= podium.GetChild(selectionIndex).GetComponent<Customizable>().price;
         PlayerData.unlockedVehicles[selectionIndex] = true;
+        PlayerData.SaveData();
         DisplayVehicle();
     }
 
@@ -229,5 +237,10 @@ public class MainMenu : MonoBehaviour {
         SPMenu.SetActive(true);
         PlayPanel.SetActive(false);
         StartCoroutine(ChangeCamPos(camPos0));
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

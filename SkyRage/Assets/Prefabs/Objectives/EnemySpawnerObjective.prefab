@@ -26,6 +26,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1054769547875658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4778577663954062}
+  m_Layer: 0
+  m_Name: Bots
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1082621422314902
 GameObject:
   m_ObjectHideFlags: 1
@@ -143,7 +158,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1224319988180650
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
@@ -380,7 +395,7 @@ GameObject:
   m_IsActive: 0
 --- !u!1 &1598823232844754
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
@@ -609,12 +624,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1427027256256726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 194.4, y: 9.527392, z: 90.1}
+  m_LocalPosition: {x: 922.7, y: 142.8, z: 1031}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224500743019419298}
-  - {fileID: 4516655843023806}
-  - {fileID: 4825949936139906}
+  - {fileID: 4778577663954062}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -702,8 +716,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1224319988180650}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.2, y: 0, z: -18.2}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 16.200012, y: 0, z: -18.200012}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4443709098754090}
@@ -716,8 +730,8 @@ Transform:
   - {fileID: 4095669979943434}
   - {fileID: 4366030343474042}
   - {fileID: 4529664766370974}
-  m_Father: {fileID: 4269851680812896}
-  m_RootOrder: 1
+  m_Father: {fileID: 4778577663954062}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4529664766370974
 Transform:
@@ -771,6 +785,21 @@ Transform:
   m_Father: {fileID: 4825949936139906}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4778577663954062
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1054769547875658}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4516655843023806}
+  - {fileID: 4825949936139906}
+  m_Father: {fileID: 4269851680812896}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4824061431874810
 Transform:
   m_ObjectHideFlags: 1
@@ -791,7 +820,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1598823232844754}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 46.05, y: 0, z: -30.98}
+  m_LocalPosition: {x: 70, y: 0, z: -46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4237784510390062}
@@ -804,8 +833,8 @@ Transform:
   - {fileID: 4326541330886246}
   - {fileID: 4672626969080378}
   - {fileID: 4398739324163344}
-  m_Father: {fileID: 4269851680812896}
-  m_RootOrder: 2
+  m_Father: {fileID: 4778577663954062}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4882604920169982
 Transform:
@@ -1469,7 +1498,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1427027256256726}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 043fe4d824cf5d6459c662ad41a6a1c8, type: 3}
   m_Name: 
@@ -1481,7 +1510,8 @@ MonoBehaviour:
   completed: 0
   DestroyOnCompletion:
   - {fileID: 1438527388235244}
-  ActivateOnCompletion: []
+  ActivateOnCompletion:
+  - {fileID: 0}
   ObjectiveDescription: Destroy all the enemy bots near the docks
   eventSettings: {fileID: 0}
 --- !u!114 &114316927583668948
@@ -1542,7 +1572,9 @@ MonoBehaviour:
   IsObjective: 1
   objective: {fileID: 114272563829476662}
   zoneRadius: 250
-  zoneCenter: {x: 194.4, y: 9.527392, z: 90.1}
+  appearDistance: 550
+  disappearDistance: 650
+  Bots: {fileID: 1054769547875658}
 --- !u!114 &114582742933865762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1576,7 +1608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1603,7 +1635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1697,7 +1729,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11eb03410f37959429a62ab726bc907e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4153058491427744, guid: adf50ff451471ea4caafdb77f6306d95, type: 2}
   radarRadius: 280
   stayOnRadar: 1
   zone: 1

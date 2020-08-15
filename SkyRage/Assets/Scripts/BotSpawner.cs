@@ -8,22 +8,38 @@ public class BotSpawner : MonoBehaviour {
     public bool IsObjective = false;
     public Objective objective;
     public int zoneRadius = 100;
-    public Vector3 zoneCenter;
+    public int appearDistance = 350;
+    public int disappearDistance = 450;
+    public GameObject Bots;
+    float measureTime = 0;
+    Transform player;
 	// Use this for initialization
 	void Start () {
+        player = GameObject.FindObjectOfType<EventSettings>().player;
         CheckRemaining();
 	}
 	
     public void OnDrawGizmos()
     {
-        zoneCenter = transform.position;
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(zoneCenter, zoneRadius);
+        Gizmos.DrawWireSphere(transform.position, zoneRadius);
     }
 
 	// Update is called once per frame
 	void Update () {
-		
+        if (Time.time > measureTime + 0.5f)
+        {
+            measureTime = Time.time;
+            float dist = (player.position - transform.position).sqrMagnitude;
+            if (dist>disappearDistance*disappearDistance)
+            {
+                Bots.SetActive(false);
+            }
+            else if(dist < appearDistance*appearDistance)
+            {
+                Bots.SetActive(true);
+            }
+        }
 	}
 
     //called by bots On death

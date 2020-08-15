@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class StunGun : Weapons {
@@ -12,10 +12,15 @@ public class StunGun : Weapons {
     public AudioClip fireAudio;
     public GameObject impact;
     public GameObject beamObject;
+    public Image chargeDisp;
     public float damage = 1;
+    public WeaponManager wm;
     // Use this for initialization
     void Start () {
         this.owner = GetComponentInParent<Destructible>().transform;
+        //upgrades
+        this.stunTime = CheckUpgrade(7) ? 7 : 5;
+        this.fireRate = CheckUpgrade(8) ? 0.33f : 0.25f;
     }
 	
 	// Update is called once per frame
@@ -27,6 +32,10 @@ public class StunGun : Weapons {
                 fireTime = Time.time;
                 Fire2();
             }
+        }
+        if (equipped)
+        {
+            chargeDisp.fillAmount = (Time.time - fireTime) * fireRate;
         }
 	}
 
@@ -87,5 +96,17 @@ public class StunGun : Weapons {
         audioSource.clip = clip;
         audioSource.pitch = pitch + randomize * Random.value;
         audioSource.Play();
+    }
+
+    public bool CheckUpgrade(int upgradeIndex)
+    {
+        switch (wm.vehicleIndex)
+        {
+            case 0:return Upgrades.qDrone[upgradeIndex];
+            case 1:return Upgrades.hod[upgradeIndex];
+            case 2:return Upgrades.wDrone[upgradeIndex];
+            case 3:return Upgrades.slayerX[upgradeIndex];
+            default:return false;
+        }
     }
 }

@@ -66,7 +66,12 @@ public class Destructible : MonoBehaviour {
     public IEnumerator Stun(float t)
     {
         stunned = true;
-        yield return new WaitForSeconds(t);
+        float startTime = Time.time;
+        while (Time.time < startTime + t)
+        {
+            stunned = true;
+            yield return null;
+        }
         stunned = false;
     }
 }

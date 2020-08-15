@@ -40,8 +40,17 @@ public class EventSettings : MonoBehaviour {
         currentObjective += 1;
         if (currentObjective < objectives.Length)
         {
+            if (objectives[currentObjective] == null)
+            {
+                NextObjective();
+                return;
+            }
             objectives[currentObjective].gameObject.SetActive(true);
             objectives[currentObjective].Activate();
+            if (objectives[currentObjective].completed)
+            {
+                NextObjective();
+            }
         }
         else
         {

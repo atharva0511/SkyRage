@@ -11,6 +11,7 @@ public class BuyLife : BuyPanel {
             PlayerData.coins -= price;
         }
         Refresh();
+        base.OnPressedBuy();
     }
 
     public override void RefreshPanel()
@@ -20,7 +21,7 @@ public class BuyLife : BuyPanel {
         {
             buyButton.interactable = false;
         }
-        else
+        else if(PlayerData.coins>=price)
         {
             buyButton.interactable = true;
         }

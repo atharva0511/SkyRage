@@ -11,6 +11,7 @@ public class Pickup : MonoBehaviour {
     public int coins = 0;
     public int rockets = 0;
     public int homing = 0;
+    public int xp = 10;
 
     public bool rotate = false;
     public Vector3 rotateBy = Vector3.zero;

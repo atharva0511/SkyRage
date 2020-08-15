@@ -146,7 +146,7 @@ MonoBehaviour:
   homing: 0
   rotate: 0
   rotateBy: {x: 0, y: 3, z: 0}
-  collectSound: {fileID: 8300000, guid: b9d8d7b5770e20f4094fbd7cedaf0109, type: 3}
+  collectSound: {fileID: 8300000, guid: 7d0ca403d843fbe46afd0e385d325bd9, type: 3}
 --- !u!122 &122178521164527300
 Halo:
   m_ObjectHideFlags: 1

@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HomingLauncher : Weapons {
 
+    public WeaponManager wm;
     public GameObject LockCanvas;
     public GameObject missileProjectile;
     GameObject lockInstance;
@@ -17,6 +17,7 @@ public class HomingLauncher : Weapons {
     public SkinnedMeshRenderer rend2;
     public ParticleSystem ps1;
     public ParticleSystem ps2;
+    public Text rocketDisp;
     float blendValue = 0;
     float blendTime = 0;
     Transform target;
@@ -24,12 +25,18 @@ public class HomingLauncher : Weapons {
     bool side = false;
 	// Use this for initialization
 	void Start () {
-
-	}
+        rocketDisp.text = wm.rockets.ToString();
+        //upgrades
+        this.damage = CheckUpgrade(9) ? 100 : 50;
+        wm.maxRockets = CheckUpgrade(10) ? 12 : 6;
+        wm.rockets = wm.maxRockets;
+        rocketDisp.text = wm.rockets.ToString();
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        if ((slot == 1 && fire1) || (slot == 2 && fire2))
+        if (!equipped) return;
+        if (wm.rockets>0)//(slot == 1 && fire1) || (slot == 2 && fire2))
         {
             Collider[] cols = Physics.OverlapSphere(transform.position+transform.forward * 150, 140, layerMask);
             float dot = 0;
@@ -90,6 +97,7 @@ public class HomingLauncher : Weapons {
             blendTime = Time.time;
             lockTime = Time.time;
             blendValue = 100;
+            Fire();
         }
     }
 
@@ -100,7 +108,7 @@ public class HomingLauncher : Weapons {
         blendTime = Time.time;
         blendValue = 0;
         Destroy(lockInstance);
-        Fire();
+        //Fire();
     }
 
     public override void PressedFire2()
@@ -111,6 +119,7 @@ public class HomingLauncher : Weapons {
             blendTime = Time.time;
             lockTime = Time.time;
             blendValue = 100;
+            Fire();
         }
     }
 
@@ -121,25 +130,20 @@ public class HomingLauncher : Weapons {
         blendTime = Time.time;
         blendValue = 0;
         Destroy(lockInstance);
-        Fire();
+        //Fire();
     }
-
-    public IEnumerator StartLockOn()
-    {
-        while((slot == 1 && fire1) || (slot == 2 && fire2))
-        {
-            
-            yield return null;
-        }
-    }
+    
 
     public void Fire()
     {
+        if (!equipped || wm.rockets<=0) return;
         lockTime = Time.time;
         Projectile p = Instantiate(missileProjectile, transform.position+transform.right*(side?2.2f:-2.2f), Quaternion.LookRotation(transform.forward)).GetComponent<Projectile>();
         if (side) ps1.Play();
         else ps2.Play();
         side = !side;
+        if(!wm.infiniteRocket)wm.rockets -= 1;
+        rocketDisp.text = wm.rockets.ToString();
         if (this.target != null)
         {
             p.homing = true;
@@ -154,5 +158,17 @@ public class HomingLauncher : Weapons {
         p.turnRate = 60;
         p.damage = this.damage;
         target = null;
+    }
+
+    public bool CheckUpgrade(int upgradeIndex)
+    {
+        switch (wm.vehicleIndex)
+        {
+            case 0: return Upgrades.qDrone[upgradeIndex];
+            case 1: return Upgrades.hod[upgradeIndex];
+            case 2: return Upgrades.wDrone[upgradeIndex];
+            case 3: return Upgrades.slayerX[upgradeIndex];
+            default: return false;
+        }
     }
 }

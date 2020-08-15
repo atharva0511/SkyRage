@@ -1,22 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine.UI;
 using UnityEngine;
 
 public class LaserGun : Weapons {
 
     public float fireDuration = 3;
     public float chargeDuration = 4;
-    public float damageRate = 0.5f;
+    public float damageRate = 2f;
     float fireTime = 0;
+    public Image chargeDisp;
+    public Image rechargeDisp;
     public Transform cam;
     public GameObject impact;
     public GameObject beamObject;
     public AudioSource audioSource;
     GameObject beamInstance = null;
+    public WeaponManager wm;
     public float charge = 1;
 	// Use this for initialization
 	void Start () {
-		
+        //upgrades
+        this.damageRate = CheckUpgrade(5) ? 2.5f : 2;
+        this.chargeDuration = CheckUpgrade(6) ? 3 : 4;
 	}
 	
 	// Update is called once per frame
@@ -44,6 +48,11 @@ public class LaserGun : Weapons {
             Destroy(beamInstance);
             impact.GetComponent<ParticleSystem>().emissionRate = 0;
             audioSource.Stop();
+        }
+        if (equipped)
+        {
+            chargeDisp.fillAmount = charge;
+            rechargeDisp.fillAmount = (Time.time - fireTime) / chargeDuration;
         }
     }
 
@@ -87,5 +96,17 @@ public class LaserGun : Weapons {
         beamInstance.transform.rotation = Quaternion.LookRotation(target);
         beamInstance.transform.localScale = new Vector3(1, 1, target.magnitude);
         
+    }
+
+    public bool CheckUpgrade(int upgradeIndex)
+    {
+        switch (wm.vehicleIndex)
+        {
+            case 0: return Upgrades.qDrone[upgradeIndex];
+            case 1: return Upgrades.hod[upgradeIndex];
+            case 2: return Upgrades.wDrone[upgradeIndex];
+            case 3: return Upgrades.slayerX[upgradeIndex];
+            default: return false;
+        }
     }
 }

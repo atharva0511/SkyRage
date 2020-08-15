@@ -5,6 +5,7 @@ using UnityEngine;
 public class Healer : MonoBehaviour {
 
     public bool active = true;
+    public bool burn = true;
     public int healRate = 5;
 	// Use this for initialization
 	void Start () {
@@ -22,7 +23,10 @@ public class Healer : MonoBehaviour {
         Destructible ob = col.GetComponentInParent<Destructible>();
         if (ob != null)
         {
-            ob.Heal(Time.deltaTime * healRate);
+            if (!burn)
+                ob.Heal(Time.deltaTime * healRate);
+            else
+                ob.TakeDamage(Time.deltaTime * healRate,0);
         }
     }
 }

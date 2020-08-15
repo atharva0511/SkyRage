@@ -50,4 +50,12 @@ public class GamePanel : MonoBehaviour {
         LevelPanel0.SetActive(false);
         GameMenu.SetActive(true);
     }
+
+    public void SaveAndReturn()
+    {
+        Upgrades.Save();
+        PlayerData.SaveData();
+        menu.podium.GetChild(menu.selectionIndex).GetComponent<WeaponManager>().SetPossessions();
+        BackToPlayPanel();
+    }
 }

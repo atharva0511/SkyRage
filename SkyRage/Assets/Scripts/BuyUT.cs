@@ -6,10 +6,11 @@ public class BuyUT : BuyPanel {
 
     public override void OnPressedBuy()
     {
+        base.OnPressedBuy();
         PlayerData.upgradeTokens += 1;
         PlayerData.coins -= price;
         Refresh();
-        RefreshPanel();
+        base.OnPressedBuy();
     }
 
     public override void RefreshPanel()

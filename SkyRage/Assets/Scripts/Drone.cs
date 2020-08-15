@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
@@ -13,7 +12,6 @@ public class Drone : playerPlane {
     public float turnSens = 1;
     public float lives;
     bool thrust = false;
-    float leanAngle = 0;
     public Image dashRefill;
     public float thrustRechargeRate = 0.1f;
     
@@ -28,11 +26,13 @@ public class Drone : playerPlane {
     public Transform[] fans;
     Rigidbody Rb;
     Animator anim;
-    
+    Vector2 touchRot = Vector2.zero;
     //public Transform cam;
     //public Transform DisplayPos;
     int turnHash = Animator.StringToHash("Turn");
     int moveHash = Animator.StringToHash("Forward");
+
+    float dashfillRate = 0.75f;
 
 	// Use this for initialization
 	void Start () {
@@ -40,6 +40,12 @@ public class Drone : playerPlane {
         anim = GetComponent<Animator>();
         lives = PlayerData.lives;
         DisplayHealth();
+
+        // upgrades
+        dashfillRate = Upgrades.qDrone[0] ? 1 : 0.75f;
+        thrustRechargeRate = Upgrades.qDrone[1] ? 0.05f : 0.04f;
+        maxHealth = Upgrades.qDrone[2] ? 150 : 100;
+        this.health = maxHealth;
 	}
 	
 	void FixedUpdate()
@@ -54,13 +60,26 @@ public class Drone : playerPlane {
             thrustB.transform.localScale = new Vector3(1, 1, 1 + (thrust ? 4 : 0));
         }
         else if (thrust) thrustFill.fillAmount -= Time.deltaTime * 0.15f;
-        
+
+        Vector2 rot = Vector2.zero;
+        if (Input.touchCount > 0)
+        {
+            foreach(Touch touch in Input.touches)
+            {
+                if (touch.position.x > Screen.width / 2)
+                {
+                    rot = touch.deltaPosition;
+                }
+            }
+        }
+        touchRot = Vector2.Lerp(touchRot, rot, Time.deltaTime * 8);
+
         //pass inputs
-        //MoveDrone(thrust,joystick.Horizontal, joystick.Vertical, CrossPlatformInputManager.GetAxis("Mouse X"), CrossPlatformInputManager.GetAxis("Mouse Y"), CrossPlatformInputManager.GetAxis("UpDown"));
+        MoveDrone(thrust,joystick.Horizontal, joystick.Vertical, 6*Time.deltaTime*Xsens*touchRot.x, Ysens*3*Time.deltaTime*touchRot.y, CrossPlatformInputManager.GetAxis("UpDown"));
 
         //PC Input
-        if (Input.GetKeyDown(KeyCode.LeftShift)) PressDash(false);
-        MoveDrone(thrust, Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"),CrossPlatformInputManager.GetAxis("UpDown"));
+        //if (Input.GetKeyDown(KeyCode.LeftShift)) PressDash(false);
+        //MoveDrone(thrust, Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"),CrossPlatformInputManager.GetAxis("UpDown"));
         
         foreach(Transform fan in fans)
         {
@@ -93,7 +112,7 @@ public class Drone : playerPlane {
 
         //Lean
         //leanAngle = Mathf.Clamp(-Mathf.Rad2Deg*Mathf.Asin(lean),-70,70);
-        leanAngle = -60 * lean;
+        //leanAngle = -60 * lean;
         //Debug.Log(leanAngle);
         //Rb.rotation = Quaternion.Slerp(Rb.rotation, Quaternion.Euler(leanAngle, transform.eulerAngles.y, 0),Time.deltaTime*2);
         //Rb.AddTorque(transform.right * lean * 80 * Rb.mass);
@@ -125,11 +144,10 @@ public class Drone : playerPlane {
         EngineSound.volume = Mathf.Lerp(EngineSound.volume,thrust?0.6f:0,Time.deltaTime);
     }
 
-    public void PressDash(bool mobileInput = true)
+    public void PressDash()//bool mobileInput = true)
     {
         if (dashRefill.fillAmount < 1) return;
-        Debug.Log(joystick.Horizontal);
-        if (mobileInput)
+        if (true)
         {
             if (Mathf.Abs(joystick.Horizontal) < 0.1f) return;
             else if (joystick.Horizontal < 0.1f) StartCoroutine(Dash(true));

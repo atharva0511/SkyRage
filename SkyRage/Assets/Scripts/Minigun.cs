@@ -14,9 +14,12 @@ public class Minigun : Weapons {
     public GameObject beamObject;
     public float stability = 0.5f;
     public float damage = 5;
-    public float maxSpread = 1.5f;
+    public float maxSpread = 4f;
     public float fireRate = 5;
     float fireTime = 0;
+    public bool dispSpread = false;
+    public Image spreadDisp;
+    public WeaponManager wm;
     //GameObject beamOb;
     //public LineRenderer beam;
     public RawImage crossHair;
@@ -24,6 +27,10 @@ public class Minigun : Weapons {
     void Start()
     {
         this.owner = GetComponentInParent<Destructible>().transform;
+
+        //upgrades
+        this.damage = CheckUpgrade(3) ? 6 : 4;
+        this.maxSpread = CheckUpgrade(4) ? 3 : 5;
     }
 
     void Update()
@@ -40,6 +47,10 @@ public class Minigun : Weapons {
                 fireTime = Time.time;
                 Fire1();
             }
+        }
+        if (equipped && dispSpread)
+        {
+            spreadDisp.fillAmount = spread;
         }
     }
     
@@ -121,5 +132,17 @@ public class Minigun : Weapons {
         audioSource.clip = clip;
         audioSource.pitch = pitch + randomize * Random.value;
         audioSource.Play();
+    }
+
+    public bool CheckUpgrade(int upgradeIndex)
+    {
+        switch (wm.vehicleIndex)
+        {
+            case 0: return Upgrades.qDrone[upgradeIndex];
+            case 1: return Upgrades.hod[upgradeIndex];
+            case 2: return Upgrades.wDrone[upgradeIndex];
+            case 3: return Upgrades.slayerX[upgradeIndex];
+            default: return false;
+        }
     }
 }

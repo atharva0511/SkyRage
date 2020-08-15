@@ -14,7 +14,7 @@ public class playerPlane : Destructible {
     public Transform cam;
     public Transform DisplayPos;
     public AudioSource[] pauseAudio;
-    public Weapons[] weapons;
+    public WeaponManager wm;
     public Image healthBar;
     public ParticleSystem DamageSmoke;
     public Image thrustFill;
@@ -25,6 +25,8 @@ public class playerPlane : Destructible {
     public Text utDisp;
     public Image deathVignette;
     IEnumerator routine = null;
+    public float Xsens = 1f;
+    public float Ysens = 1f;
     // Use this for initialization
     void Awake () {
         SetLifeDisp();
@@ -130,6 +132,13 @@ public class playerPlane : Destructible {
                 pickupAudio.Play();
                 Destroy(col.gameObject);
             }
+            else if(pickup.type == Pickup.pickupType.Objective)
+            {
+                StartCoroutine(AddXP(pickup.xp));
+                pickupAudio.clip = pickup.collectSound;
+                pickupAudio.Play();
+                Destroy(col.gameObject);
+            }
             if (pickup.isObjective) pickup.Collect();
         }
     }
@@ -167,38 +176,7 @@ public class playerPlane : Destructible {
         DisplayHealth();
     }
 
-    public void PressedFire1()
-    {
-        if (dead) return;
-        foreach (Weapons w in weapons)
-        {
-            w.PressedFire1();
-        }
-    }
-    public void ReleaseFire1()
-    {
-        if (dead) return;
-        foreach (Weapons w in weapons)
-        {
-            w.ReleaseFire1();
-        }
-    }
-    public void PressedFire2()
-    {
-        if (dead) return;
-        foreach (Weapons w in weapons)
-        {
-            w.PressedFire2();
-        }
-    }
-    public void ReleaseFire2()
-    {
-        if (dead) return;
-        foreach (Weapons w in weapons)
-        {
-            w.ReleaseFire2();
-        }
-    }
+    
     
     IEnumerator DisplayText(string dispText,Color dispColor)
     {
@@ -240,6 +218,7 @@ public class playerPlane : Destructible {
         else
         {
             dead = true;
+            wm.dead = true;
             StartCoroutine(DeathSequence());
         }
     }
@@ -265,7 +244,7 @@ public class playerPlane : Destructible {
 
     public IEnumerator DeathSequence()
     {
-        foreach(Weapons w in weapons)
+        foreach(Weapons w in wm.weapons)
         {
             w.enabled = false;
         }
