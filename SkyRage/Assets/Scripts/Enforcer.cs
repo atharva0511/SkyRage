@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -57,6 +56,20 @@ public class Enforcer : Destructible {
             zoneCentre = transform.position;
     }
 
+    void OnEnable()
+    {
+        Instantiate(Flare, transform.position, Quaternion.identity);
+    }
+
+    void OnDisable()
+    {
+        Instantiate(Flare, transform.position, Quaternion.identity);
+    }
+
+    void OnDestroy()
+    {
+        Instantiate(Flare, transform.position, Quaternion.identity);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -90,7 +103,7 @@ public class Enforcer : Destructible {
                 else
                     StartCoroutine(Dash(rand > 1));
             }
-            if (Time.time > lastDisappeared + 12)
+            if (Time.time > lastDisappeared + 10+2*rand)
             {
                 StartCoroutine(Disappear());
             }

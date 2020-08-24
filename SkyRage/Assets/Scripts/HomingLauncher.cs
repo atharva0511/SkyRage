@@ -23,12 +23,16 @@ public class HomingLauncher : Weapons {
     Transform target;
     public LayerMask layerMask;
     bool side = false;
+    public int range = 300;
+    public int rockets0 = 6;
+    public int rockets1 = 12;
+    public int rcktSpeed = 120;
 	// Use this for initialization
 	void Start () {
         rocketDisp.text = wm.rockets.ToString();
         //upgrades
         this.damage = CheckUpgrade(9) ? 100 : 50;
-        wm.maxRockets = CheckUpgrade(10) ? 12 : 6;
+        wm.maxRockets = CheckUpgrade(10) ? rockets1 : rockets0;
         wm.rockets = wm.maxRockets;
         rocketDisp.text = wm.rockets.ToString();
     }
@@ -38,7 +42,7 @@ public class HomingLauncher : Weapons {
         if (!equipped) return;
         if (wm.rockets>0)//(slot == 1 && fire1) || (slot == 2 && fire2))
         {
-            Collider[] cols = Physics.OverlapSphere(transform.position+transform.forward * 150, 140, layerMask);
+            Collider[] cols = Physics.OverlapSphere(transform.position+transform.forward * range/2, (range/2)-10, layerMask);
             float dot = 0;
             if (cols.Length == 0) targetCol = null;
             foreach (Collider col in cols)
@@ -143,7 +147,7 @@ public class HomingLauncher : Weapons {
         else ps2.Play();
         side = !side;
         if(!wm.infiniteRocket)wm.rockets -= 1;
-        rocketDisp.text = wm.rockets.ToString();
+        UpdateDisp();
         if (this.target != null)
         {
             p.homing = true;
@@ -154,10 +158,15 @@ public class HomingLauncher : Weapons {
             p.homing = false;
             p.moveLinearly = true;
         }
-        p.speed = 120;
+        p.speed = rcktSpeed;
         p.turnRate = 60;
         p.damage = this.damage;
         target = null;
+    }
+
+    public void UpdateDisp()
+    {
+        rocketDisp.text = wm.rockets.ToString();
     }
 
     public bool CheckUpgrade(int upgradeIndex)

@@ -6,6 +6,7 @@ using UnityStandardAssets.Effects;
 public class Explosion : MonoBehaviour {
 
     public float explosionForce = 4;
+    public float damageMultiplier = 1;
 
     private IEnumerator Start()
     {
@@ -15,14 +16,14 @@ public class Explosion : MonoBehaviour {
 
         float multiplier = GetComponent<ParticleSystemMultiplier>().multiplier;
 
-        float r = 20 * multiplier;
+        float r = 50 * multiplier;
         var cols = Physics.OverlapSphere(transform.position, r);
         var rigidbodies = new List<Rigidbody>();
         foreach (var col in cols)
         {
             if (col.GetComponentInParent<Destructible>() != null)
             {
-                float v = 5000*multiplier / (20 + (col.transform.position - this.transform.position).sqrMagnitude);
+                float v = damageMultiplier*5000*multiplier / (10 + (col.transform.position - this.transform.position).sqrMagnitude);
                 col.GetComponentInParent<Destructible>().TakeDamage(v,5);
             }
             if (col.attachedRigidbody != null && !rigidbodies.Contains(col.attachedRigidbody))

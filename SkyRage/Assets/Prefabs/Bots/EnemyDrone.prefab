@@ -775,6 +775,7 @@ MonoBehaviour:
   Rb: {fileID: 54063026302774546}
   fireAudio: {fileID: 82578398970505128}
   laserBeam: {fileID: 1580974896341714, guid: 33c63dd491e89374b89080ca1d02c339, type: 2}
+  Flare: {fileID: 1587412269697708, guid: 5d273b1bb52fd67428de4464443c4a59, type: 2}
   baseDamage: 1
   turnSpeed: 1
 --- !u!120 &120642771499452312

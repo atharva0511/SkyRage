@@ -39,6 +39,7 @@ public class WeaponManager : MonoBehaviour {
     }
 
 	void Start () {
+        //uncomment all while building 
         fire1Button.SetActive(false);
         fire2Button.SetActive(false);
         swap1Button.SetActive(true);
@@ -195,5 +196,10 @@ public class WeaponManager : MonoBehaviour {
         {
             w.ReleaseFire2();
         }
+    }
+
+    public void UpdateDisp()
+    {
+        homingLauncher.UpdateDisp();
     }
 }

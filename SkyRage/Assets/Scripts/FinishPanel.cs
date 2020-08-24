@@ -10,6 +10,12 @@ public class FinishPanel : MonoBehaviour {
     public Text utText;
     public Text lifeText;
     public UISettings uiSettings;
+    public GameObject errorPanel;
+    public GameObject rewardPanel;
+    public Text rewardText;
+    public Button coinAdButton;
+    public Button lifeAdButton;
+    public Button utAdButton;
 	// Use this for initialization
 	void Start () {
         uiSettings.PauseAudio();
@@ -70,5 +76,37 @@ public class FinishPanel : MonoBehaviour {
         PlayerData.SaveData();
         Time.timeScale = 1;
         uiSettings.Restart();
+    }
+
+    public void RecieveReward(double amount,string type)
+    {
+        switch (type)
+        {
+            case "coins":
+                coinAdButton.interactable = false;
+                coinText.text = (int.Parse(coinText.text) + amount).ToString();
+                rewardPanel.SetActive(true);
+                rewardText.text = "You received " + amount.ToString() + " rage coins";
+                break;
+            case "life":
+                lifeAdButton.interactable = false;
+                PlayerData.lives += (int)amount;
+                lifeText.text = PlayerData.lives.ToString();
+                rewardPanel.SetActive(true);
+                rewardText.text = "You received +" + amount.ToString() + " bonus life";
+                break;
+            case "UpgradeToken":
+                utAdButton.interactable = false;
+                PlayerData.upgradeTokens += (int)amount;
+                utText.text = PlayerData.upgradeTokens.ToString();
+                rewardPanel.SetActive(true);
+                rewardText.text = "You received " + amount.ToString() + " upgrade token";
+                break;
+        }
+    }
+
+    public void ShowError()
+    {
+        errorPanel.SetActive(true);
     }
 }

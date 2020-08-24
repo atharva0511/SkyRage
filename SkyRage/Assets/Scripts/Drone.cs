@@ -39,20 +39,35 @@ public class Drone : playerPlane {
         Rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         lives = PlayerData.lives;
-        DisplayHealth();
 
         // upgrades
-        dashfillRate = Upgrades.qDrone[0] ? 1 : 0.75f;
-        thrustRechargeRate = Upgrades.qDrone[1] ? 0.05f : 0.04f;
-        maxHealth = Upgrades.qDrone[2] ? 150 : 100;
+        switch (wm.vehicleIndex)
+        {
+            case 0:
+                dashfillRate = Upgrades.qDrone[0] ? 1 : 0.75f;
+                thrustRechargeRate = Upgrades.qDrone[1] ? 0.05f : 0.04f;
+                maxHealth = Upgrades.qDrone[2] ? 150 : 100;
+                break;
+            case 1:
+                dashfillRate = Upgrades.hod[0] ? 1 : 0.75f;
+                thrustRechargeRate = Upgrades.hod[1] ? 0.05f : 0.04f;
+                maxHealth = Upgrades.hod[2] ? 150 : 100;
+                break;
+            case 3:
+                dashfillRate = Upgrades.slayerX[0] ? 1 : 0.75f;
+                thrustRechargeRate = Upgrades.slayerX[1] ? 0.05f : 0.04f;
+                maxHealth = Upgrades.slayerX[2] ? 150 : 100;
+                break;
+        }
         this.health = maxHealth;
-	}
+        DisplayHealth();
+    }
 	
 	void FixedUpdate()
     {
         if (!On || dead) return;
         //refill dash
-        if (dashRefill.fillAmount < 1) dashRefill.fillAmount += Time.deltaTime*0.75f;
+        if (dashRefill.fillAmount < 1) dashRefill.fillAmount += Time.deltaTime*dashfillRate;
         if (thrustFill.fillAmount < 1) thrustFill.fillAmount += Time.deltaTime * thrustRechargeRate;
         if (thrust && thrustFill.fillAmount < 0.05f)
         {
@@ -75,7 +90,7 @@ public class Drone : playerPlane {
         touchRot = Vector2.Lerp(touchRot, rot, Time.deltaTime * 8);
 
         //pass inputs
-        MoveDrone(thrust,joystick.Horizontal, joystick.Vertical, 6*Time.deltaTime*Xsens*touchRot.x, Ysens*3*Time.deltaTime*touchRot.y, CrossPlatformInputManager.GetAxis("UpDown"));
+        MoveDrone(thrust,joystick.Horizontal, joystick.Vertical, 6*Time.deltaTime*touchSens*touchRot.x, touchSens*3*Time.deltaTime*touchRot.y, CrossPlatformInputManager.GetAxis("UpDown"));
 
         //PC Input
         //if (Input.GetKeyDown(KeyCode.LeftShift)) PressDash(false);
@@ -146,6 +161,7 @@ public class Drone : playerPlane {
 
     public void PressDash()//bool mobileInput = true)
     {
+        if (dead) return;
         if (dashRefill.fillAmount < 1) return;
         if (true)
         {

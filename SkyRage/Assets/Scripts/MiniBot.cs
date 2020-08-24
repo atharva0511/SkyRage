@@ -12,7 +12,6 @@ public class MiniBot : Destructible {
     public GameObject thrusterR;
     public GameObject thruster;
     public GameObject spark;
-    public bool displayHealth = true;
     public Transform pos1;
     public Transform pos2;
     public Transform displayPos;
@@ -23,6 +22,7 @@ public class MiniBot : Destructible {
     public Rigidbody Rb;
     public AudioSource fireAudio;
     public GameObject laserBeam;
+    public GameObject Flare;
     public int baseDamage = 3;
     int state = 0;
     public float turnSpeed = 1;
@@ -49,6 +49,24 @@ public class MiniBot : Destructible {
             zoneCentre = transform.position;
     }
 	
+    void OnEnable()
+    {
+        if (Flare != null)
+            Instantiate(Flare, transform.position, Quaternion.identity);
+    }
+
+    void OnDisable()
+    {
+        if (Flare != null)
+            Instantiate(Flare, transform.position, Quaternion.identity);
+    }
+
+    void OnDestroy()
+    {
+        if (Flare != null)
+            Instantiate(Flare, transform.position, Quaternion.identity);
+    }
+
 	// Update is called once per frame
 	void Update () {
         if (dead) return;
@@ -86,7 +104,7 @@ public class MiniBot : Destructible {
     {
         base.Damaged();
         lastHit = Time.time;
-        if (canvas == null && displayHealth && !dead)
+        if (canvas == null && !dead)
         {
             StartCoroutine(DisplayHealth());
         }

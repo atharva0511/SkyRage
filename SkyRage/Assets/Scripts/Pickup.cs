@@ -12,8 +12,8 @@ public class Pickup : MonoBehaviour {
     public int rockets = 0;
     public int homing = 0;
     public int xp = 10;
-
     public bool rotate = false;
+    public bool picked = false;
     public Vector3 rotateBy = Vector3.zero;
     public AudioClip collectSound;
 	// Use this for initialization
@@ -36,9 +36,15 @@ public class Pickup : MonoBehaviour {
         transform.Rotate(rotateBy);
 	}
 
-    //called when pickup type is objective
+    //called by player when pickup type is objective
     public void Collect()
     {
-        GetComponent<Objective>().Completed();
+        this.picked = true;
+        if (GetComponentInParent<MultiPick>() != null)
+        {
+            GetComponentInParent<MultiPick>().OnCollect();
+        }
+        if(isObjective)
+            GetComponent<Objective>().Completed();
     }
 }

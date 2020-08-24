@@ -42,4 +42,12 @@ public class Weapons : MonoBehaviour {
         if (!equipped) return;
         fire2 = false;
     }
+
+    public virtual void UpdateDisp()
+    {
+        if (GetComponentInChildren<HomingLauncher>() != null)
+        {
+            GetComponentInChildren<HomingLauncher>().UpdateDisp();
+        }
+    }
 }

@@ -11,7 +11,7 @@ public class BuyPanel : MonoBehaviour {
     public int price = 100;
     public byte vehicleIndex = 0;
     
-    public void Start()
+    public void OnEnable()
     {
         RefreshPanel();
     }

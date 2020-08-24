@@ -76,7 +76,7 @@ public class WingedDrone : playerPlane {
         touchRot = Vector2.Lerp(touchRot, rot, Time.deltaTime * 8);
 
         //pass inputs
-        MoveDrone(thrust, joystick.Horizontal, joystick.Vertical, 6*Time.deltaTime * Xsens * touchRot.x, Ysens * 3*Time.deltaTime * touchRot.y, CrossPlatformInputManager.GetAxis("UpDown"));
+        MoveDrone(thrust, joystick.Horizontal, joystick.Vertical, 6*Time.deltaTime * touchSens * touchRot.x, touchSens * 3*Time.deltaTime * touchRot.y, CrossPlatformInputManager.GetAxis("UpDown"));
 
         //PC Input
         //if (Input.GetKeyDown(KeyCode.LeftShift)) PressDash(false);

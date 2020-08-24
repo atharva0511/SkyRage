@@ -628,6 +628,7 @@ MonoBehaviour:
   displayPos: {fileID: 4770633130016618}
   turret: {fileID: 4947429410899348}
   shootPos: {fileID: 4253941979515854}
+  Flare: {fileID: 1587412269697708, guid: 5d273b1bb52fd67428de4464443c4a59, type: 2}
   spread: 5
   healthCanvas: {fileID: 1618696094154294, guid: 52430529cf6942e43b5b94b0e8d5e7b8,
     type: 2}

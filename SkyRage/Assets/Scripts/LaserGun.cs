@@ -85,7 +85,7 @@ public class LaserGun : Weapons {
         }
         else
         {
-            impact.transform.position = transform.position;
+            impact.transform.position = Vector3.zero;
             SetBeam(400 * dir);
         }
     }

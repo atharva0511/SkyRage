@@ -556,6 +556,7 @@ MonoBehaviour:
   explosion: {fileID: 1601772686248290, guid: 041582a7bb2a622428971c33a002da0a, type: 2}
   healthCanvas: {fileID: 1618696094154294, guid: 52430529cf6942e43b5b94b0e8d5e7b8,
     type: 2}
+  Flare: {fileID: 1587412269697708, guid: 5d273b1bb52fd67428de4464443c4a59, type: 2}
   displayHealth: 1
   baseDamage: 5
   difficulty: 2

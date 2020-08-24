@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Shooter: {fileID: 0}
-  blast: {fileID: 1601772686248290, guid: 8f3669fa418f788438b93d769f8b0202, type: 2}
+  blast: {fileID: 1601772686248290, guid: 8d00ec9542b25aa43b5225ed19e21dd7, type: 2}
   stayTime: 6
   damage: 5
   moveLinearly: 1

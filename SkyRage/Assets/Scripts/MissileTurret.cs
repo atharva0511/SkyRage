@@ -12,6 +12,7 @@ public class MissileTurret : Destructible {
     public GameObject missile;
     public GameObject explosion;
     public GameObject healthCanvas;
+    public GameObject Flare;
     public bool displayHealth = true;
     GameObject canvas = null;
     float lastHit = 0;
@@ -32,9 +33,26 @@ public class MissileTurret : Destructible {
         this.target = EventSettings.currentPlayer;
         
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    void OnEnable()
+    {
+        if (Flare != null)
+            Instantiate(Flare, transform.position, Quaternion.identity);
+    }
+
+    void OnDisable()
+    {
+        if (Flare != null)
+            Instantiate(Flare, transform.position, Quaternion.identity);
+    }
+
+    void OnDestroy()
+    {
+        if (Flare != null)
+            Instantiate(Flare, transform.position, Quaternion.identity);
+    }
+    // Update is called once per frame
+    void Update () {
         if (stunned) return;
         if (target != null && !dead)
         {
@@ -102,6 +120,10 @@ public class MissileTurret : Destructible {
             Material[] mats = rend.materials;
             foreach (Material mat in mats) mat.color = new Color(0.1f, 0.1f, 0f);
             rend.materials = mats;
+        }
+        if (GetComponentInParent<BotSpawner>() != null)
+        {
+            GetComponentInParent<BotSpawner>().Died();
         }
         Destroy(this.gameObject, 10f);
     }

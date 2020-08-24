@@ -1171,6 +1171,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1596429213154352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4097633943269080}
+  - component: {fileID: 108127766810490818}
+  m_Layer: 0
+  m_Name: Neon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1614050550570334
 GameObject:
   m_ObjectHideFlags: 1
@@ -1874,7 +1890,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1133413080332532}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 686.7248, y: 106.84, z: 232.08942}
+  m_LocalPosition: {x: 640, y: 3.03, z: 234}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4768662929142588}
@@ -1892,6 +1908,7 @@ Transform:
   - {fileID: 4719730275260006}
   - {fileID: 4556907751862982}
   - {fileID: 4638696186108898}
+  - {fileID: 4097633943269080}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1920,6 +1937,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4880922532984956}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4097633943269080
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1596429213154352}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.8, z: 2.52}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4051284848613394}
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4101180310247586
 Transform:
@@ -4108,6 +4138,42 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!108 &108127766810490818
+Light:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1596429213154352}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_Range: 25
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!114 &114022480689395344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5111,8 +5177,9 @@ MonoBehaviour:
   lifeDisp: {fileID: 114575378471243320}
   utDisp: {fileID: 114145918021106624}
   deathVignette: {fileID: 114092123206907996}
-  Xsens: 1
-  Ysens: 1
+  explodeOnDeath: 0
+  explosion: {fileID: 0}
+  touchSens: 1
   On: 1
   maxThrust: 80
   fanThrust: 20
@@ -5158,9 +5225,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a448b1bddeb97544b96b2640926dc6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vehicleName: Drone
+  vehicleName: Quadrone
   displayName: Quadrone
   price: 2000
+  pilotLevel: 5
   priColorIndex: 0
   secColorIndex: 1
   rends:
@@ -5168,6 +5236,7 @@ MonoBehaviour:
   - {fileID: 137083012132616410}
   - {fileID: 137640223207612994}
   - {fileID: 137529442348382180}
+  NeonLight: {fileID: 108127766810490818}
 --- !u!114 &114358458370946242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5512,6 +5581,10 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 4096
+  range: 300
+  rockets0: 6
+  rockets1: 12
+  rcktSpeed: 120
 --- !u!114 &114514725897173608
 MonoBehaviour:
   m_ObjectHideFlags: 1

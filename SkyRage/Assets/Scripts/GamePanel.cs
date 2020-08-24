@@ -9,6 +9,7 @@ public class GamePanel : MonoBehaviour {
     public GameObject SinglePlayerPanel;
     public GameObject SPMenu;
     public GameObject CustmPanel;
+    public GameObject errorPanel;
     public GameObject UpgradePanel0;
     public GameObject LevelPanel0;
 	// Use this for initialization
@@ -57,5 +58,16 @@ public class GamePanel : MonoBehaviour {
         PlayerData.SaveData();
         menu.podium.GetChild(menu.selectionIndex).GetComponent<WeaponManager>().SetPossessions();
         BackToPlayPanel();
+    }
+
+    public void ShowError()
+    {
+        errorPanel.SetActive(true);
+    }
+
+    public void ResetGameData()
+    {
+        Upgrades.Reset();
+        PlayerData.ResetData();
     }
 }

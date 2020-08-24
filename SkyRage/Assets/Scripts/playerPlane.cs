@@ -25,8 +25,10 @@ public class playerPlane : Destructible {
     public Text utDisp;
     public Image deathVignette;
     IEnumerator routine = null;
-    public float Xsens = 1f;
-    public float Ysens = 1f;
+    public bool explodeOnDeath = false;
+    public GameObject explosion;
+    public float touchSens = 1f;
+
     // Use this for initialization
     void Awake () {
         SetLifeDisp();
@@ -71,9 +73,10 @@ public class playerPlane : Destructible {
         {
             col.enabled = false;
             Pickup pickup = col.GetComponent<Pickup>();
+            pickup.Collect();
             if(pickup.type == Pickup.pickupType.health)
             {
-                if (health == maxHealth) return;
+                if (health >= maxHealth) return;
                 if(routine!=null)StopCoroutine(routine);
                 if(displayInstance!=null)Destroy(displayInstance);
                 routine = DisplayText("+ " + Mathf.Ceil(pickup.health>maxHealth-health?maxHealth-health:pickup.health).ToString() + " Health", Color.green);
@@ -132,9 +135,22 @@ public class playerPlane : Destructible {
                 pickupAudio.Play();
                 Destroy(col.gameObject);
             }
+            else if(pickup.type == Pickup.pickupType.ammo)
+            {
+                if (wm.rockets >= wm.maxRockets) return;
+                if (routine != null) StopCoroutine(routine);
+                if (displayInstance != null) Destroy(displayInstance);
+                routine = DisplayText("+ " + Mathf.Ceil(pickup.rockets > wm.maxRockets - wm.rockets ? wm.maxRockets - wm.rockets : pickup.rockets).ToString() + " Missile", Color.cyan);
+                wm.rockets = Mathf.Clamp(wm.rockets + pickup.rockets, 0, wm.maxRockets);
+                wm.UpdateDisp();
+                StartCoroutine(routine);
+                pickupAudio.clip = pickup.collectSound;
+                pickupAudio.Play();
+                Destroy(col.gameObject);
+            }
             else if(pickup.type == Pickup.pickupType.Objective)
             {
-                StartCoroutine(AddXP(pickup.xp));
+                if(pickup.xp!=0) StartCoroutine(AddXP(pickup.xp));
                 pickupAudio.clip = pickup.collectSound;
                 pickupAudio.Play();
                 Destroy(col.gameObject);
@@ -143,9 +159,10 @@ public class playerPlane : Destructible {
         }
     }
 
-    IEnumerator AddXP(int amount)
+    public IEnumerator AddXP(int amount)
     {
         float startTime = Time.time;
+        PlayerData.xp += amount;
         xpInstance = Instantiate(xpCanvas, DisplayPos.position, Quaternion.LookRotation(DisplayPos.position-cam.position,cam.up), DisplayPos);
         Text xpText = xpInstance.transform.GetChild(0).GetComponent<Text>();
         xpText.text = "+ " + amount.ToString() + " xp";
@@ -242,6 +259,8 @@ public class playerPlane : Destructible {
         deathVignette.gameObject.SetActive(false);
     }
 
+    
+
     public IEnumerator DeathSequence()
     {
         foreach(Weapons w in wm.weapons)
@@ -257,6 +276,7 @@ public class playerPlane : Destructible {
         deathVignette.color = new Color(1f, 0.2f, 0, 1);
         deathVignette.CrossFadeAlpha(0, 3, false);
         Instantiate(spark, transform.position, Quaternion.identity, this.transform);
+        if(explodeOnDeath) Instantiate(explosion, transform.position, Quaternion.identity, this.transform);
         Renderer[] rends = GetComponent<Customizable>().rends;
         foreach (Renderer rend in rends)
         {

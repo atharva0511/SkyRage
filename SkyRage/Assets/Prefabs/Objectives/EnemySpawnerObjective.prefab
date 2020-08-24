@@ -624,7 +624,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1427027256256726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 922.7, y: 142.8, z: 1031}
+  m_LocalPosition: {x: 215.80066, y: 77.90296, z: -150.1109}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224500743019419298}
@@ -1478,7 +1478,6 @@ MonoBehaviour:
   thrusterR: {fileID: 1227554584845786}
   thruster: {fileID: 1745558756154488}
   spark: {fileID: 1557672453810280, guid: 482cfe0c2b5b21c4ca27c8d192e19a2e, type: 2}
-  displayHealth: 1
   pos1: {fileID: 4672626969080378}
   pos2: {fileID: 4398739324163344}
   displayPos: {fileID: 4673094996302178}
@@ -1498,7 +1497,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1427027256256726}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 043fe4d824cf5d6459c662ad41a6a1c8, type: 3}
   m_Name: 
@@ -1568,6 +1567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c5508f27b8b664d98458fc786d773e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showGizmo: 1
   botsLeft: 0
   IsObjective: 1
   objective: {fileID: 114272563829476662}
@@ -1704,7 +1704,6 @@ MonoBehaviour:
   thrusterR: {fileID: 1612832991399194}
   thruster: {fileID: 1188375942417272}
   spark: {fileID: 1557672453810280, guid: 482cfe0c2b5b21c4ca27c8d192e19a2e, type: 2}
-  displayHealth: 1
   pos1: {fileID: 4366030343474042}
   pos2: {fileID: 4529664766370974}
   displayPos: {fileID: 4445421471239786}

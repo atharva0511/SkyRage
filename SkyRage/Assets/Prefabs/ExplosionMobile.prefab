@@ -273,6 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionForce: 20
+  damageMultiplier: 12
 --- !u!114 &114812573792566310
 MonoBehaviour:
   m_ObjectHideFlags: 1

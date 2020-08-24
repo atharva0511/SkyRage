@@ -26,6 +26,7 @@ public class Objective : MonoBehaviour {
     
     public void Completed()
     {
+        StartCoroutine(eventSettings.player.GetComponent<playerPlane>().AddXP(XP));
         eventSettings.NextObjective();
         completed = true;
         foreach(GameObject ob in DestroyOnCompletion)

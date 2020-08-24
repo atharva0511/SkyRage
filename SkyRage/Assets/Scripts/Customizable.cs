@@ -7,9 +7,11 @@ public class Customizable : MonoBehaviour{
     public string vehicleName = "Drone";
     public string displayName = "Drone";
     public int price = 2000;
+    public int pilotLevel = 5;
     public int priColorIndex = 0;
     public int secColorIndex = 1;
     public Renderer[] rends;
+    public Light NeonLight;
     
     void Start()
     {
@@ -42,12 +44,15 @@ public class Customizable : MonoBehaviour{
                 rend.materials = mats;
             }
             file.Close();
+            NeonLight.color = rends[0].materials[secColorIndex].color;
             return custms;
         }
         else
         {
             Debug.Log("Customs not found");
+            NeonLight.color = rends[0].materials[secColorIndex].color;
             return null;
         }
+        
     }
 }

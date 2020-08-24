@@ -20,6 +20,7 @@ public class KnightDrone : Destructible {
     public Rigidbody Rb;
     public AudioSource fireAudio;
     public GameObject laserBeam;
+    public GameObject Flare;
     public int baseDamage = 3;
     public float turnSpeed = 1;
     float lastShot = 0;
@@ -46,6 +47,23 @@ public class KnightDrone : Destructible {
             zoneCentre = transform.position;
     }
 
+    void OnEnable()
+    {
+        if (Flare != null)
+            Instantiate(Flare, transform.position, Quaternion.identity);
+    }
+
+    void OnDisable()
+    {
+        if (Flare != null)
+            Instantiate(Flare, transform.position, Quaternion.identity);
+    }
+
+    void OnDestroy()
+    {
+        if (Flare != null)
+            Instantiate(Flare, transform.position, Quaternion.identity);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -60,7 +78,6 @@ public class KnightDrone : Destructible {
                 RaycastHit hit;
                 if (Physics.Raycast(pos1.position, target.position - pos1.position, out hit, 300, ~(1 << 2)))
                 {
-                    Debug.Log("firing");
                     if (hit.transform == target)
                     {
                         lastShot = Time.time;

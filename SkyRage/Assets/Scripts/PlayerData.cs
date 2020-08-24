@@ -24,6 +24,17 @@ public class PlayerData{
         file.Close();
     }
 
+    public static void ResetData()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/playerData.amg";
+        FileStream file = new FileStream(path, FileMode.Create);
+        GameData data = new GameData();
+        formatter.Serialize(file, data);
+        Debug.Log("Data reset");
+        file.Close();
+    }
+
     public static void LoadData()
     {
         string path = Application.persistentDataPath + "/playerData.amg";

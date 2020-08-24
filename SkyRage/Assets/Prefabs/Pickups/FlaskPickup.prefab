@@ -30,7 +30,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1537457145969546
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,7 +125,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1273259568799906}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 919.9, y: 105.7, z: 1141.5}
+  m_LocalPosition: {x: 2115.4136, y: 28.5, z: 350.02414}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 4976597195866222}
@@ -342,13 +342,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectiveType: 0
-  ObjectiveIndex: 0
+  ObjectiveIndex: 1
   active: 0
   XP: 20
   completed: 0
   DestroyOnCompletion: []
   ActivateOnCompletion: []
-  ObjectiveDescription: Steel the power cell
+  ObjectiveDescription: Steal the power cell
   eventSettings: {fileID: 0}
 --- !u!114 &114970762185457572
 MonoBehaviour:

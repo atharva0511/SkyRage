@@ -35,5 +35,6 @@ public class Checkpoints : Objective {
         markerTemp = Instantiate(targetMarker, transform.GetChild(index).position, Quaternion.LookRotation(Vector3.up), transform.GetChild(index));
         Renderer renderer = transform.GetChild(index).GetComponent<Renderer>();
         renderer.material.color = new Color(renderer.material.color.r, renderer.material.color.g, renderer.material.color.b, 1);
+        RadarCamera.SetScreenMarker(transform.GetChild(index));
     }
 }

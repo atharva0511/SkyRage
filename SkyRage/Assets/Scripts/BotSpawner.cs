@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BotSpawner : MonoBehaviour {
 
+    public bool showGizmo = true;
     public int botsLeft = 0;
     public bool IsObjective = false;
     public Objective objective;
@@ -12,6 +13,8 @@ public class BotSpawner : MonoBehaviour {
     public int disappearDistance = 450;
     public GameObject Bots;
     float measureTime = 0;
+    public bool DestroyOnComplete = true;
+    
     Transform player;
 	// Use this for initialization
 	void Start () {
@@ -21,17 +24,19 @@ public class BotSpawner : MonoBehaviour {
 	
     public void OnDrawGizmos()
     {
+        if (!showGizmo) return;
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, zoneRadius);
     }
 
 	// Update is called once per frame
 	void Update () {
+        if (IsObjective) return;
         if (Time.time > measureTime + 0.5f)
         {
             measureTime = Time.time;
             float dist = (player.position - transform.position).sqrMagnitude;
-            if (dist>disappearDistance*disappearDistance)
+            if (dist>disappearDistance*disappearDistance )
             {
                 Bots.SetActive(false);
             }
@@ -54,9 +59,10 @@ public class BotSpawner : MonoBehaviour {
         {
             if (!bot.dead) count++;
         }
-        if (count == 0 && IsObjective)
+        if (count == 0)
         {
-            objective.Completed();
+            if(IsObjective) objective.Completed();
+            if (DestroyOnComplete) Destroy(this.gameObject,10);
         }
         botsLeft = count;
     }

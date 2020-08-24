@@ -16,6 +16,7 @@ public class Turret : Destructible {
     float difficulty = 2;
 	public Transform turret;
     public Transform shootPos;
+    public GameObject Flare;
     float lastFired = 0;
     float rand = 2;
     public float spread = 10f;
@@ -38,8 +39,26 @@ public class Turret : Destructible {
         }
     }
 
-	// Update is called once per frame
-	void Update() {
+    void OnEnable()
+    {
+        if(Flare!=null)
+            Instantiate(Flare, transform.position, Quaternion.identity);
+    }
+
+    void OnDisable()
+    {
+        if (Flare != null)
+            Instantiate(Flare, transform.position, Quaternion.identity);
+    }
+
+    void OnDestroy()
+    {
+        if (Flare != null)
+            Instantiate(Flare, transform.position, Quaternion.identity);
+    }
+
+    // Update is called once per frame
+    void Update() {
         if (dead) return;
         if (stunned) return;
 		if (target != null)
@@ -178,6 +197,10 @@ public class Turret : Destructible {
             Material[] mats = rend.materials;
             foreach (Material mat in mats) mat.color = new Color(0.1f, 0.1f, 0f);
             rend.materials = mats;
+        }
+        if (GetComponentInParent<BotSpawner>() != null)
+        {
+            GetComponentInParent<BotSpawner>().Died();
         }
         Destroy(this.gameObject, 10f);
     }

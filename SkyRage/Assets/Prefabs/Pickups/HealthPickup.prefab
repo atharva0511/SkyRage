@@ -140,10 +140,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   isObjective: 0
-  health: 10
+  health: 20
   coins: 0
   rockets: 0
   homing: 0
+  xp: 10
   rotate: 0
   rotateBy: {x: 0, y: 0, z: 0}
   collectSound: {fileID: 8300000, guid: 449ea8c79ca808f408229ac525d1b635, type: 3}

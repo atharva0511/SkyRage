@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.Audio;
 using UnityEngine;
 
 public class EventSettings : MonoBehaviour {
@@ -11,7 +11,11 @@ public class EventSettings : MonoBehaviour {
     public Transform player;
     playerPlane character;
     public UISettings uiSettings;
-	// Use this for initialization
+
+    [Header("Music")]
+    public bool constMusic = false;
+    public AudioMixer audioMixer;
+    // Use this for initialization
     void Awake()
     {
         currentPlayer = player;
@@ -21,7 +25,9 @@ public class EventSettings : MonoBehaviour {
         Time.timeScale = 1;
         Application.targetFrameRate = 60;
         objectives[0].Activate();
+        RadarCamera.SetScreenMarker(objectives[0]);
         character = player.GetComponent<playerPlane>();
+        StartCoroutine(SetMusic(false));
 	}
 	
 	// Update is called once per frame
@@ -51,11 +57,19 @@ public class EventSettings : MonoBehaviour {
             {
                 NextObjective();
             }
+            RadarCamera.SetScreenMarker(objectives[currentObjective]);
+            if (objectives[currentObjective].objectiveType == Objective.ObjectiveType.Destroy)
+            {
+                StartCoroutine(SetMusic(true));
+            }
+            else
+                StartCoroutine(SetMusic(false));
         }
         else
         {
             Finished();
         }
+        
     }
     
     public void PlayerDead()
@@ -77,5 +91,25 @@ public class EventSettings : MonoBehaviour {
     public void SetDesc(string desc)
     {
         uiSettings.SetObDescription(desc);
+    }
+
+    public IEnumerator SetMusic(bool combat)
+    {
+        if (!constMusic)
+        {
+            float startTime = Time.time;
+            float ambVol;
+            float combVol;
+            audioMixer.GetFloat("AmbientVolume", out ambVol);
+            audioMixer.GetFloat("CombatVolume", out combVol);
+            while (Time.time < startTime + 5)
+            {
+                audioMixer.SetFloat("AmbientVolume", Mathf.Lerp(ambVol, combat ? -80 : 0, (Time.time - startTime) / 5));
+                audioMixer.SetFloat("CombatVolume", Mathf.Lerp(combVol, combat ? 0 : -80, (Time.time - startTime) / 5));
+                if (combat)
+                    Debug.Log(combVol);
+                yield return null;
+            }
+        }
     }
 }

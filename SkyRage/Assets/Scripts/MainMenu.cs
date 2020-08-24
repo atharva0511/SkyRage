@@ -15,6 +15,7 @@ public class MainMenu : MonoBehaviour {
     public GameObject PlayPanel;
     public GameObject LoadingPanel;
     public GameObject CustomizePanel;
+    public Text levelText;
     AudioSource UIAudio;
     public AudioClip clip1;
     public AudioClip clip2;
@@ -30,6 +31,7 @@ public class MainMenu : MonoBehaviour {
     public Text vehName;
     public Button PlayButton;
     public GameObject LockPanel;
+    public StatsPanel statsPanel;
     public Button UnlockButton;
 	// Use this for initialization
 
@@ -185,9 +187,18 @@ public class MainMenu : MonoBehaviour {
     {
         PlayButton.gameObject.SetActive(PlayerData.unlockedVehicles[selectionIndex]);
         UnlockButton.gameObject.SetActive(!PlayerData.unlockedVehicles[selectionIndex]);
-        UnlockButton.interactable = (PlayerData.coins>podium.GetChild(selectionIndex).GetComponent<Customizable>().price);
+        UnlockButton.interactable = (PlayerData.coins>=podium.GetChild(selectionIndex).GetComponent<Customizable>().price) && int.Parse(levelText.text)>=podium.GetChild(selectionIndex).GetComponent<Customizable>().pilotLevel;
         UnlockButton.transform.GetChild(0).GetComponent<Text>().text = podium.GetChild(selectionIndex).GetComponent<Customizable>().price.ToString();
         LockPanel.SetActive(!PlayerData.unlockedVehicles[selectionIndex]);
+        if(int.Parse(levelText.text) >= podium.GetChild(selectionIndex).GetComponent<Customizable>().pilotLevel)
+        {
+            LockPanel.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        else
+        {
+            LockPanel.transform.GetChild(0).gameObject.SetActive(true);
+            LockPanel.transform.GetChild(0).GetComponent<Text>().text = "Pilot Level "+ podium.GetChild(selectionIndex).GetComponent<Customizable>().pilotLevel.ToString()+ "   Required";
+        }
         for (int i = 0; i < podium.childCount; i++)
         {
             podium.GetChild(i).gameObject.SetActive(false);
@@ -197,12 +208,14 @@ public class MainMenu : MonoBehaviour {
             }
         }
         vehName.text = podium.GetChild(selectionIndex).GetComponent<Customizable>().displayName;
+        podium.GetChild(selectionIndex).GetComponent<WeaponManager>().SetPossessions();
     }
 
     public void PurchaseVehicle()
     {
         PlayerData.coins -= podium.GetChild(selectionIndex).GetComponent<Customizable>().price;
         PlayerData.unlockedVehicles[selectionIndex] = true;
+        statsPanel.Refresh();
         PlayerData.SaveData();
         DisplayVehicle();
     }

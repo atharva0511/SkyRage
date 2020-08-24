@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine.UI;
+using UnityEngine.Audio;
 using UnityEngine;
 
 public class SettingsPanel : MonoBehaviour {
@@ -8,15 +8,13 @@ public class SettingsPanel : MonoBehaviour {
     public GameObject SPPanel;
     public Dropdown GQSetting;
     public Slider Volume;
-    public AudioSource Music;
-    public Toggle MenuMusic;
+    public Slider Music;
     public bool credits = false;
-    
+    public AudioMixer mixer;
 	// Use this for initialization
 	void Start () {
         if (credits) return;
         LoadSettings();
-        if(Music!=null)MenuMusic.isOn = Music.volume != 0;
 	}
 	
 	// Update is called once per frame
@@ -49,20 +47,31 @@ public class SettingsPanel : MonoBehaviour {
     {
         PlayerPrefs.SetInt("GQ", GQSetting.value);
         PlayerPrefs.SetFloat("Vo", Volume.normalizedValue);
+        PlayerPrefs.SetInt("MuVo", (int)Music.value);
         PlayerPrefs.Save();
+    }
+
+    public void OnVolumeChanged()
+    {
+        AudioListener.volume = Volume.normalizedValue;
+    }
+
+    public void OnMusicChanged()
+    {
+        mixer.SetFloat("AmbientVolume",Music.value);
     }
 
     public void LoadSettings()
     {
         if(PlayerPrefs.HasKey("GQ")) GQSetting.value = PlayerPrefs.GetInt("GQ");
         if (PlayerPrefs.HasKey("Vo")) Volume.normalizedValue = PlayerPrefs.GetFloat("Vo");
+        if (PlayerPrefs.HasKey("MuVo")) Music.value = PlayerPrefs.GetInt("MuVo");
     }
 
     public void Apply()
     {
         QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("GQ"));
         AudioListener.volume = PlayerPrefs.GetFloat("Vo");
-        if(Music!=null)
-        Music.volume = MenuMusic.isOn ? 1 : 0;
+        mixer.SetFloat("AmbientVolume", PlayerPrefs.GetInt("MuVo"));
     }
 }

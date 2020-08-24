@@ -1,8 +1,9 @@
-﻿
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class BuyUT : BuyPanel {
 
+    public Transform upgradePanels;
 
     public override void OnPressedBuy()
     {
@@ -10,6 +11,10 @@ public class BuyUT : BuyPanel {
         PlayerData.upgradeTokens += 1;
         PlayerData.coins -= price;
         Refresh();
+        foreach (UpgradePanel up in upgradePanels.GetComponentsInChildren<UpgradePanel>())
+        {
+            up.RefreshPanel();
+        }
         base.OnPressedBuy();
     }
 

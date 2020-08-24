@@ -5,7 +5,7 @@ public class UpgradePanel : MonoBehaviour {
 
     public byte vehicleIndex;
     public int upgradeIndex;
-
+    public BuyUT buyUT;
     public byte tokens = 4;
     public Button upgradeButton;
     public Text btnText;
@@ -31,9 +31,10 @@ public class UpgradePanel : MonoBehaviour {
             up.RefreshPanel();
         }
         Refresh();
+        buyUT.RefreshPanel();
     }
 
-    void RefreshPanel()
+    public void RefreshPanel()
     {
         if (tokens > PlayerData.upgradeTokens || CheckUpgrade())
         {
