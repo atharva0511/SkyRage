@@ -49,6 +49,8 @@ public class KnightDrone : Destructible {
 
     void OnEnable()
     {
+        lastDashed = Time.time;
+        lastHit = Time.time;
         if (Flare != null)
             Instantiate(Flare, transform.position, Quaternion.identity);
     }
@@ -58,12 +60,7 @@ public class KnightDrone : Destructible {
         if (Flare != null)
             Instantiate(Flare, transform.position, Quaternion.identity);
     }
-
-    void OnDestroy()
-    {
-        if (Flare != null)
-            Instantiate(Flare, transform.position, Quaternion.identity);
-    }
+    
     // Update is called once per frame
     void Update()
     {

@@ -10,6 +10,7 @@ public class HomingLauncher : Weapons {
     GameObject lockInstance;
     Collider tempCol =null;
     public float lockDuration = 2;
+    public float launchDist = 0;
     float lockTime = 3;
     public float damage = 150;
     Collider targetCol = null;
@@ -142,7 +143,7 @@ public class HomingLauncher : Weapons {
     {
         if (!equipped || wm.rockets<=0) return;
         lockTime = Time.time;
-        Projectile p = Instantiate(missileProjectile, transform.position+transform.right*(side?2.2f:-2.2f), Quaternion.LookRotation(transform.forward)).GetComponent<Projectile>();
+        Projectile p = Instantiate(missileProjectile, transform.position+transform.forward*launchDist+transform.right*(side?2.2f:-2.2f), Quaternion.LookRotation(transform.forward)).GetComponent<Projectile>();
         if (side) ps1.Play();
         else ps2.Play();
         side = !side;

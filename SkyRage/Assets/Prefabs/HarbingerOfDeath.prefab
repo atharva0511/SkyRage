@@ -3088,8 +3088,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.728622, y: 2.8590927, z: 11.176651}
-  m_Center: {x: 0.40872955, y: -1.7741432, z: 1.497078}
+  m_Size: {x: 3.8338146, y: 2.8307724, z: 11.176651}
+  m_Center: {x: -0.048740387, y: -1.7883034, z: 1.497078}
 --- !u!65 &65222892157118068
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -6368,6 +6368,7 @@ MonoBehaviour:
   missileProjectile: {fileID: 1385554840992526, guid: dd911b9626a79b345a10e793ceb4f7be,
     type: 2}
   lockDuration: 2
+  launchDist: 5
   damage: 50
   rend1: {fileID: 137567957267186290}
   rend2: {fileID: 137219815627931334}

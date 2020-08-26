@@ -385,7 +385,7 @@ Prefab:
     - target: {fileID: 114246901291897410, guid: adf50ff451471ea4caafdb77f6306d95,
         type: 2}
       propertyPath: infiniteRocket
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114333728176680602, guid: adf50ff451471ea4caafdb77f6306d95,
         type: 2}
@@ -1134,10 +1134,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radarRadius: 280
   stayOnRadar: 1
-  zone: 1
+  zoneType: 0
   zoneRadius: 0
   zoneMarker: {fileID: 876544044}
   spawner: {fileID: 1038767393}
+  multiPick: {fileID: 0}
 --- !u!114 &505632543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3406,6 +3407,11 @@ Prefab:
       propertyPath: ActivateOnCompletion.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114514437547834192, guid: 9095e62cacf8d73419d1a4ce0c7724d4,
+        type: 2}
+      propertyPath: ActivateOnCompletion.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4204498743063856, guid: 9095e62cacf8d73419d1a4ce0c7724d4, type: 2}
       propertyPath: m_LocalPosition.x
       value: -86.19072
@@ -3775,10 +3781,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radarRadius: 280
   stayOnRadar: 1
-  zone: 1
+  zoneType: 0
   zoneRadius: 0
   zoneMarker: {fileID: 1291426754}
   spawner: {fileID: 1491713482}
+  multiPick: {fileID: 0}
 --- !u!114 &1668356577
 MonoBehaviour:
   m_ObjectHideFlags: 0

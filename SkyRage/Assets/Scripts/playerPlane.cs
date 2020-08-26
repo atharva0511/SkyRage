@@ -71,7 +71,7 @@ public class playerPlane : Destructible {
         // pickups
         if (col.transform.CompareTag("Pickup"))
         {
-            col.enabled = false;
+            //col.enabled = false;
             Pickup pickup = col.GetComponent<Pickup>();
             pickup.Collect();
             if(pickup.type == Pickup.pickupType.health)
@@ -155,7 +155,6 @@ public class playerPlane : Destructible {
                 pickupAudio.Play();
                 Destroy(col.gameObject);
             }
-            if (pickup.isObjective) pickup.Collect();
         }
     }
 

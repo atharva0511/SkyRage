@@ -44,8 +44,6 @@ public class Enforcer : Destructible {
             this.difficulty = PlayerPrefs.GetInt("Difficulty");
         }
         radarMarker.gameObject.SetActive(true);
-        lastDashed = Time.time;
-        lastHit = Time.time;
         lastDisappeared = Time.time;
         if (GetComponentInParent<BotSpawner>() != null)
         {
@@ -58,6 +56,9 @@ public class Enforcer : Destructible {
 
     void OnEnable()
     {
+        lastDashed = Time.time;
+        lastHit = Time.time;
+        
         Instantiate(Flare, transform.position, Quaternion.identity);
     }
 
@@ -65,11 +66,7 @@ public class Enforcer : Destructible {
     {
         Instantiate(Flare, transform.position, Quaternion.identity);
     }
-
-    void OnDestroy()
-    {
-        Instantiate(Flare, transform.position, Quaternion.identity);
-    }
+    
     // Update is called once per frame
     void Update()
     {

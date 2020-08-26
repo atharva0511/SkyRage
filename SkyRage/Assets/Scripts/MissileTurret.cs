@@ -45,12 +45,7 @@ public class MissileTurret : Destructible {
         if (Flare != null)
             Instantiate(Flare, transform.position, Quaternion.identity);
     }
-
-    void OnDestroy()
-    {
-        if (Flare != null)
-            Instantiate(Flare, transform.position, Quaternion.identity);
-    }
+    
     // Update is called once per frame
     void Update () {
         if (stunned) return;

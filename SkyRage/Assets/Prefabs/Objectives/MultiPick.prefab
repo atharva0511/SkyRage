@@ -477,7 +477,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1568073698712116}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 93.3, y: -0, z: 47.7}
+  m_LocalPosition: {x: 173.64, y: -1.15, z: 156.25}
   m_LocalScale: {x: 100, y: 99.99992, z: 99.99992}
   m_Children:
   - {fileID: 4427364771592858}
@@ -505,7 +505,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1793193091239418}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 68.3, y: 0, z: 75.3}
+  m_LocalPosition: {x: 217.25, y: -1.64, z: -47.96}
   m_LocalScale: {x: 100, y: 99.99997, z: 99.99997}
   m_Children:
   - {fileID: 4552847095322798}
@@ -533,7 +533,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1450955782283554}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 47.3, y: -0, z: -65.1}
+  m_LocalPosition: {x: -160.8, y: -3.02, z: -159.99}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 4270660296889410}
@@ -561,7 +561,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1187592167075276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.2389417, y: 43.520344, z: -13.413777}
+  m_LocalPosition: {x: 764, y: 27.3, z: -374.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224683128684105204}
@@ -950,7 +950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isObjective: 1
   pickCount: 0
-  zoneRadius: 150
+  zoneRadius: 300
   showGizmo: 1
 --- !u!114 &114232070791692208
 MonoBehaviour:
@@ -1261,7 +1261,8 @@ MonoBehaviour:
   active: 0
   XP: 20
   completed: 0
-  DestroyOnCompletion: []
+  DestroyOnCompletion:
+  - {fileID: 1478355038816074}
   ActivateOnCompletion: []
   ObjectiveDescription: Find and collect 2 power cells
   eventSettings: {fileID: 0}

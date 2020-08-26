@@ -321,8 +321,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1629605565424776}
-  m_LocalRotation: {x: -0, y: 0.92387944, z: -0, w: 0.3826838}
-  m_LocalPosition: {x: -2659.5, y: 20.9, z: 1238.9}
+  m_LocalRotation: {x: -0, y: 0.70710635, z: -0, w: 0.7071072}
+  m_LocalPosition: {x: 2022.3, y: 189.93721, z: 664.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4062634861005110}
@@ -333,7 +333,7 @@ Transform:
   - {fileID: 4370326260884446}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 135, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!4 &4999727976731462
 Transform:
   m_ObjectHideFlags: 1
@@ -513,10 +513,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radarRadius: 280
   stayOnRadar: 1
-  zone: 0
+  zoneType: 0
   zoneRadius: 0
   zoneMarker: {fileID: 0}
   spawner: {fileID: 0}
+  multiPick: {fileID: 0}
 --- !u!114 &114014059345376786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -587,13 +588,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectiveType: 0
-  ObjectiveIndex: 0
+  ObjectiveIndex: 4
   active: 0
   XP: 20
   completed: 0
   DestroyOnCompletion: []
   ActivateOnCompletion: []
-  ObjectiveDescription: Leave the area via the Portal
+  ObjectiveDescription: Exit through the Portal
   eventSettings: {fileID: 0}
 --- !u!114 &114406834505390404
 MonoBehaviour:

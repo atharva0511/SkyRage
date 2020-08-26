@@ -51,6 +51,8 @@ public class MiniBot : Destructible {
 	
     void OnEnable()
     {
+        lastDashed = Time.time;
+        lastHit = Time.time;
         if (Flare != null)
             Instantiate(Flare, transform.position, Quaternion.identity);
     }
@@ -60,12 +62,7 @@ public class MiniBot : Destructible {
         if (Flare != null)
             Instantiate(Flare, transform.position, Quaternion.identity);
     }
-
-    void OnDestroy()
-    {
-        if (Flare != null)
-            Instantiate(Flare, transform.position, Quaternion.identity);
-    }
+    
 
 	// Update is called once per frame
 	void Update () {

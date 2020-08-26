@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1788319756237498}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 222.86441, y: 3.86, z: 77.65864}
+  m_LocalPosition: {x: 599.24835, y: 25.69, z: -370.2593}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
@@ -96,8 +96,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.037947536, y: 0.009508822, z: 0.046322595}
-  m_Center: {x: -0.00030143975, y: -0.0019346065, z: -0.00010288954}
+  m_Size: {x: 0.052717283, y: 0.009508822, z: 0.062107384}
+  m_Center: {x: 0.00031555176, y: -0.0019346065, z: -0.0008706868}
 --- !u!114 &114078014620253626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,7 +115,9 @@ MonoBehaviour:
   coins: 0
   rockets: 0
   homing: 0
+  xp: 10
   rotate: 1
+  picked: 0
   rotateBy: {x: 0, y: 0, z: 5}
   collectSound: {fileID: 8300000, guid: b9d8d7b5770e20f4094fbd7cedaf0109, type: 3}
 --- !u!122 &122255602648607408
