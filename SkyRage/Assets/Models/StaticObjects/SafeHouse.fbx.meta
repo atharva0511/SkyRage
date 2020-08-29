@@ -11,6 +11,7 @@ ModelImporter:
     400004: SafeHouse_LOD1
     2100000: SafeHouse
     2100002: Glow
+    2100004: Portal
     2300000: SafeHouse_LOD0
     2300002: SafeHouse_LOD1
     3300000: SafeHouse_LOD0
@@ -24,6 +25,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Glow
     second: {fileID: 2100000, guid: 6b211d1c01028aa40b6f6e12656ac94f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Portal
+    second: {fileID: 2100000, guid: f87ac22aad590704ea6bcdba9a184ab5, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

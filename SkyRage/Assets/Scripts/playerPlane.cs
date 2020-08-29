@@ -28,7 +28,7 @@ public class playerPlane : Destructible {
     public bool explodeOnDeath = false;
     public GameObject explosion;
     public float touchSens = 1f;
-
+    public Image crossHair;
     // Use this for initialization
     void Awake () {
         SetLifeDisp();
@@ -37,7 +37,7 @@ public class playerPlane : Destructible {
 	
 	// Update is called once per frame
 	void Update () {
-        // 3 ,22
+        // 3 ,22  -- camera position
         RaycastHit hit;
         if (Physics.Raycast(DisplayPos.position + 0.75f * transform.up, -transform.forward, out hit, 16, ~(1 << 2)))
         {
@@ -45,6 +45,20 @@ public class playerPlane : Destructible {
         }
         else
             cam.position = DisplayPos.position + 0.75f * transform.up - 16 * transform.forward;
+
+        // set crosshair color
+        if (crossHair == null) return;
+        if (Physics.Raycast(cam.position, cam.forward, out hit, 320, ~(1 << 2)))
+        {
+            if (hit.transform.GetComponentInParent<Destructible>() != null)
+            {
+                crossHair.color = new Color(1, 0, 0, 0.8f);
+            }
+            else
+                crossHair.color = new Color(1, 1, 1, 0.6f);
+        }
+        else
+            crossHair.color = new Color(1, 1, 1, 1);
 	}
 
 
@@ -285,5 +299,10 @@ public class playerPlane : Destructible {
         }
         yield return new WaitForSeconds(3f);
         FindObjectOfType<EventSettings>().PlayerDead();
+    }
+
+    public void SetTurnSensitivity(float s)
+    {
+        touchSens = s;
     }
 }

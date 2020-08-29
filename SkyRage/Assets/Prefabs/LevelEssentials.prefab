@@ -3708,7 +3708,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243830346077736060, guid: adcf580b09834de4d91b9cf5f02f16b2,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 8bb783c474d36894682843fbab300082, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c03a90f7398c5b340880fd3a8abb7138, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -4979,6 +4979,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentObjective: 0
   objectives:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -6335,8 +6338,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 224715396282586328}
   m_HandleRect: {fileID: 224244193966202390}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 0.5
+  m_MaxValue: 2.5
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
@@ -9300,8 +9303,10 @@ MonoBehaviour:
   GQSetting: {fileID: 114730216312758644}
   Volume: {fileID: 114085478149351228}
   Music: {fileID: 114164388140666248}
+  turnSens: {fileID: 114308525169306430}
   credits: 0
   mixer: {fileID: 24100000, guid: adcf580b09834de4d91b9cf5f02f16b2, type: 2}
+  eventSettings: {fileID: 114144603416077112}
 --- !u!114 &114730216312758644
 MonoBehaviour:
   m_ObjectHideFlags: 1

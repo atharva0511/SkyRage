@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.6050757, g: 0.625948, b: 0.6956972, a: 1}
+  m_IndirectSpecularColor: {r: 0.6052875, g: 0.6261272, b: 0.69588554, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -89,7 +89,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: a84a63799a74cb14ca969a32eb2c4615,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -1099,16 +1100,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 224268696255064874, guid: acaa54faaafeffc43958d8179fd205fb,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224299626556055260, guid: acaa54faaafeffc43958d8179fd205fb,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4827684229571498, guid: acaa54faaafeffc43958d8179fd205fb, type: 2}
       propertyPath: m_LocalPosition.x
       value: 2.4
@@ -1140,10 +1131,6 @@ Prefab:
     - target: {fileID: 4827684229571498, guid: acaa54faaafeffc43958d8179fd205fb, type: 2}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4827684229571498, guid: acaa54faaafeffc43958d8179fd205fb, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -90.00001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: acaa54faaafeffc43958d8179fd205fb, type: 2}
@@ -2855,7 +2842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c5508f27b8b664d98458fc786d773e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showGizmo: 1
+  showGizmo: 0
   botsLeft: 0
   IsObjective: 0
   objective: {fileID: 383387583}

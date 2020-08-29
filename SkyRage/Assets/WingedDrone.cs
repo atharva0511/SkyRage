@@ -45,7 +45,7 @@ public class WingedDrone : playerPlane {
         // upgrades
         dashfillRate = Upgrades.wDrone[0] ? 1 : 0.75f;
         thrustRechargeRate = Upgrades.wDrone[1] ? 0.05f : 0.04f;
-        maxHealth = Upgrades.wDrone[2] ? 150 : 100;
+        maxHealth = Upgrades.wDrone[2] ? 160 : 120;
         this.health = maxHealth;
     }
 

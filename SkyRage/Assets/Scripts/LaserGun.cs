@@ -19,8 +19,8 @@ public class LaserGun : Weapons {
 	// Use this for initialization
 	void Start () {
         //upgrades
-        this.damageRate = CheckUpgrade(5) ? 2.5f : 2;
-        this.chargeDuration = CheckUpgrade(6) ? 3 : 4;
+        this.damageRate = CheckUpgrade(5) ? 5 : 4;
+        this.chargeDuration = CheckUpgrade(6) ? 2 : 3;
 	}
 	
 	// Update is called once per frame

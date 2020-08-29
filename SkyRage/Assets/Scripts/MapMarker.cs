@@ -16,6 +16,12 @@ public class MapMarker : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindObjectOfType<EventSettings>().player;
+        if(GetComponentInParent<Objective>().objectiveType!=null) {
+            if(GetComponentInParent<Objective>().objectiveType == Objective.ObjectiveType.Destroy)
+            {
+                zoneType = ZoneType.spawner;
+            }
+        }
         if (zoneType == ZoneType.spawner)
         {
             zoneMarker.gameObject.SetActive(true);

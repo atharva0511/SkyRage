@@ -112,4 +112,9 @@ public class EventSettings : MonoBehaviour {
             }
         }
     }
+
+    public void SetTurnSens(float s)
+    {
+        character.SetTurnSensitivity(s);
+    }
 }

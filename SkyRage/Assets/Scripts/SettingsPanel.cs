@@ -9,14 +9,20 @@ public class SettingsPanel : MonoBehaviour {
     public Dropdown GQSetting;
     public Slider Volume;
     public Slider Music;
+    public Slider turnSens;
     public bool credits = false;
     public AudioMixer mixer;
+    public EventSettings eventSettings = null;
 	// Use this for initialization
 	void Start () {
         if (credits) return;
         LoadSettings();
 	}
 	
+    void OnEnable()
+    {
+        LoadSettings();
+    }
 	// Update is called once per frame
 	void Update () {
 		
@@ -48,6 +54,7 @@ public class SettingsPanel : MonoBehaviour {
         PlayerPrefs.SetInt("GQ", GQSetting.value);
         PlayerPrefs.SetFloat("Vo", Volume.normalizedValue);
         PlayerPrefs.SetInt("MuVo", (int)Music.value);
+        PlayerPrefs.SetFloat("TurnSens", turnSens.value);
         PlayerPrefs.Save();
     }
 
@@ -66,6 +73,7 @@ public class SettingsPanel : MonoBehaviour {
         if(PlayerPrefs.HasKey("GQ")) GQSetting.value = PlayerPrefs.GetInt("GQ");
         if (PlayerPrefs.HasKey("Vo")) Volume.normalizedValue = PlayerPrefs.GetFloat("Vo");
         if (PlayerPrefs.HasKey("MuVo")) Music.value = PlayerPrefs.GetInt("MuVo");
+        if (PlayerPrefs.HasKey("TurnSens")) turnSens.value = PlayerPrefs.GetFloat("TurnSens");
     }
 
     public void Apply()
@@ -73,5 +81,7 @@ public class SettingsPanel : MonoBehaviour {
         QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("GQ"));
         AudioListener.volume = PlayerPrefs.GetFloat("Vo");
         mixer.SetFloat("AmbientVolume", PlayerPrefs.GetInt("MuVo"));
+        if(eventSettings!=null)
+            eventSettings.SetTurnSens(PlayerPrefs.GetFloat("TurnSens"));
     }
 }

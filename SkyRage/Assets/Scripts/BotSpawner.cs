@@ -14,7 +14,6 @@ public class BotSpawner : MonoBehaviour {
     public GameObject Bots;
     float measureTime = 0;
     public bool DestroyOnComplete = true;
-    
     Transform player;
 	// Use this for initialization
 	void Start () {
@@ -61,7 +60,11 @@ public class BotSpawner : MonoBehaviour {
         }
         if (count == 0)
         {
-            if(IsObjective) objective.Completed();
+            if (IsObjective)
+            {
+                if (!objective.completed)
+                    objective.Completed();
+            }
             if (DestroyOnComplete) Destroy(this.gameObject,10);
         }
         botsLeft = count;

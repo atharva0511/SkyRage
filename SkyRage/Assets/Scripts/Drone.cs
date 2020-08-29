@@ -51,12 +51,12 @@ public class Drone : playerPlane {
             case 1:
                 dashfillRate = Upgrades.hod[0] ? 1 : 0.75f;
                 thrustRechargeRate = Upgrades.hod[1] ? 0.05f : 0.04f;
-                maxHealth = Upgrades.hod[2] ? 150 : 100;
+                maxHealth = Upgrades.hod[2] ? 160 : 120;
                 break;
             case 3:
                 dashfillRate = Upgrades.slayerX[0] ? 1 : 0.75f;
                 thrustRechargeRate = Upgrades.slayerX[1] ? 0.05f : 0.04f;
-                maxHealth = Upgrades.slayerX[2] ? 150 : 100;
+                maxHealth = Upgrades.slayerX[2] ? 150 : 110;
                 break;
         }
         this.health = maxHealth;

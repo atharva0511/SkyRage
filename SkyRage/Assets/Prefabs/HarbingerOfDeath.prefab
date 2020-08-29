@@ -920,8 +920,8 @@ GameObject:
   m_Component:
   - component: {fileID: 224181373819149320}
   - component: {fileID: 222140081067981850}
-  - component: {fileID: 114963589276879586}
   - component: {fileID: 114496560698884414}
+  - component: {fileID: 114112378276603334}
   m_Layer: 0
   m_Name: Crosshair
   m_TagString: Untagged
@@ -2315,8 +2315,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1473337645323258}
-  m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 5.407647, y: 44.12247, z: -0.15}
+  m_LocalRotation: {x: -0, y: 0.0000004768371, z: -0, w: 1}
+  m_LocalPosition: {x: 188.6, y: 2.21, z: 57.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4653524199764742}
@@ -2336,7 +2336,7 @@ Transform:
   - {fileID: 4360613745444542}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4828743136511140
 Transform:
   m_ObjectHideFlags: 1
@@ -3096,7 +3096,7 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1233747377735662}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 72b0cb958bcc074439d1bd2ab1e229eb, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -3212,10 +3212,11 @@ AudioSource:
   m_GameObject: {fileID: 1398966609267076}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243882105725010128, guid: adcf580b09834de4d91b9cf5f02f16b2,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: f1fa78c409ee9704598f300b09f6117d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3310,7 +3311,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 0.8
   Loop: 0
   Mute: 0
@@ -3319,9 +3320,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 400
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -3354,7 +3355,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3785,7 +3786,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 0.8
   Loop: 0
   Mute: 0
@@ -3794,9 +3795,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 400
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -3829,7 +3830,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -4413,6 +4414,33 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 84487d73ca4b791498332d8f6858417f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!114 &114112378276603334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1524804602262508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 8ac1b5b919c6362429feaedf863e5252, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5233,7 +5261,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1524804602262508}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -5297,7 +5325,7 @@ MonoBehaviour:
   dispSpread: 0
   spreadDisp: {fileID: 0}
   wm: {fileID: 114379317768563164}
-  crossHair: {fileID: 114963589276879586}
+  crossHair: {fileID: 0}
 --- !u!114 &114513233758131678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5811,9 +5839,10 @@ MonoBehaviour:
   explodeOnDeath: 0
   explosion: {fileID: 1601772686248290, guid: 041582a7bb2a622428971c33a002da0a, type: 2}
   touchSens: 1
+  crossHair: {fileID: 114112378276603334}
   On: 1
   maxThrust: 80
-  fanThrust: 20
+  fanThrust: 25
   hoverHeight: 1
   turnSens: 1
   lives: 0
@@ -6002,7 +6031,7 @@ MonoBehaviour:
   dispSpread: 1
   spreadDisp: {fileID: 114890400329863358}
   wm: {fileID: 114379317768563164}
-  crossHair: {fileID: 114963589276879586}
+  crossHair: {fileID: 0}
 --- !u!114 &114772488912504354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6571,32 +6600,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114963589276879586
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1524804602262508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.4627451}
-  m_RaycastTarget: 0
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 84487d73ca4b791498332d8f6858417f, type: 3}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
 --- !u!114 &114972267265886508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7010,7 +7013,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: d5880961178239a45894a798785032f9, type: 2}
-  - {fileID: 2100000, guid: 99e5db163a3e2404697a5440a5def004, type: 2}
+  - {fileID: 2100000, guid: c14d9fd2426e4f14ea34a576499da725, type: 2}
   - {fileID: 2100000, guid: 433721c0eb4172941b2d6d8a82fd75c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -7063,7 +7066,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: d5880961178239a45894a798785032f9, type: 2}
-  - {fileID: 2100000, guid: 99e5db163a3e2404697a5440a5def004, type: 2}
+  - {fileID: 2100000, guid: c14d9fd2426e4f14ea34a576499da725, type: 2}
   - {fileID: 2100000, guid: 433721c0eb4172941b2d6d8a82fd75c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -7164,7 +7167,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: d5880961178239a45894a798785032f9, type: 2}
-  - {fileID: 2100000, guid: 99e5db163a3e2404697a5440a5def004, type: 2}
+  - {fileID: 2100000, guid: c14d9fd2426e4f14ea34a576499da725, type: 2}
   - {fileID: 2100000, guid: c1dd7639bbdebc444acd18bc9b0727f3, type: 2}
   - {fileID: 2100000, guid: 433721c0eb4172941b2d6d8a82fd75c2, type: 2}
   m_StaticBatchInfo:
@@ -40202,7 +40205,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 5, y: 5}
+  m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224191687728368640
 RectTransform:

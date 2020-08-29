@@ -10,8 +10,8 @@ public class GamePanel : MonoBehaviour {
     public GameObject SPMenu;
     public GameObject CustmPanel;
     public GameObject errorPanel;
-    public GameObject UpgradePanel0;
-    public GameObject LevelPanel0;
+    public GameObject[] UpgradePanel;
+    public GameObject[] LevelPanel;
 	// Use this for initialization
 	void Start () {
 		
@@ -33,22 +33,22 @@ public class GamePanel : MonoBehaviour {
     public void PressPlay()
     {
         // use switch for different vehicles;
-        LevelPanel0.SetActive(true);
+        LevelPanel[menu.selectionIndex].SetActive(true);
         GameMenu.SetActive(false);
         SinglePlayerPanel.SetActive(false);
     }
 
     public void PressUpgrade()
     {
-        UpgradePanel0.SetActive(true);
+        UpgradePanel[menu.selectionIndex].SetActive(true);
         GameMenu.SetActive(false);
     }
 
     public void BackToPlayPanel()
     {
         SinglePlayerPanel.SetActive(true);
-        UpgradePanel0.SetActive(false);
-        LevelPanel0.SetActive(false);
+        UpgradePanel[menu.selectionIndex].SetActive(false);
+        LevelPanel[menu.selectionIndex].SetActive(false);
         GameMenu.SetActive(true);
     }
 
@@ -69,5 +69,13 @@ public class GamePanel : MonoBehaviour {
     {
         Upgrades.Reset();
         PlayerData.ResetData();
+    }
+
+    public void UnlockLevels()
+    {
+        for(int i = 0; i < PlayerData.levelProgression.Length; i++)
+        {
+            PlayerData.levelProgression[i] = 5;
+        }
     }
 }

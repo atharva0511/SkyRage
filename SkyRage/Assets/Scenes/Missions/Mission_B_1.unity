@@ -434,6 +434,11 @@ Prefab:
       propertyPath: m_CullingMask.m_Bits
       value: 2048
       objectReference: {fileID: 0}
+    - target: {fileID: 82584018042366440, guid: f9f9fc7a56c1b6d4292654b922541873,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8bb783c474d36894682843fbab300082, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9f9fc7a56c1b6d4292654b922541873, type: 2}
   m_IsPrefabParent: 0
@@ -1519,16 +1524,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 224268696255064874, guid: acaa54faaafeffc43958d8179fd205fb,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224299626556055260, guid: acaa54faaafeffc43958d8179fd205fb,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4827684229571498, guid: acaa54faaafeffc43958d8179fd205fb, type: 2}
       propertyPath: m_LocalPosition.x
       value: 188.6
@@ -1559,10 +1554,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4827684229571498, guid: acaa54faaafeffc43958d8179fd205fb, type: 2}
       propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4827684229571498, guid: acaa54faaafeffc43958d8179fd205fb, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
