@@ -3951,6 +3951,11 @@ Prefab:
       propertyPath: objectives.Array.data[4]
       value: 
       objectReference: {fileID: 1529897003}
+    - target: {fileID: 82584018042366440, guid: f9f9fc7a56c1b6d4292654b922541873,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3a16cd8734b918f4f91c3ff44d7023ba, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9f9fc7a56c1b6d4292654b922541873, type: 2}
   m_IsPrefabParent: 0
@@ -11023,6 +11028,7 @@ MonoBehaviour:
   appearDistance: 550
   disappearDistance: 650
   Bots: {fileID: 159284298}
+  DestroyOnComplete: 1
 --- !u!114 &1733619457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11236,10 +11242,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radarRadius: 280
   stayOnRadar: 1
-  zone: 1
+  zoneType: 0
   zoneRadius: 0
   zoneMarker: {fileID: 1682230703}
   spawner: {fileID: 1733619456}
+  multiPick: {fileID: 0}
 --- !u!114 &1785805460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11786,6 +11793,7 @@ MonoBehaviour:
   Rb: {fileID: 1900648199}
   fireAudio: {fileID: 1900648197}
   laserBeam: {fileID: 1580974896341714, guid: 33c63dd491e89374b89080ca1d02c339, type: 2}
+  Flare: {fileID: 0}
   baseDamage: 3
   turnSpeed: 1
 --- !u!54 &1900648199

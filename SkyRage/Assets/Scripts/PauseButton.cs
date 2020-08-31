@@ -13,8 +13,14 @@ public class PauseButton : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void FixedUpdate () {
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                PressedPause();
+            }
+        }
 	}
 
     public void PressedPause()

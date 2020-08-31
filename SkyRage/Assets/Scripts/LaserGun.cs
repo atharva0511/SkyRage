@@ -20,7 +20,7 @@ public class LaserGun : Weapons {
 	void Start () {
         //upgrades
         this.damageRate = CheckUpgrade(5) ? 5 : 4;
-        this.chargeDuration = CheckUpgrade(6) ? 2 : 3;
+        this.chargeDuration = CheckUpgrade(6) ? 3 : 4;
 	}
 	
 	// Update is called once per frame

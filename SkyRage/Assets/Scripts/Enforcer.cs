@@ -233,6 +233,6 @@ public class Enforcer : Destructible {
         p.damage = 5 + 2 * difficulty;
         p.target = this.target;
         p.turnRate = 40;
-        p.speed = 50 + 20 * difficulty;
+        p.speed = 70 + 10 * difficulty;
     }
 }

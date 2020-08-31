@@ -240,7 +240,7 @@ MonoBehaviour:
   completed: 0
   DestroyOnCompletion: []
   ActivateOnCompletion: []
-  ObjectiveDescription: Proceed to the marked location
+  ObjectiveDescription: Proceed through the tunnel.
   eventSettings: {fileID: 0}
   arrow: {fileID: 1686178043727928, guid: c755a7edff9a08b40b2048d9a8c333f5, type: 2}
   targetMarker: {fileID: 1474045352606876, guid: bd4b7794237d37f48a8d5774d349d7b3,
