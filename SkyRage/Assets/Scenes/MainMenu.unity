@@ -240,6 +240,22 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1112826230990606, guid: c2b0a96c425dd834484bccd99664d902, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1982796458726218, guid: c2b0a96c425dd834484bccd99664d902, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546729734493310, guid: c2b0a96c425dd834484bccd99664d902, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188544117179342, guid: c2b0a96c425dd834484bccd99664d902, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c2b0a96c425dd834484bccd99664d902, type: 2}
   m_IsPrefabParent: 0
@@ -485,7 +501,7 @@ Prefab:
       objectReference: {fileID: 1427301974}
     - target: {fileID: 1705999289459860, guid: 2a235f34c7c266b4da02321df0536042, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224203821475366994, guid: 2a235f34c7c266b4da02321df0536042,
         type: 2}

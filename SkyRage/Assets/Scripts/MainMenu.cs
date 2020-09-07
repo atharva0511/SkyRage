@@ -69,7 +69,7 @@ public class MainMenu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        RenderSettings.skybox.SetFloat("_Rotation", Time.time * 0.6f);
+        RenderSettings.skybox.SetFloat("_Rotation", Time.time * 0.9f);
     }
 
     public void PlayAudio(bool heavy = false)

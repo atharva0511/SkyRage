@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EventSettings : MonoBehaviour {
 
+    public enum GameMode {campaign,arcade};
+    public GameMode gameMode = GameMode.campaign;
+
     public int currentObjective = 0;
     public Objective[] objectives;
 
@@ -46,11 +49,11 @@ public class EventSettings : MonoBehaviour {
         currentObjective += 1;
         if (currentObjective < objectives.Length)
         {
-            if (objectives[currentObjective] == null)
-            {
-                NextObjective();
-                return;
-            }
+            //if (objectives[currentObjective] == null)
+            //{
+            //    NextObjective();
+            //    return;
+            //}
             objectives[currentObjective].gameObject.SetActive(true);
             objectives[currentObjective].Activate();
             if (objectives[currentObjective].completed)

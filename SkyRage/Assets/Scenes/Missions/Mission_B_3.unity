@@ -1239,7 +1239,7 @@ MonoBehaviour:
   completed: 0
   DestroyOnCompletion: []
   ActivateOnCompletion: []
-  ObjectiveDescription: Proceed to the marked location
+  ObjectiveDescription: Proceed throught the checkpoints.
   eventSettings: {fileID: 1415784901}
   arrow: {fileID: 1686178043727928, guid: c755a7edff9a08b40b2048d9a8c333f5, type: 2}
   targetMarker: {fileID: 1474045352606876, guid: bd4b7794237d37f48a8d5774d349d7b3,
@@ -15563,6 +15563,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4827684229571498, guid: acaa54faaafeffc43958d8179fd205fb, type: 2}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224299626556055260, guid: acaa54faaafeffc43958d8179fd205fb,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224268696255064874, guid: acaa54faaafeffc43958d8179fd205fb,
+        type: 2}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
