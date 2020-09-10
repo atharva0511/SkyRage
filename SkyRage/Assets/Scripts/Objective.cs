@@ -42,7 +42,6 @@ public class Objective : MonoBehaviour {
     public void Activate()
     {
         eventSettings.SetDesc(ObjectiveDescription);
-        
     }
     
 }

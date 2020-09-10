@@ -18,6 +18,9 @@ public class EventSettings : MonoBehaviour {
     [Header("Music")]
     public bool constMusic = false;
     public AudioMixer audioMixer;
+
+    [Header("Arcade")]
+    public ArcadeManager arcadeManager;
     // Use this for initialization
     void Awake()
     {
@@ -28,7 +31,8 @@ public class EventSettings : MonoBehaviour {
         Time.timeScale = 1;
         Application.targetFrameRate = 60;
         objectives[0].Activate();
-        RadarCamera.SetScreenMarker(objectives[0]);
+        if(objectives[0].objectiveType != Objective.ObjectiveType.Checkpoints)
+            RadarCamera.SetScreenMarker(objectives[0]);
         character = player.GetComponent<playerPlane>();
         StartCoroutine(SetMusic(false));
 	}
@@ -70,7 +74,13 @@ public class EventSettings : MonoBehaviour {
         }
         else
         {
-            Finished();
+            if(gameMode == GameMode.campaign)
+                Finished();
+            else if(gameMode == GameMode.arcade)
+            {
+                arcadeManager.NextPreset();
+                currentObjective = 0;
+            }
         }
         
     }

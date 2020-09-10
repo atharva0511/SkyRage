@@ -27,7 +27,7 @@ public class Blimp : Destructible {
         }
         Instantiate(blast, transform.position, Quaternion.identity);
         StartCoroutine(SpawnPickups());
-        Destroy(this.gameObject, 4);
+        //Destroy(this.gameObject, 4);
     }
 
     public IEnumerator SpawnPickups()
@@ -38,7 +38,7 @@ public class Blimp : Destructible {
         {
             dirs[i] = new Vector3(Random.value, Random.value, Random.value);
             dirs[i] = transform.position+20*(2*Random.value-1)*dirs[i].normalized;
-            picks[i] = Instantiate(pickups[i], transform.position, Quaternion.identity);
+            picks[i] = Instantiate(pickups[i], transform.position, Quaternion.identity,this.transform);
         }
 
         float startTime = Time.time;

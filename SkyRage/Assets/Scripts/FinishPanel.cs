@@ -16,6 +16,7 @@ public class FinishPanel : MonoBehaviour {
     public Button coinAdButton;
     public Button lifeAdButton;
     public Button utAdButton;
+    public bool arcade = false;
 	// Use this for initialization
 	void Start () {
         uiSettings.PauseAudio();
@@ -36,19 +37,22 @@ public class FinishPanel : MonoBehaviour {
     public void ProceedToMenu()
     {
         PlayerPrefs.SetInt("SetMenu", 1);
-        string[] mission = SceneManager.GetActiveScene().name.Split('_');
-        int i = 0;
-        switch (mission[1])
+        if (!arcade)
         {
-            case "A":i=0;break;
-            case "B": i = 1; break;
-            case "C": i = 2; break;
-            case "D": i = 3; break;
-            default: i = 0;break;
-        }
-        if(int.Parse(mission[2])> PlayerData.levelProgression[i])
-        {
-            PlayerData.levelProgression[i] = int.Parse(mission[2]);
+            string[] mission = SceneManager.GetActiveScene().name.Split('_');
+            int i = 0;
+            switch (mission[1])
+            {
+                case "A": i = 0; break;
+                case "B": i = 1; break;
+                case "C": i = 2; break;
+                case "D": i = 3; break;
+                default: i = 0; break;
+            }
+            if (int.Parse(mission[2]) > PlayerData.levelProgression[i])
+            {
+                PlayerData.levelProgression[i] = int.Parse(mission[2]);
+            }
         }
         PlayerData.coins += int.Parse(coinText.text);
         PlayerData.SaveData();
@@ -58,19 +62,22 @@ public class FinishPanel : MonoBehaviour {
 
     public void SaveAndRestart()
     {
-        string[] mission = SceneManager.GetActiveScene().name.Split('_');
-        int i = 0;
-        switch (mission[1])
+        if (!arcade)
         {
-            case "A": i = 0; break;
-            case "B": i = 1; break;
-            case "C": i = 2; break;
-            case "D": i = 3; break;
-            default: i = 0; break;
-        }
-        if (int.Parse(mission[2]) > PlayerData.levelProgression[i])
-        {
-            PlayerData.levelProgression[i] = int.Parse(mission[2]);
+            string[] mission = SceneManager.GetActiveScene().name.Split('_');
+            int i = 0;
+            switch (mission[1])
+            {
+                case "A": i = 0; break;
+                case "B": i = 1; break;
+                case "C": i = 2; break;
+                case "D": i = 3; break;
+                default: i = 0; break;
+            }
+            if (int.Parse(mission[2]) > PlayerData.levelProgression[i])
+            {
+                PlayerData.levelProgression[i] = int.Parse(mission[2]);
+            }
         }
         PlayerData.coins += int.Parse(coinText.text);
         PlayerData.SaveData();

@@ -11,7 +11,14 @@ public class Portal : MonoBehaviour {
     public GameObject Flare;
 	// Use this for initialization
 	void Start () {
-		
+        Objective ob = GetComponent<Objective>();
+        if (ob != null)
+        {
+            if(ob.eventSettings.gameMode == EventSettings.GameMode.arcade){
+                destination.position = new Vector3(0, 100, 0);
+                destination.rotation = Quaternion.LookRotation(Vector3.forward);
+            }
+        }
 	}
 	
 	// Update is called once per frame

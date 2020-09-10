@@ -174,18 +174,21 @@ public class playerPlane : Destructible {
 
     public IEnumerator AddXP(int amount)
     {
-        float startTime = Time.time;
-        PlayerData.xp += amount;
-        xpInstance = Instantiate(xpCanvas, DisplayPos.position, Quaternion.LookRotation(DisplayPos.position-cam.position,cam.up), DisplayPos);
-        Text xpText = xpInstance.transform.GetChild(0).GetComponent<Text>();
-        xpText.text = "+ " + amount.ToString() + " xp";
-        xpText.CrossFadeAlpha(0, 1, false);
-        while (Time.time < startTime + 1)
+        if (amount != 0)
         {
-            xpInstance.transform.rotation = Quaternion.LookRotation(DisplayPos.position - cam.position, cam.up);
-            yield return null;
+            float startTime = Time.time;
+            PlayerData.xp += amount;
+            xpInstance = Instantiate(xpCanvas, DisplayPos.position, Quaternion.LookRotation(DisplayPos.position - cam.position, cam.up), DisplayPos);
+            Text xpText = xpInstance.transform.GetChild(0).GetComponent<Text>();
+            xpText.text = "+ " + amount.ToString() + " xp";
+            xpText.CrossFadeAlpha(0, 1, false);
+            while (Time.time < startTime + 1)
+            {
+                xpInstance.transform.rotation = Quaternion.LookRotation(DisplayPos.position - cam.position, cam.up);
+                yield return null;
+            }
+            Destroy(xpInstance);
         }
-        Destroy(xpInstance);
     }
 
     public void DisplayHealth()

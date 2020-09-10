@@ -38,6 +38,7 @@ public class TeslaShocker : MonoBehaviour {
             if (player!=null)
             {
                 targets.Add(player);
+                StartCoroutine(player.Stun(shockDuration));
             }
         }
         GameObject[] strikes = new GameObject[targets.Count];
@@ -61,17 +62,15 @@ public class TeslaShocker : MonoBehaviour {
                         strikes[i].SetActive(true);
                         strikes[i].transform.rotation = Quaternion.LookRotation(dir);
                         strikes[i].transform.localScale = new Vector3(strikes[i].transform.lossyScale.x, strikes[i].transform.lossyScale.y, dir.magnitude);
-                        targets[i].TakeDamage(Time.deltaTime *20* damage*Random.value,0);
+                        targets[i].TakeDamage(Time.deltaTime *4* damage*Random.value,0);
                     }
                     else
                     {
-                        Debug.Log("Lassan");
                         strikes[i].SetActive(false);
                     }
                 }
                 else
                 {
-                    Debug.Log("Lassan1");
                     strikes[i].SetActive(false);
                 }
             }

@@ -24,7 +24,7 @@ public class Pickup : MonoBehaviour {
             {
                 case 1: coins = Random.Range(10, 15);break;
                 case 2: coins = Random.Range(13, 18); break;
-                case 3: coins = Random.Range(16, 22); break;
+                case 3: coins = Random.Range(16, 20); break;
             }
             
         }

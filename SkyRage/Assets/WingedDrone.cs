@@ -98,12 +98,14 @@ public class WingedDrone : playerPlane {
 
     void MoveDrone(bool thrust, float hor, float ver, float turn, float lean, float upDown)
     {
+        Rb.AddForce(-Rb.mass * Physics.gravity);
+        if (stunned) return;
         //Hover above surface
         if (Physics.Raycast(transform.position, -transform.up, 0.5f + hoverHeight))
         {
             Rb.AddForce(transform.up * Rb.mass * 10);
         }
-        Rb.AddForce(-Rb.mass * Physics.gravity);
+        
         //Apply thrust
         Rb.AddForce(Rb.mass * transform.forward * ((thrust ? 40 : 0) + fanThrust * ver));
         Rb.AddForce(Rb.mass * transform.right * fanThrust * hor);
@@ -147,6 +149,7 @@ public class WingedDrone : playerPlane {
 
     public void PressDash()//bool mobileInput = true)
     {
+        if (dead || stunned) return;
         if (dashRefill.fillAmount < 1) return;
         if (true)
         {

@@ -141,7 +141,12 @@ public class UISettings : MonoBehaviour {
     public void PlayerDead()
     {
         Time.timeScale = 0;
-        DeadPanel.SetActive(true);
+        if(evSettings.gameMode== EventSettings.GameMode.arcade)
+        {
+            FinishPanel.SetActive(true);
+        }
+        else
+            DeadPanel.SetActive(true);
     }
 
     public void PauseAudio()
