@@ -24,7 +24,10 @@
 
 public static class GPGSIds
 {
-        public const string leaderboard_quadronearcade = "CgkIn6fgxcsQEAIQAA"; // <GPGSID>
+        public const string leaderboard_quadrone_arcade = "CgkIn6fgxcsQEAIQAA"; // <GPGSID>
+        public const string leaderboard_slayerx_arcade = "CgkIn6fgxcsQEAIQBA"; // <GPGSID>
+        public const string leaderboard_harbinger_of_death_arcade = "CgkIn6fgxcsQEAIQAg"; // <GPGSID>
+        public const string leaderboard_wingeddrone_arcade = "CgkIn6fgxcsQEAIQAw"; // <GPGSID>
 
 }
 

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class ArcadePreset : MonoBehaviour
@@ -11,7 +10,7 @@ public class ArcadePreset : MonoBehaviour
     public GameObject Life;
     ArcadeManager arcadeManager;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         eventHandler = FindObjectOfType<EventSettings>();
         foreach(Objective ob in objectives)

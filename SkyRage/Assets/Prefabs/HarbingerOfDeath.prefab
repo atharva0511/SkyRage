@@ -1542,7 +1542,7 @@ GameObject:
   - component: {fileID: 222519665813132350}
   - component: {fileID: 114707073190009854}
   - component: {fileID: 114486947591942368}
-  - component: {fileID: 114027830999943374}
+  - component: {fileID: 7148611302672427038}
   m_Layer: 5
   m_Name: DownButton
   m_TagString: Untagged
@@ -1650,7 +1650,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &114027830999943374
+--- !u!114 &7148611302672427038
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1659,13 +1659,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 1156197241537438}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ab98b66288df7b4fa182075f2f12bd6, type: 3}
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  axisName: UpDown
-  axisValue: -1
-  responseSpeed: 3
-  returnToCentreSpeed: 3
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114673922269294594}
+          m_MethodName: DownInput
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114673922269294594}
+          m_MethodName: DownInput
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1189446389886526
 GameObject:
   m_ObjectHideFlags: 0
@@ -22892,6 +22919,8 @@ MonoBehaviour:
   explosion: {fileID: 1601772686248290, guid: 041582a7bb2a622428971c33a002da0a, type: 3}
   touchSens: 1
   crossHair: {fileID: 114112378276603334}
+  upInput: 0
+  downInput: 0
   On: 1
   maxThrust: 80
   fanThrust: 25
@@ -36213,7 +36242,6 @@ GameObject:
   - component: {fileID: 4982885846846050}
   - component: {fileID: 20887597771168568}
   - component: {fileID: 124793462635136706}
-  - component: {fileID: 81021808313423952}
   m_Layer: 8
   m_Name: Camera
   m_TagString: MainCamera
@@ -36233,6 +36261,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4699177976841556}
+  - {fileID: 9131650630509247281}
   m_Father: {fileID: 4827684229571498}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -36281,14 +36310,6 @@ Camera:
   m_StereoSeparation: 0.022
 --- !u!124 &124793462635136706
 Behaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1862306781951000}
-  m_Enabled: 1
---- !u!81 &81021808313423952
-AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -36858,7 +36879,7 @@ GameObject:
   - component: {fileID: 222345638376950706}
   - component: {fileID: 114108729537613336}
   - component: {fileID: 114073639505390770}
-  - component: {fileID: 114513233758131678}
+  - component: {fileID: 3784452070332913255}
   m_Layer: 5
   m_Name: UpButton
   m_TagString: Untagged
@@ -36966,7 +36987,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &114513233758131678
+--- !u!114 &3784452070332913255
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -36975,13 +36996,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 1895622196125914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ab98b66288df7b4fa182075f2f12bd6, type: 3}
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  axisName: UpDown
-  axisValue: 1
-  responseSpeed: 3
-  returnToCentreSpeed: 3
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114673922269294594}
+          m_MethodName: UpInput
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114673922269294594}
+          m_MethodName: UpInput
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1901277392504738
 GameObject:
   m_ObjectHideFlags: 0
@@ -42676,3 +42724,42 @@ MonoBehaviour:
   spreadDisp: {fileID: 114890400329863358}
   wm: {fileID: 114379317768563164}
   crossHair: {fileID: 0}
+--- !u!1 &468266561031879837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9131650630509247281}
+  - component: {fileID: 3992690726570831941}
+  m_Layer: 8
+  m_Name: Listener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9131650630509247281
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468266561031879837}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4982885846846050}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!81 &3992690726570831941
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468266561031879837}
+  m_Enabled: 1

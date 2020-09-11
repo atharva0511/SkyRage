@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -87,7 +86,14 @@ public class UISettings : MonoBehaviour {
         FinishPanel.SetActive(false);
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().name));
     }
-    
+
+    public void LeaveArcade()
+    {
+        Debug.Log("Mission Completed");
+        Time.timeScale = 0;
+        FinishPanel.SetActive(true);
+    }
+
     IEnumerator LoadLevel(string sceneName)
     {
         PausePanel.SetActive(false);

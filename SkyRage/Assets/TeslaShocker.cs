@@ -38,13 +38,36 @@ public class TeslaShocker : MonoBehaviour {
             if (player!=null)
             {
                 targets.Add(player);
-                StartCoroutine(player.Stun(shockDuration));
+                
             }
         }
         GameObject[] strikes = new GameObject[targets.Count];
         for(int i = 0; i < targets.Count; i++)
         {
             strikes[i] = Instantiate(lightning,spherePos.position,Quaternion.identity);
+        }
+        for (int i = 0; i < strikes.Length; i++)
+        {
+            Vector3 dir = targets[i].transform.position - spherePos.position;
+            spherePos.rotation = Quaternion.LookRotation(dir);
+            dir = Quaternion.AngleAxis((2 * Random.value - 1) * spread, spherePos.up) * dir;
+            dir = Quaternion.AngleAxis((2 * Random.value - 1) * spread, spherePos.right) * dir;
+            RaycastHit hit;
+            if (Physics.Raycast(spherePos.position, targets[i].transform.position - spherePos.position, out hit, radius, layerMask))
+            {
+                if (hit.transform == targets[i].transform)
+                {
+                    StartCoroutine(targets[i].Stun(shockDuration));
+                }
+                else
+                {
+                    strikes[i].SetActive(false);
+                }
+            }
+            else
+            {
+                strikes[i].SetActive(false);
+            }
         }
         while (Time.time < startTime + shockDuration)
         {

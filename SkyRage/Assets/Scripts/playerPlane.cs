@@ -29,6 +29,9 @@ public class playerPlane : Destructible {
     public GameObject explosion;
     public float touchSens = 1f;
     public Image crossHair;
+    [HideInInspector]
+    public bool upInput = false;
+    public bool downInput = false;
     // Use this for initialization
     void Awake () {
         SetLifeDisp();
@@ -307,5 +310,15 @@ public class playerPlane : Destructible {
     public void SetTurnSensitivity(float s)
     {
         touchSens = s;
+    }
+
+    public void UpInput(bool up)
+    {
+        upInput = up;
+    }
+
+    public void DownInput(bool down)
+    {
+        downInput = down;
     }
 }

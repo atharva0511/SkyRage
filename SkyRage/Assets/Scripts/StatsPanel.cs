@@ -10,6 +10,7 @@ public class StatsPanel : MonoBehaviour {
     public Text lifeText;
     public Text levelText;
     public Image levelProgression;
+    public GameObject profileOptionsPanel;
 
     public static double[] xpProgress = new double[] {0,100,300,700,1500,2500,5000,7500,10000,12500,15000 };
 
@@ -63,5 +64,15 @@ public class StatsPanel : MonoBehaviour {
     {
         PlayerData.xp += 500;
         Refresh();
+    }
+
+    public void ClickedProfile()
+    {
+        if (profileOptionsPanel.active)
+        {
+            profileOptionsPanel.SetActive(false);
+        }
+        else
+            profileOptionsPanel.SetActive(true);
     }
 }

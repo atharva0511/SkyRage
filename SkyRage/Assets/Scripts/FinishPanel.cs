@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using GooglePlayGames;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -20,6 +19,11 @@ public class FinishPanel : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         uiSettings.PauseAudio();
+        if (arcade)
+        {
+            SetText(FindObjectOfType<playerPlane>().coins);
+            ScoreToLeaderBoard(int.Parse(coinText.text));
+        }
 	}
 	
 	// Update is called once per frame
@@ -115,5 +119,36 @@ public class FinishPanel : MonoBehaviour {
     public void ShowError()
     {
         errorPanel.SetActive(true);
+    }
+
+    public void OnShowLeaderBoard()
+    {
+        if (Social.localUser.authenticated)
+        {
+            PlayGamesPlatform.Instance.ShowLeaderboardUI();
+        }
+    }
+
+    public void ScoreToLeaderBoard(int score)
+    {
+        string[] ids = new string[] { GPGSIds.leaderboard_quadrone_arcade,GPGSIds.leaderboard_harbinger_of_death_arcade,GPGSIds.leaderboard_wingeddrone_arcade,GPGSIds.leaderboard_slayerx_arcade};
+        int index = 0;
+        if (PlayerPrefs.HasKey("vehicleIndex"))
+        {
+            index = PlayerPrefs.GetInt("vehicleIndex");
+        }
+        if (Social.localUser.authenticated)
+        {
+            Social.ReportScore(score, ids[index],(bool success)=> {
+                if (success)
+                {
+                    Debug.Log("score uploaded to leaderboard");
+                }
+                else
+                {
+                    Debug.Log("Error uploading score");
+                }
+            });
+        }
     }
 }

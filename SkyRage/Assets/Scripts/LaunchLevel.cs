@@ -19,16 +19,20 @@ public class LaunchLevel : MonoBehaviour {
         {
             GetComponent<Button>().interactable = true;
             lockImage.SetActive(false);
-            if (LevelIndex == PlayerData.levelProgression[i] + 1)
-                check.SetActive(false);
-            else
-                check.SetActive(true);
+            if (check != null)
+            {
+                if (LevelIndex == PlayerData.levelProgression[i] + 1)
+                    check.SetActive(false);
+                else
+                    check.SetActive(true);
+            }
         }
         else
         {
             lockImage.SetActive(true);
             GetComponent<Button>().interactable = false;
-            check.SetActive(false);
+            if(check!=null)
+                check.SetActive(false);
         }
 	}
 	

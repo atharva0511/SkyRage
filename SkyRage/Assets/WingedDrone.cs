@@ -76,7 +76,7 @@ public class WingedDrone : playerPlane {
         touchRot = Vector2.Lerp(touchRot, rot, Time.deltaTime * 8);
 
         //pass inputs
-        MoveDrone(thrust, joystick.Horizontal, joystick.Vertical, 6*Time.deltaTime * touchSens * touchRot.x, touchSens * 3*Time.deltaTime * touchRot.y, CrossPlatformInputManager.GetAxis("UpDown"));
+        MoveDrone(thrust, joystick.Horizontal, joystick.Vertical, 6*Time.deltaTime * touchSens * touchRot.x, touchSens * 3*Time.deltaTime * touchRot.y, upInput,downInput);
 
         //PC Input
         //if (Input.GetKeyDown(KeyCode.LeftShift)) PressDash(false);
@@ -96,7 +96,7 @@ public class WingedDrone : playerPlane {
         thrustParticle.emissionRate = thrust ? 8 : 0;
     }
 
-    void MoveDrone(bool thrust, float hor, float ver, float turn, float lean, float upDown)
+    void MoveDrone(bool thrust, float hor, float ver, float turn, float lean, bool up,bool down)
     {
         Rb.AddForce(-Rb.mass * Physics.gravity);
         if (stunned) return;
@@ -129,7 +129,7 @@ public class WingedDrone : playerPlane {
         transform.eulerAngles = new Vector3(camRot.x, camRot.y, 0);
 
         //UpDown
-        Rb.AddForce(Rb.mass * Vector3.up * 250 * upDown);
+        Rb.AddForce(Rb.mass * Vector3.up * 25 * ((up ? 1 : 0) + (down ? -1 : 0)));
 
         UpdateAnimator(turn, ver);
         UpdateAudio(hor, ver, thrust);

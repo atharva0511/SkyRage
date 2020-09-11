@@ -20,13 +20,18 @@ public class Pickup : MonoBehaviour {
 	void Start () {
         if (type == pickupType.coin)
         {
-            switch (PlayerPrefs.GetInt("Difficulty"))
+            if (PlayerPrefs.HasKey("Difficulty"))
             {
-                case 1: coins = Random.Range(10, 15);break;
-                case 2: coins = Random.Range(13, 18); break;
-                case 3: coins = Random.Range(16, 20); break;
+                switch (PlayerPrefs.GetInt("Difficulty"))
+                {
+                    case 1: coins = Random.Range(10, 15); break;
+                    case 2: coins = Random.Range(13, 18); break;
+                    case 3: coins = Random.Range(16, 20); break;
+                    default: coins = Random.Range(13, 18); break;
+                }
             }
-            
+            else
+                coins = Random.Range(13, 18);
         }
 	}
 	

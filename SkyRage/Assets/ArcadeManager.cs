@@ -38,6 +38,7 @@ public class ArcadeManager : MonoBehaviour {
 
         radarCamera.playerPlane = transform.GetChild(veh);
         eventSettings.player = transform.GetChild(veh);
+        EventSettings.currentPlayer = transform.GetChild(veh);
 
         NextPreset();
 	}

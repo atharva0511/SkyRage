@@ -40,11 +40,11 @@ public class WeaponManager : MonoBehaviour {
 
 	void Start () {
         //uncomment all while building 
-        //fire1Button.SetActive(false);
-        //fire2Button.SetActive(false);
+        fire1Button.SetActive(false);
+        fire2Button.SetActive(false);
         swap1Button.SetActive(true);
         swap2Button.SetActive(true);
-        //SetPossessions();
+        SetPossessions();
 	}
 	
 	// Update is called once per frame

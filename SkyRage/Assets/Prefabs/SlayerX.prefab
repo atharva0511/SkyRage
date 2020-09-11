@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 222335209423784900}
   - component: {fileID: 114179552169806416}
   - component: {fileID: 114738652948835554}
-  - component: {fileID: 114686204656861178}
+  - component: {fileID: 4490141006112985706}
   m_Layer: 5
   m_Name: DownButton
   m_TagString: Untagged
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &114686204656861178
+--- !u!114 &4490141006112985706
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,13 +129,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 1019890702281718}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ab98b66288df7b4fa182075f2f12bd6, type: 3}
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  axisName: UpDown
-  axisValue: -1
-  responseSpeed: 3
-  returnToCentreSpeed: 3
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114415223785178780}
+          m_MethodName: DownInput
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114415223785178780}
+          m_MethodName: DownInput
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1020720061770666
 GameObject:
   m_ObjectHideFlags: 0
@@ -20291,7 +20318,6 @@ GameObject:
   - component: {fileID: 4134962915868502}
   - component: {fileID: 20261236034846232}
   - component: {fileID: 124866406706471718}
-  - component: {fileID: 81650362065108038}
   m_Layer: 8
   m_Name: Camera
   m_TagString: MainCamera
@@ -20311,6 +20337,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4772099112671880}
+  - {fileID: 2432189775233487214}
   m_Father: {fileID: 4311573964776816}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20359,14 +20386,6 @@ Camera:
   m_StereoSeparation: 0.022
 --- !u!124 &124866406706471718
 Behaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1647702112248722}
-  m_Enabled: 1
---- !u!81 &81650362065108038
-AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -41592,6 +41611,8 @@ MonoBehaviour:
   explosion: {fileID: 1601772686248290, guid: 041582a7bb2a622428971c33a002da0a, type: 3}
   touchSens: 1
   crossHair: {fileID: 114264833369086138}
+  upInput: 0
+  downInput: 0
   On: 1
   maxThrust: 80
   fanThrust: 20
@@ -42069,7 +42090,7 @@ GameObject:
   - component: {fileID: 222476622589533494}
   - component: {fileID: 114294862414074888}
   - component: {fileID: 114808772315919318}
-  - component: {fileID: 114041600885430624}
+  - component: {fileID: 2618235638653676940}
   m_Layer: 5
   m_Name: UpButton
   m_TagString: Untagged
@@ -42177,7 +42198,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &114041600885430624
+--- !u!114 &2618235638653676940
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42186,13 +42207,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 1914391900233244}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ab98b66288df7b4fa182075f2f12bd6, type: 3}
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  axisName: UpDown
-  axisValue: 1
-  responseSpeed: 3
-  returnToCentreSpeed: 3
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114415223785178780}
+          m_MethodName: UpInput
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114415223785178780}
+          m_MethodName: UpInput
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1919300577305700
 GameObject:
   m_ObjectHideFlags: 0
@@ -43040,3 +43088,42 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &5003029838137902947
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2432189775233487214}
+  - component: {fileID: 2428949103379309595}
+  m_Layer: 8
+  m_Name: Listener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2432189775233487214
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5003029838137902947}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4134962915868502}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!81 &2428949103379309595
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5003029838137902947}
+  m_Enabled: 1
