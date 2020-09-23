@@ -27,7 +27,7 @@ public class HomingLauncher : Weapons {
     public int range = 300;
     public int rockets0 = 6;
     public int rockets1 = 12;
-    public int rcktSpeed = 120;
+    int rcktSpeed = 120;
 	// Use this for initialization
 	void Start () {
         rocketDisp.text = wm.rockets.ToString();

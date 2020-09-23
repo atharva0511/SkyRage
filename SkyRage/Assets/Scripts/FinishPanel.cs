@@ -127,6 +127,10 @@ public class FinishPanel : MonoBehaviour {
         {
             PlayGamesPlatform.Instance.ShowLeaderboardUI();
         }
+        else
+        {
+            ShowError();
+        }
     }
 
     public void ScoreToLeaderBoard(int score)
@@ -151,4 +155,12 @@ public class FinishPanel : MonoBehaviour {
             });
         }
     }
+
+    public void RateApp()
+    {
+        #if UNITY_ANDROID
+            Application.OpenURL("market://details?id=com.ExperienceInfinity.SkyRage");
+        #endif
+    }
+
 }

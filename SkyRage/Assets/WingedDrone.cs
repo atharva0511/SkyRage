@@ -24,7 +24,6 @@ public class WingedDrone : playerPlane {
     public AudioSource DashSound;
     public ParticleSystem thrustParticle;
     public Transform[] fans;
-    Rigidbody Rb;
     Animator anim;
     Vector2 touchRot = Vector2.zero;
     //public Transform cam;

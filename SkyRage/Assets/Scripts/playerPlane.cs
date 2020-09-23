@@ -32,6 +32,9 @@ public class playerPlane : Destructible {
     [HideInInspector]
     public bool upInput = false;
     public bool downInput = false;
+    public Rigidbody Rb;
+    public AudioSource collisionAudio;
+    public GameObject rubSpark;
     // Use this for initialization
     void Awake () {
         SetLifeDisp();
@@ -65,6 +68,26 @@ public class playerPlane : Destructible {
 	}
 
 
+    public void OnCollisionEnter(Collision col)
+    {
+        if (col.transform.GetComponentInParent<Rigidbody>() == null)
+        {
+            float damage = Mathf.Abs(Vector3.Dot(Rb.velocity, col.contacts[0].normal));
+            if (damage > 12)
+            {
+                TakeDamage(damage / 2.2f, 0);
+            }
+            if(Mathf.Abs(Vector3.Dot(Rb.velocity.normalized, col.contacts[0].normal)) < 0.6f)
+            {
+                Instantiate(rubSpark, col.contacts[0].point, Quaternion.identity);
+            }
+            collisionAudio.volume = Mathf.Clamp(damage / 15, 0, 1);
+            collisionAudio.pitch = Random.Range(1.6f, 1.8f);
+            collisionAudio.Play();
+        }
+    }
+
+
     void OnTriggerEnter(Collider col)
     {
         if (col.transform.CompareTag("Checkpoint"))
@@ -80,7 +103,6 @@ public class playerPlane : Destructible {
             else
             {
                 cpoints.Completed();
-                StartCoroutine(AddXP(cpoints.finishedXP));
             }
             Destroy(col.transform.GetChild(0).gameObject);
             Destroy(col.transform.gameObject, 1);

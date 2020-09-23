@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 224177673709262622}
   - component: {fileID: 222621461237920724}
   - component: {fileID: 114391324982126782}
-  m_Layer: 2
+  m_Layer: 11
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 224640062572432650}
   - component: {fileID: 222972469119447836}
   - component: {fileID: 114970762185457572}
-  m_Layer: 2
+  m_Layer: 11
   m_Name: Higher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 224444469068493100}
   - component: {fileID: 222114211278108046}
   - component: {fileID: 114770214284108418}
-  m_Layer: 2
+  m_Layer: 11
   m_Name: Lower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 114747959407954732}
   - component: {fileID: 114396987968497592}
   - component: {fileID: 114368652405976746}
-  m_Layer: 2
+  m_Layer: 11
   m_Name: TargetMarker
   m_TagString: Untagged
   m_Icon: {fileID: 0}

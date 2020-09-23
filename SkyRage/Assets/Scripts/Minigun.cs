@@ -12,7 +12,7 @@ public class Minigun : Weapons {
     public AudioClip fireAudio;
     public GameObject impact;
     public GameObject beamObject;
-    public float stability = 0.5f;
+    float stability = 0.3f;
     public float damage = 5;
     public float maxSpread = 4f;
     public float fireRate = 5;
@@ -20,6 +20,7 @@ public class Minigun : Weapons {
     public bool dispSpread = false;
     public Image spreadDisp;
     public WeaponManager wm;
+    bool maxHeated = false;
     //GameObject beamOb;
     //public LineRenderer beam;
     public RawImage crossHair;
@@ -40,6 +41,10 @@ public class Minigun : Weapons {
             spread = Mathf.Lerp(spread, 0, 2 * Time.deltaTime * stability);
             //AdjustCrosshair();
         }
+        else if(maxHeated)
+        {
+            maxHeated = false;
+        }
         if ((slot==1 && fire1)||(slot==2 && fire2))
         {
             if (Time.time > fireTime + (1 / fireRate))
@@ -56,7 +61,7 @@ public class Minigun : Weapons {
     
     public void Fire1()
     {
-        
+        if (maxHeated) return;
         muzzle.Play();
         PlayAudio(fireAudio, 2f, 0.5f);
         //Listen Fire Audio
@@ -97,7 +102,11 @@ public class Minigun : Weapons {
             StartCoroutine(Beam(400 * dir));
         }
 
-        spread += spread < maxSpread ? 0.15f : 0;
+        spread += spread < maxSpread ? 0.065f : 0;
+        if (spread >= 1)
+        {
+            maxHeated = true;
+        }
     }
 
     IEnumerator Beam(Vector3 target)

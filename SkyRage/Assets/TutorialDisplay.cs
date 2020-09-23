@@ -4,8 +4,10 @@ using UnityEngine;
 public class TutorialDisplay : MonoBehaviour {
 
     public bool shown = false;
+    public bool triggerShow = false;
     public GameObject TutorialPanel;
-
+    public bool timedDisplay = false;
+    public int displayTime = 4;
 	// Use this for initialization
 	void Awake () {
         int i = 0;
@@ -17,10 +19,13 @@ public class TutorialDisplay : MonoBehaviour {
             case "D": i = 3; break;
             default: i = 0; break;
         }
+
         if(PlayerData.levelProgression[i] >= int.Parse(SceneManager.GetActiveScene().name.Split('_')[2]))
         {
             shown = true;
         }
+        if(timedDisplay)
+            Invoke("ShowTutorial",displayTime);
     }
 	
 	// Update is called once per frame

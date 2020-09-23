@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class MainMenu : MonoBehaviour {
 
@@ -33,6 +34,8 @@ public class MainMenu : MonoBehaviour {
     public GameObject LockPanel;
     public StatsPanel statsPanel;
     public Button UnlockButton;
+    public AudioMixer mixer;
+    Coroutine camMotion = null;
 	// Use this for initialization
 
     void Awake()
@@ -125,6 +128,7 @@ public class MainMenu : MonoBehaviour {
         cpInstance = colorPanel.GetComponent<ColorPanel>();
         cpInstance.vehicleRenderer = podium.GetChild(selectionIndex).GetComponent<Customizable>().rends[0];
         cpInstance.materialIndex = podium.GetChild(selectionIndex).GetComponent<Customizable>().secColorIndex;
+        cpInstance.neon = podium.GetChild(selectionIndex).GetComponent<Customizable>().NeonLight;
     }
     public void ConfirmColor()
     {
@@ -159,11 +163,12 @@ public class MainMenu : MonoBehaviour {
     public IEnumerator ChangeCamPos(Transform camPos)
     {
         float startTime = Time.time;
-        while (Time.time < startTime + 2)
+        while (Time.time < startTime + 0.25f)
         {
-            cam.position = Vector3.Lerp(cam.position, camPos.position, (Time.time - startTime) / 2);
+            cam.position = Vector3.Lerp(cam.position, camPos.position, (Time.time - startTime) / 0.25f);
             yield return null;
         }
+        camMotion = null;
     }
 
     public void ChangeVehicle(bool right)
@@ -224,6 +229,7 @@ public class MainMenu : MonoBehaviour {
     {
         if(PlayerPrefs.HasKey("GQ"))QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("GQ"));
         if (PlayerPrefs.HasKey("Vo")) AudioListener.volume = PlayerPrefs.GetFloat("Vo");
+        if(PlayerPrefs.HasKey("MuVo")) mixer.SetFloat("AmbientVolume", PlayerPrefs.GetInt("MuVo"));
     }
 
     public void OpenSettings()
@@ -241,14 +247,21 @@ public class MainMenu : MonoBehaviour {
     {
         SPMenu.SetActive(false);
         PlayPanel.SetActive(true);
-        StartCoroutine(ChangeCamPos(camPos1));
-
+        if (camMotion != null)
+        {
+            StopCoroutine(camMotion);
+        }
+        camMotion = StartCoroutine(ChangeCamPos(camPos1));
     }
 
     public void ToMainMenu()
     {
         SPMenu.SetActive(true);
         PlayPanel.SetActive(false);
+        if (camMotion != null)
+        {
+            StopCoroutine(camMotion);
+        }
         StartCoroutine(ChangeCamPos(camPos0));
     }
 

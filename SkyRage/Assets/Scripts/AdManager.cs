@@ -14,7 +14,7 @@ public class AdManager : MonoBehaviour {
     RewardedAd customAd;
 
     string lifeAdID = "ca-app-pub-9623151168717383/1339739541";
-    string UTAdId = "ca-app-pub-9623151168717383/1152871437";
+    string UTAdID = "ca-app-pub-9623151168717383/1152871437";
     string coinAdID = "ca-app-pub-9623151168717383/4951040866";
     string customAdID = "ca-app-pub-9623151168717383/5759999153";
 
@@ -22,10 +22,14 @@ public class AdManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        this.lifeAd = CreateAndLoadRewardedAd(testVideoAdID);
-        this.UTAd = CreateAndLoadRewardedAd(testVideoAdID);
-        this.coinAd = CreateAndLoadRewardedAd(testVideoAdID);
-        this.customAd = CreateAndLoadRewardedAd(testVideoAdID);
+        lifeAd = CreateAndLoadRewardedAd(testVideoAdID);
+        UTAd = CreateAndLoadRewardedAd(testVideoAdID);
+        coinAd = CreateAndLoadRewardedAd(testVideoAdID);
+        customAd = CreateAndLoadRewardedAd(testVideoAdID);
+        //lifeAd = CreateAndLoadRewardedAd(lifeAdID);
+        //UTAd = CreateAndLoadRewardedAd(UTAdID);
+        //coinAd = CreateAndLoadRewardedAd(coinAdID);
+        //customAd = CreateAndLoadRewardedAd(customAdID);
     }
 	
 	// Update is called once per frame
@@ -40,9 +44,12 @@ public class AdManager : MonoBehaviour {
         rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
         rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
         rewardedAd.OnAdClosed += HandleRewardedAdClosed;
+        rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
+        rewardedAd.OnAdFailedToShow += HandleRewardedAdFailedToShow;
 
         // Create an empty ad request.
-        AdRequest request = new AdRequest.Builder().Build();
+        AdRequest request = new AdRequest.Builder().AddTestDevice(AdRequest.TestDeviceSimulator)
+            .AddTestDevice("338305FCF33DCCE2").AddTestDevice("342D62625C6B3CEE").Build();
         // Load the rewarded ad with the request.
         rewardedAd.LoadAd(request);
         return rewardedAd;
@@ -50,33 +57,61 @@ public class AdManager : MonoBehaviour {
     
     public void ShowLifeAd()
     {
-        if (this.lifeAd.IsLoaded())
+        if (lifeAd.IsLoaded())
         {
-            this.lifeAd.Show();
+            lifeAd.Show();
+        }
+        else
+        {
+            if (finishPanel != null)
+                finishPanel.ShowError();
+            else
+                gamePanel.ShowError();
         }
     }
 
     public void ShowUTAd()
     {
-        if (this.UTAd.IsLoaded())
+        if (UTAd.IsLoaded())
         {
-            this.UTAd.Show();
+            UTAd.Show();
+        }
+        else
+        {
+            if (finishPanel != null)
+                finishPanel.ShowError();
+            else
+                gamePanel.ShowError();
         }
     }
 
     public void ShowCoinAd()
     {
-        if (this.coinAd.IsLoaded())
+        if (coinAd.IsLoaded())
         {
-            this.coinAd.Show();
+            coinAd.Show();
+        }
+        else
+        {
+            if (finishPanel != null)
+                finishPanel.ShowError();
+            else
+                gamePanel.ShowError();
         }
     }
 
     public void ShowCustomAd()
     {
-        if (this.customAd.IsLoaded())
+        if (customAd.IsLoaded())
         {
-            this.customAd.Show();
+            customAd.Show();
+        }
+        else
+        {
+            if (finishPanel != null)
+                finishPanel.ShowError();
+            else
+                gamePanel.ShowError();
         }
     }
 
@@ -90,10 +125,7 @@ public class AdManager : MonoBehaviour {
         MonoBehaviour.print(
             "HandleRewardedAdFailedToLoad event received with message: "
                              + args.Message);
-        if (finishPanel != null)
-            finishPanel.ShowError();
-        else
-            gamePanel.ShowError();
+        
     }
 
     public void HandleRewardedAdOpening(object sender, EventArgs args)
@@ -106,16 +138,20 @@ public class AdManager : MonoBehaviour {
         MonoBehaviour.print(
             "HandleRewardedAdFailedToShow event received with message: "
                              + args.Message);
+        if (finishPanel != null)
+            finishPanel.ShowError();
+        else
+            gamePanel.ShowError();
     }
 
     public void HandleRewardedAdClosed(object sender, EventArgs args)
     {
         MonoBehaviour.print("HandleRewardedAdClosed event received");
         //###################################### load customize add again #######################################
-        this.lifeAd = CreateAndLoadRewardedAd(testVideoAdID);
-        this.UTAd = CreateAndLoadRewardedAd(testVideoAdID);
-        this.coinAd = CreateAndLoadRewardedAd(testVideoAdID);
-        this.customAd = CreateAndLoadRewardedAd(testVideoAdID);
+        lifeAd = CreateAndLoadRewardedAd(lifeAdID);
+        UTAd = CreateAndLoadRewardedAd(UTAdID);
+        coinAd = CreateAndLoadRewardedAd(coinAdID);
+        customAd = CreateAndLoadRewardedAd(customAdID);
     }
 
     public void HandleUserEarnedReward(object sender, Reward args)

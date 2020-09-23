@@ -7,6 +7,7 @@ public class ColorPanel : MonoBehaviour {
 
     public Renderer vehicleRenderer;
     public int materialIndex;
+    public Light neon = null;
     [HideInInspector]
     public Color initColor;
     public Slider selectR;
@@ -61,6 +62,10 @@ public class ColorPanel : MonoBehaviour {
         Material[] mats = vehicleRenderer.materials;
         mats[materialIndex].color = new Color(r, g, b);
         vehicleRenderer.materials = mats;
+        if (neon != null)
+        {
+            neon.color = new Color(r, g, b);
+        }
     }
 
     void SetPreviewColor(Color color)

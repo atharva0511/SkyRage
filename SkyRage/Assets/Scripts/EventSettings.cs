@@ -18,6 +18,7 @@ public class EventSettings : MonoBehaviour {
     [Header("Music")]
     public bool constMusic = false;
     public AudioMixer audioMixer;
+    public AudioClip finishMusic;
 
     [Header("Arcade")]
     public ArcadeManager arcadeManager;
@@ -45,6 +46,13 @@ public class EventSettings : MonoBehaviour {
     public void Finished()
     {
         uiSettings.OnFinish(character.coins);
+        if (arcadeManager == null)
+        {
+            transform.GetChild(0).GetComponent<AudioSource>().clip = finishMusic;
+            StartCoroutine(SetMusic(false));
+            transform.GetChild(0).GetComponent<AudioSource>().volume = 0.4f;
+            transform.GetChild(0).GetComponent<AudioSource>().Play();
+        }
     }
 
     public void NextObjective()
@@ -88,6 +96,12 @@ public class EventSettings : MonoBehaviour {
     public void PlayerDead()
     {
         uiSettings.PlayerDead();
+        //StartCoroutine(SetMusic(false));
+        if (arcadeManager == null)
+        {
+            audioMixer.SetFloat("AmbientVolume", -80);
+            audioMixer.SetFloat("CombatVolume", -80);
+        }
     }
 
     void LoadObjective(int index)
@@ -129,5 +143,15 @@ public class EventSettings : MonoBehaviour {
     public void SetTurnSens(float s)
     {
         character.SetTurnSensitivity(s);
+    }
+
+    IEnumerator lerpVolume(AudioSource music)
+    {
+        float startTime = Time.time;
+        while (Time.time < startTime + 3)
+        {
+            music.volume = Mathf.Lerp(0, 1, (Time.time - startTime) / 3); 
+            yield return null;
+        }
     }
 }

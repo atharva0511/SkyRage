@@ -24,7 +24,6 @@ public class Drone : playerPlane {
     public AudioSource DashSound;
     public ParticleSystem thrustParticle;
     public Transform[] fans;
-    Rigidbody Rb;
     Animator anim;
     Vector2 touchRot = Vector2.zero;
     //public Transform cam;
@@ -228,6 +227,7 @@ public class Drone : playerPlane {
         }
     }
 
+    
     /*void OnTriggerEnter(Collider col)
     {
         if (col.transform.CompareTag("Checkpoint"))
@@ -248,5 +248,5 @@ public class Drone : playerPlane {
             Destroy(col.transform.gameObject, 1);
         }
     }*/
-    
+
 }

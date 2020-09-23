@@ -7,22 +7,29 @@ public class GPGManager : MonoBehaviour
 {
     public static PlayGamesPlatform platform;
     public RawImage profileImage;
+    public GameObject ErrorPanel;
+    public Text userName;
     // Start is called before the first frame update
     void Start()
     {
         PlayGamesPlatform.DebugLogEnabled = true;
-        if(platform==null)
+        if (Social.localUser.authenticated || platform == null)
+        {
             platform = PlayGamesPlatform.Activate();
-
-        Social.Active.localUser.Authenticate(success => {
-            if (success)
+            Social.Active.localUser.Authenticate(success =>
             {
-                Debug.Log("Logged In");
-                StartCoroutine(LoadImage());
-            }
-            else
-                Debug.Log("Login failed");
-        });
+                if (success)
+                {
+                    Debug.Log("Logged In");
+                    StartCoroutine(LoadImage());
+                }
+                else
+                {
+                    Debug.Log("Login failed");
+
+                }
+            });
+        }
     }
 
     // Update is called once per frame
@@ -37,6 +44,10 @@ public class GPGManager : MonoBehaviour
         {
             PlayGamesPlatform.Instance.ShowLeaderboardUI();
         }
+        else
+        {
+            ErrorPanel.SetActive(true);
+        }
     }
 
 
@@ -47,11 +58,24 @@ public class GPGManager : MonoBehaviour
 
     public IEnumerator LoadImage()
     {
+        string name = Social.localUser.userName;
+        Debug.Log(name+" Logged In");
         while (Social.localUser.image == null)
         {
             yield return null;
+            Debug.Log("Getting profile image");
+        }
+        Debug.Log("Profile image loaded");
+        userName.text = Social.localUser.userName;
+        if (name.Length <= 15)
+        {
+            userName.fontSize = 20;
+        }
+        else
+        {
+            userName.fontSize = 16;
         }
         profileImage.color = new Color(1, 1, 1, 1);
-        profileImage.texture = Social.localUser.image;
+        profileImage.texture = Social.localUser.image as Texture;
     }
 }

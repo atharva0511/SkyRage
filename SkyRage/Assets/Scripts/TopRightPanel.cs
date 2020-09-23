@@ -16,7 +16,7 @@ public class TopRightPanel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        altitudeDisplay.fillAmount = playerPlane.position.y / maxAltitude;
-        altitudeValue.text = ((int)(playerPlane.position.y*2f + 5)).ToString() + " m";
+        altitudeDisplay.fillAmount = (playerPlane.position.y + 500) / maxAltitude;
+        altitudeValue.text = ((int)(playerPlane.position.y + 5)).ToString() + " m";
 	}
 }

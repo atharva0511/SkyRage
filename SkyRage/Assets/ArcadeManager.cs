@@ -49,12 +49,11 @@ public class ArcadeManager : MonoBehaviour {
         currentZone += 1;
         ChoosePreset();
         int choice = ChoosePreset();
-        while(currentPreset == presets[choice])
-        {
-            choice = ChoosePreset();
-        }
         Destroy(currentPreset);
         currentPreset = Instantiate(presets[choice]);
+        GameObject swap = presets[choice];
+        presets[choice] = presets[0];
+        presets[0] = swap;
         ArcadePreset ap = currentPreset.GetComponent<ArcadePreset>();
         eventSettings.objectives = ap.objectives;
         if (Random.value>0.5f)
