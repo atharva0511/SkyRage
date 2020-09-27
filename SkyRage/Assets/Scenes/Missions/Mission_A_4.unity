@@ -940,7 +940,7 @@ MonoBehaviour:
   objectiveType: 2
   ObjectiveIndex: 1
   active: 0
-  XP: 20
+  xpMultiplier: 1
   completed: 0
   DestroyOnCompletion:
   - {fileID: 700170369}
@@ -2000,7 +2000,7 @@ MonoBehaviour:
   objectiveType: 2
   ObjectiveIndex: 3
   active: 0
-  XP: 20
+  xpMultiplier: 1
   completed: 0
   DestroyOnCompletion:
   - {fileID: 836437781}
@@ -9943,7 +9943,7 @@ MonoBehaviour:
   objectiveType: 1
   ObjectiveIndex: 0
   active: 0
-  XP: 20
+  xpMultiplier: 1
   completed: 0
   DestroyOnCompletion: []
   ActivateOnCompletion:
@@ -11340,7 +11340,7 @@ MonoBehaviour:
   objectiveType: 2
   ObjectiveIndex: 0
   active: 0
-  XP: 20
+  xpMultiplier: 1
   completed: 0
   DestroyOnCompletion:
   - {fileID: 2015863962}
@@ -11770,6 +11770,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1133413080332532, guid: adf50ff451471ea4caafdb77f6306d95, type: 3}
+      propertyPath: m_Name
+      value: Drone
+      objectReference: {fileID: 0}
     - target: {fileID: 4051284848613394, guid: adf50ff451471ea4caafdb77f6306d95, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -11801,6 +11805,23 @@ PrefabInstance:
     - target: {fileID: 4051284848613394, guid: adf50ff451471ea4caafdb77f6306d95, type: 3}
       propertyPath: m_RootOrder
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051284848613394, guid: adf50ff451471ea4caafdb77f6306d95, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051284848613394, guid: adf50ff451471ea4caafdb77f6306d95, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -45.000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051284848613394, guid: adf50ff451471ea4caafdb77f6306d95, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224648639300423472, guid: adf50ff451471ea4caafdb77f6306d95,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adf50ff451471ea4caafdb77f6306d95, type: 3}

@@ -35,11 +35,36 @@ public class playerPlane : Destructible {
     public Rigidbody Rb;
     public AudioSource collisionAudio;
     public GameObject rubSpark;
+    [HideInInspector]
+    public Joystick joystick;
+    public Joystick fixedJoy;
+    public Joystick variableJoy;
     // Use this for initialization
     void Awake () {
         SetLifeDisp();
         SetUpgradeTokenDisp();
-	}
+        if (PlayerPrefs.HasKey("Joystick"))
+        {
+            if (PlayerPrefs.GetInt("Joystick") == 0)
+            {
+                variableJoy.gameObject.SetActive(true);
+                fixedJoy.gameObject.SetActive(false);
+                joystick = variableJoy;
+            }
+            else
+            {
+                variableJoy.gameObject.SetActive(false);
+                fixedJoy.gameObject.SetActive(true);
+                joystick = fixedJoy;
+            }
+        }
+        else
+        {
+            variableJoy.gameObject.SetActive(false);
+            fixedJoy.gameObject.SetActive(true);
+            joystick = fixedJoy;
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -332,6 +357,22 @@ public class playerPlane : Destructible {
     public void SetTurnSensitivity(float s)
     {
         touchSens = s;
+    }
+
+    public void SetJoystickType()
+    {
+        if (PlayerPrefs.GetInt("Joystick") == 0)
+        {
+            variableJoy.gameObject.SetActive(true);
+            fixedJoy.gameObject.SetActive(false);
+            joystick = variableJoy;
+        }
+        else
+        {
+            variableJoy.gameObject.SetActive(false);
+            fixedJoy.gameObject.SetActive(true);
+            joystick = fixedJoy;
+        }
     }
 
     public void UpInput(bool up)

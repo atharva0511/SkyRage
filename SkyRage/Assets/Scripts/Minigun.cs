@@ -102,7 +102,7 @@ public class Minigun : Weapons {
             StartCoroutine(Beam(400 * dir));
         }
 
-        spread += spread < maxSpread ? 0.065f : 0;
+        spread += spread < maxSpread ? 0.064f : 0;
         if (spread >= 1)
         {
             maxHeated = true;

@@ -411,6 +411,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1987398673, guid: 2a235f34c7c266b4da02321df0536042, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1427301974}
     - target: {fileID: 1260236024747150, guid: 2a235f34c7c266b4da02321df0536042, type: 3}
       propertyPath: m_Name
       value: MainMenu
@@ -445,11 +449,6 @@ PrefabInstance:
       propertyPath: podium
       value: 
       objectReference: {fileID: 639843485}
-    - target: {fileID: 114395096996714580, guid: 2a235f34c7c266b4da02321df0536042,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1427301974}
     - target: {fileID: 114511260479644128, guid: 2a235f34c7c266b4da02321df0536042,
         type: 3}
       propertyPath: vehicleRenderer

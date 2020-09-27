@@ -15,7 +15,7 @@ public class Drone : playerPlane {
     public Image dashRefill;
     public float thrustRechargeRate = 0.1f;
     
-    public Joystick joystick;
+    
     public LineRenderer thrustR;
     public LineRenderer thrustL;
     public LineRenderer thrustB;

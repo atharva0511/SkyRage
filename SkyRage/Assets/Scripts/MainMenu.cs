@@ -202,7 +202,7 @@ public class MainMenu : MonoBehaviour {
         else
         {
             LockPanel.transform.GetChild(0).gameObject.SetActive(true);
-            LockPanel.transform.GetChild(0).GetComponent<Text>().text = "Pilot Level "+ podium.GetChild(selectionIndex).GetComponent<Customizable>().pilotLevel.ToString()+ "   Required";
+            LockPanel.transform.GetChild(0).GetComponent<Text>().text = "Player Level "+ podium.GetChild(selectionIndex).GetComponent<Customizable>().pilotLevel.ToString()+ "   Required";
         }
         for (int i = 0; i < podium.childCount; i++)
         {

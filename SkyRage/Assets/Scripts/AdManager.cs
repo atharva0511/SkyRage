@@ -22,14 +22,21 @@ public class AdManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        lifeAd = CreateAndLoadRewardedAd(testVideoAdID);
-        UTAd = CreateAndLoadRewardedAd(testVideoAdID);
-        coinAd = CreateAndLoadRewardedAd(testVideoAdID);
-        customAd = CreateAndLoadRewardedAd(testVideoAdID);
-        //lifeAd = CreateAndLoadRewardedAd(lifeAdID);
-        //UTAd = CreateAndLoadRewardedAd(UTAdID);
-        //coinAd = CreateAndLoadRewardedAd(coinAdID);
-        //customAd = CreateAndLoadRewardedAd(customAdID);
+        //lifeAd = CreateAndLoadRewardedAd(testVideoAdID);
+        //UTAd = CreateAndLoadRewardedAd(testVideoAdID);
+        //coinAd = CreateAndLoadRewardedAd(testVideoAdID);
+        //customAd = CreateAndLoadRewardedAd(testVideoAdID);
+        lifeAd = CreateAndLoadRewardedAd(lifeAdID);
+        UTAd = CreateAndLoadRewardedAd(UTAdID);
+        coinAd = CreateAndLoadRewardedAd(coinAdID);
+        if (customAd == null)
+        {
+            customAd = CreateAndLoadRewardedAd(customAdID);
+        }
+        else if (!customAd.IsLoaded())
+        {
+            customAd = CreateAndLoadRewardedAd(customAdID);
+        }
     }
 	
 	// Update is called once per frame
@@ -125,7 +132,6 @@ public class AdManager : MonoBehaviour {
         MonoBehaviour.print(
             "HandleRewardedAdFailedToLoad event received with message: "
                              + args.Message);
-        
     }
 
     public void HandleRewardedAdOpening(object sender, EventArgs args)
@@ -148,10 +154,17 @@ public class AdManager : MonoBehaviour {
     {
         MonoBehaviour.print("HandleRewardedAdClosed event received");
         //###################################### load customize add again #######################################
-        lifeAd = CreateAndLoadRewardedAd(lifeAdID);
-        UTAd = CreateAndLoadRewardedAd(UTAdID);
-        coinAd = CreateAndLoadRewardedAd(coinAdID);
-        customAd = CreateAndLoadRewardedAd(customAdID);
+        //lifeAd = CreateAndLoadRewardedAd(testVideoAdID);
+        //UTAd = CreateAndLoadRewardedAd(testVideoAdID);
+        //coinAd = CreateAndLoadRewardedAd(testVideoAdID);
+        if (customAd == null)
+        {
+            customAd = CreateAndLoadRewardedAd(customAdID);
+        }
+        else if (!customAd.IsLoaded())
+        {
+            customAd = CreateAndLoadRewardedAd(customAdID);
+        }
     }
 
     public void HandleUserEarnedReward(object sender, Reward args)

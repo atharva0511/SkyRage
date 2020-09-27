@@ -10,6 +10,7 @@ public class SettingsPanel : MonoBehaviour {
     public Slider Volume;
     public Slider Music;
     public Slider turnSens;
+    public Toggle fixedJoy;
     public bool credits = false;
     public AudioMixer mixer;
     public EventSettings eventSettings = null;
@@ -55,6 +56,7 @@ public class SettingsPanel : MonoBehaviour {
         PlayerPrefs.SetFloat("Vo", Volume.normalizedValue);
         PlayerPrefs.SetInt("MuVo", (int)Music.value);
         PlayerPrefs.SetFloat("TurnSens", turnSens.value);
+        PlayerPrefs.SetInt("Joystick", fixedJoy.isOn?1:0);
         PlayerPrefs.Save();
     }
 
@@ -74,6 +76,7 @@ public class SettingsPanel : MonoBehaviour {
         if (PlayerPrefs.HasKey("Vo")) Volume.normalizedValue = PlayerPrefs.GetFloat("Vo");
         if (PlayerPrefs.HasKey("MuVo")) Music.value = PlayerPrefs.GetInt("MuVo");
         if (PlayerPrefs.HasKey("TurnSens")) turnSens.value = PlayerPrefs.GetFloat("TurnSens");
+        if (PlayerPrefs.HasKey("Joystick")) fixedJoy.isOn = (PlayerPrefs.GetInt("Joystick") == 1);
     }
 
     public void Apply()
@@ -81,7 +84,9 @@ public class SettingsPanel : MonoBehaviour {
         QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("GQ"));
         AudioListener.volume = PlayerPrefs.GetFloat("Vo");
         mixer.SetFloat("AmbientVolume", PlayerPrefs.GetInt("MuVo"));
-        if(eventSettings!=null)
+        if (eventSettings != null)
+        {
             eventSettings.SetTurnSens(PlayerPrefs.GetFloat("TurnSens"));
+        }
     }
 }
