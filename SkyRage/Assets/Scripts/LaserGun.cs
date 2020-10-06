@@ -49,6 +49,10 @@ public class LaserGun : Weapons {
             impact.GetComponent<ParticleSystem>().emissionRate = 0;
             audioSource.Stop();
         }
+        else
+        {
+            audioSource.Stop();
+        }
         if (equipped)
         {
             chargeDisp.fillAmount = charge;
@@ -73,7 +77,7 @@ public class LaserGun : Weapons {
             Destructible ob = hit.transform.GetComponentInParent<Destructible>();
             if (ob != null)
             {
-                 ob.TakeDamage(damageRate, owner, 0);
+                 ob.TakeDamage(damageRate * 30 * Time.deltaTime, owner, 0);
             }        
             Rigidbody Rb = hit.transform.GetComponent<Rigidbody>();
             if (Rb != null)

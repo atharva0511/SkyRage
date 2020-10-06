@@ -1209,7 +1209,7 @@ MonoBehaviour:
   objectiveType: 0
   ObjectiveIndex: 1
   active: 0
-  XP: 20
+  xpMultiplier: 1
   completed: 0
   DestroyOnCompletion: []
   ActivateOnCompletion: []
@@ -2451,7 +2451,7 @@ MonoBehaviour:
   objectiveType: 2
   ObjectiveIndex: 0
   active: 0
-  XP: 20
+  xpMultiplier: 1
   completed: 0
   DestroyOnCompletion:
   - {fileID: 30790858}
@@ -3119,7 +3119,7 @@ MonoBehaviour:
   objectiveType: 2
   ObjectiveIndex: 3
   active: 0
-  XP: 20
+  xpMultiplier: 1
   completed: 0
   DestroyOnCompletion:
   - {fileID: 836437781}
@@ -5928,7 +5928,7 @@ MonoBehaviour:
   objectiveType: 2
   ObjectiveIndex: 0
   active: 0
-  XP: 20
+  xpMultiplier: 1
   completed: 0
   DestroyOnCompletion:
   - {fileID: 583192093}
@@ -11724,7 +11724,7 @@ MonoBehaviour:
   objectiveType: 0
   ObjectiveIndex: 1
   active: 0
-  XP: 20
+  xpMultiplier: 1
   completed: 0
   DestroyOnCompletion: []
   ActivateOnCompletion: []
@@ -14127,7 +14127,7 @@ MonoBehaviour:
   objectiveType: 2
   ObjectiveIndex: 0
   active: 0
-  XP: 20
+  xpMultiplier: 1
   completed: 0
   DestroyOnCompletion:
   - {fileID: 2015863962}
@@ -14636,13 +14636,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114272563829476662, guid: d4f6725bcd8865c448b624669f263022,
         type: 3}
+      propertyPath: ActivateOnCompletion.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114272563829476662, guid: d4f6725bcd8865c448b624669f263022,
+        type: 3}
       propertyPath: ObjectiveIndex
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114272563829476662, guid: d4f6725bcd8865c448b624669f263022,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114272563829476662, guid: d4f6725bcd8865c448b624669f263022,
         type: 3}
@@ -14672,7 +14677,7 @@ PrefabInstance:
     - target: {fileID: 114493265798850554, guid: d4f6725bcd8865c448b624669f263022,
         type: 3}
       propertyPath: IsObjective
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4f6725bcd8865c448b624669f263022, type: 3}
@@ -14689,7 +14694,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1769726750}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 043fe4d824cf5d6459c662ad41a6a1c8, type: 3}
   m_Name: 
@@ -15568,7 +15573,7 @@ MonoBehaviour:
   objectiveType: 0
   ObjectiveIndex: 1
   active: 0
-  XP: 20
+  xpMultiplier: 1
   completed: 0
   DestroyOnCompletion: []
   ActivateOnCompletion: []
@@ -16116,7 +16121,7 @@ MonoBehaviour:
   objectiveType: 0
   ObjectiveIndex: 0
   active: 0
-  XP: 20
+  xpMultiplier: 1
   completed: 0
   DestroyOnCompletion:
   - {fileID: 88704224}

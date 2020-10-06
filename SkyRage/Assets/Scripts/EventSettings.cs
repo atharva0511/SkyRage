@@ -57,7 +57,6 @@ public class EventSettings : MonoBehaviour {
 
     public void NextObjective()
     {
-        Debug.Log("Next Objective");
         currentObjective += 1;
         if (currentObjective < objectives.Length)
         {
@@ -133,8 +132,7 @@ public class EventSettings : MonoBehaviour {
             {
                 audioMixer.SetFloat("AmbientVolume", Mathf.Lerp(ambVol, combat ? -80 : 0, (Time.time - startTime) / 5));
                 audioMixer.SetFloat("CombatVolume", Mathf.Lerp(combVol, combat ? 0 : -80, (Time.time - startTime) / 5));
-                if (combat)
-                    Debug.Log(combVol);
+                
                 yield return null;
             }
         }

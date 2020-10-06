@@ -1753,7 +1753,7 @@ PrefabInstance:
     - target: {fileID: 114688489937265576, guid: 9866893e4eeb4834196d51b673eb5465,
         type: 3}
       propertyPath: ObjectiveDescription
-      value: Find and collect 3 power cells.
+      value: Find and collect 3 power cells in the marked region.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9866893e4eeb4834196d51b673eb5465, type: 3}
@@ -28021,7 +28021,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1857321314
 MonoBehaviour:
   m_ObjectHideFlags: 0

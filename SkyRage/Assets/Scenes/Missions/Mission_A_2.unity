@@ -4888,7 +4888,7 @@ MonoBehaviour:
   completed: 0
   DestroyOnCompletion: []
   ActivateOnCompletion: []
-  ObjectiveDescription: Pick up the minigun
+  ObjectiveDescription: Pick up the minigun.
   eventSettings: {fileID: 235077736}
 --- !u!114 &1612680410
 MonoBehaviour:

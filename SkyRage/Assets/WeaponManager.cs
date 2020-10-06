@@ -98,24 +98,40 @@ public class WeaponManager : MonoBehaviour {
                 hasHL = Upgrades.qDroneWeapons[1];
                 hasSG = Upgrades.qDroneWeapons[2];
                 hasLG = Upgrades.qDroneWeapons[3];
+                if (PlayerData.levelProgression[2] >= 2)
+                {
+                    hasMG = true;
+                }
                 break;
             case 1:
                 hasMG = Upgrades.hodWeapons[0];
                 hasHL = Upgrades.hodWeapons[1];
                 hasSG = Upgrades.hodWeapons[2];
                 hasLG = Upgrades.hodWeapons[3];
+                if (PlayerData.levelProgression[2] >= 1)
+                {
+                    hasMG = true;
+                }
                 break;
             case 2:
                 hasMG = Upgrades.wDroneWeapons[0];
                 hasHL = Upgrades.wDroneWeapons[1];
                 hasSG = Upgrades.wDroneWeapons[2];
                 hasLG = Upgrades.wDroneWeapons[3];
+                if (PlayerData.levelProgression[2] >= 1)
+                {
+                    hasMG = true;
+                }
                 break;
             case 3:
                 hasMG = Upgrades.slayerXWeapons[0];
                 hasHL = Upgrades.slayerXWeapons[1];
                 hasSG = Upgrades.slayerXWeapons[2];
                 hasLG = Upgrades.slayerXWeapons[3];
+                if (PlayerData.levelProgression[2] >= 1)
+                {
+                    hasMG = true;
+                }
                 break;
             default: break;
         }

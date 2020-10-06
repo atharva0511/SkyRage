@@ -45,6 +45,8 @@ public class MainMenu : MonoBehaviour {
     }
 	void Start () {
         Time.timeScale = 1;
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        mixer.SetFloat("AmbientVolume", 0);
         UIAudio = GetComponent<AudioSource>();
         //podium.GetChild(selectionIndex).GetComponent<Customizable>().LoadCustomizations();
         

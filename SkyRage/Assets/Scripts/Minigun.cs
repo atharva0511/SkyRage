@@ -31,14 +31,15 @@ public class Minigun : Weapons {
 
         //upgrades
         this.damage = CheckUpgrade(3) ? 6 : 4;
-        this.maxSpread = CheckUpgrade(4) ? 3 : 5;
+        this.maxSpread = CheckUpgrade(4) ? 1f : 2;
     }
 
     void Update()
     {
         if (spread > 0.05f)
         {
-            spread = Mathf.Lerp(spread, 0, 2 * Time.deltaTime * stability);
+            //spread = Mathf.Lerp(spread, 0, 2 * Time.deltaTime * stability);
+            spread -= 1.15f*Time.deltaTime * stability;
             //AdjustCrosshair();
         }
         else if(maxHeated)
@@ -73,8 +74,8 @@ public class Minigun : Weapons {
         }*/
 
         Vector3 dir = cam.forward;
-        dir = Quaternion.AngleAxis((2 * Random.value - 1) * spread, Vector3.up) * dir;
-        dir = Quaternion.AngleAxis((2 * Random.value - 1) * spread, transform.right) * dir;
+        dir = Quaternion.AngleAxis((2 * Random.value - 1) *(0.1f + spread)*maxSpread, Vector3.up) * dir;
+        dir = Quaternion.AngleAxis((2 * Random.value - 1) *(0.1f + spread)*maxSpread, transform.right) * dir;
         RaycastHit hit;
         if (Physics.Raycast(cam.position, dir, out hit, 300f, ~(1 << 2 | 1 << 9)))
         {
@@ -86,7 +87,6 @@ public class Minigun : Weapons {
             if ( ob!= null)
             {
                 ob.TakeDamage(damage,owner, 2);
-                Debug.Log("damaged");
             }      
             
             Rigidbody Rb = hit.transform.GetComponent<Rigidbody>();
@@ -102,7 +102,7 @@ public class Minigun : Weapons {
             StartCoroutine(Beam(400 * dir));
         }
 
-        spread += spread < maxSpread ? 0.064f : 0;
+        spread += spread < 1.0f ? 0.057f : 0;
         if (spread >= 1)
         {
             maxHeated = true;

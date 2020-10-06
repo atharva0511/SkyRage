@@ -60,6 +60,7 @@ public class FinishPanel : MonoBehaviour {
         }
         PlayerData.coins += int.Parse(coinText.text);
         PlayerData.SaveData();
+        Upgrades.Save();
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }

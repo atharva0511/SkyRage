@@ -56,6 +56,7 @@ public class Upgrades {
             wDrone = data.wDrone;
             slayerXWeapons = data.slayerXWeapons;
             slayerX = data.slayerX;
+            Debug.Log("Loaded upgrade data");
             file.Close();
         }
         else
