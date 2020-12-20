@@ -13,7 +13,7 @@ public class StunGun : Weapons {
     public GameObject impact;
     public GameObject beamObject;
     public Image chargeDisp;
-    public float damage = 1;
+    float damage = 10;
     public WeaponManager wm;
     // Use this for initialization
     void Start () {
@@ -53,7 +53,7 @@ public class StunGun : Weapons {
             Destructible ob = hit.transform.GetComponentInParent<Destructible>();
             if (ob != null)
             {
-                            ob.TakeDamage(damage, owner, 1);
+                            ob.TakeDamage(damage, owner, 1,Destructible.WeaponName.StunGun);
                             StartCoroutine(ob.Stun(stunTime));
             }
             Rigidbody Rb = hit.transform.GetComponent<Rigidbody>();

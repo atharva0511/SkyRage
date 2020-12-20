@@ -30,7 +30,7 @@ public class Minigun : Weapons {
         this.owner = GetComponentInParent<Destructible>().transform;
 
         //upgrades
-        this.damage = CheckUpgrade(3) ? 6 : 4;
+        this.damage = CheckUpgrade(3) ? 5 : 4;
         this.maxSpread = CheckUpgrade(4) ? 1f : 2;
     }
 
@@ -86,7 +86,7 @@ public class Minigun : Weapons {
             Destructible ob = hit.transform.GetComponentInParent<Destructible>();
             if ( ob!= null)
             {
-                ob.TakeDamage(damage,owner, 2);
+                ob.TakeDamage(damage,owner, 2,Destructible.WeaponName.Minigun);
             }      
             
             Rigidbody Rb = hit.transform.GetComponent<Rigidbody>();

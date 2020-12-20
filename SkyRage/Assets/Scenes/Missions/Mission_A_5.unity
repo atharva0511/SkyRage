@@ -187,6 +187,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224648639300423472, guid: adf50ff451471ea4caafdb77f6306d95,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -16.000244
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adf50ff451471ea4caafdb77f6306d95, type: 3}
 --- !u!1 &77049554
@@ -3699,12 +3704,6 @@ PrefabInstance:
       propertyPath: m_Lightmapping
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114157875185841126, guid: 9095e62cacf8d73419d1a4ce0c7724d4,
-        type: 3}
-      propertyPath: healthCanvas
-      value: 
-      objectReference: {fileID: 1598649882052273286, guid: 4206afac71eff5141bcacf4ad78d3c45,
-        type: 3}
     - target: {fileID: 114514437547834192, guid: 9095e62cacf8d73419d1a4ce0c7724d4,
         type: 3}
       propertyPath: ActivateOnCompletion.Array.size

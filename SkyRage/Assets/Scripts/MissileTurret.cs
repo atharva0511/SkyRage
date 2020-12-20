@@ -61,6 +61,7 @@ public class MissileTurret : Destructible {
                 {
                     if (hit.transform == target)
                     {
+                        //EventSettings.inCombat = true;
                         fireTime = Time.time;
                         StartCoroutine(SerialFire());
                     }
@@ -146,5 +147,33 @@ public class MissileTurret : Destructible {
         }
         Destroy(canvas);
         canvas = null;
+    }
+
+    public override void DeathBlow(Transform hitter, WeaponName weapon)
+    {
+        if (EventSettings.currentPlayer == null) return;
+        if (hitter == EventSettings.currentPlayer)
+        {
+            Stats.data[3] += 1;
+            switch (weapon)
+            {
+                case WeaponName.Minigun:
+                    Stats.data[6] += 1;
+                    break;
+                case WeaponName.MissileLauncher:
+                    Stats.data[7] += 1;
+                    break;
+                case WeaponName.StunGun:
+                    Stats.data[8] += 1;
+                    break;
+                case WeaponName.LaserGun:
+                    Stats.data[9] += 1;
+                    break;
+                case WeaponName.Unknown:
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

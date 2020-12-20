@@ -25,6 +25,10 @@ public class GamePanel : MonoBehaviour {
     
     public void PressCustomize()
     {
+        Stats.data[10] += 1;
+        FinishPanel.UnlockAchievement(GPGSIds.achievement_designer);
+        FinishPanel.IncrementAchievement(GPGSIds.achievement_looks_matter, 1);
+        FinishPanel.IncrementAchievement(GPGSIds.achievement_i_wanna_look_good, 1);
         SinglePlayerPanel.SetActive(false);
         GameMenu.SetActive(false);
         CustmPanel.SetActive(true);

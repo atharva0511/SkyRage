@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour {
     public float stayTime = 6f;
     float startTime = 0;
     public float damage = 5;
+    public Destructible.WeaponName weapon = Destructible.WeaponName.Unknown;
     public bool moveLinearly = false;
     public bool homing = false;
     public Transform target = null;
@@ -41,7 +42,7 @@ public class Projectile : MonoBehaviour {
         Destructible ob = col.transform.GetComponentInParent<Destructible>();
         if (ob != null)
         {
-            ob.TakeDamage(damage, Shooter);
+            ob.TakeDamage(damage, Shooter,2,weapon);
         }
         Instantiate(blast, col.contacts[0].point,Quaternion.identity);
         Destroy(this.gameObject);

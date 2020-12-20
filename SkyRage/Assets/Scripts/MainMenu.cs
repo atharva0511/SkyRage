@@ -1,5 +1,6 @@
 ﻿
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -35,6 +36,8 @@ public class MainMenu : MonoBehaviour {
     public StatsPanel statsPanel;
     public Button UnlockButton;
     public AudioMixer mixer;
+    public MenuContent mContent;
+    public Text tipText;
     Coroutine camMotion = null;
 	// Use this for initialization
 
@@ -44,13 +47,15 @@ public class MainMenu : MonoBehaviour {
         Upgrades.Load();
     }
 	void Start () {
+
         Time.timeScale = 1;
+        //ClearPickups();
+        ResetGameEvents();
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         mixer.SetFloat("AmbientVolume", 0);
         UIAudio = GetComponent<AudioSource>();
         //podium.GetChild(selectionIndex).GetComponent<Customizable>().LoadCustomizations();
-        
-        ApplySettings();
+        PlayerPrefs.SetInt("LoadCheckpoint", 0);
         if(PlayerPrefs.HasKey("vehicleIndex"))selectionIndex = PlayerPrefs.GetInt("vehicleIndex");
         if (PlayerPrefs.HasKey("SetMenu"))
         {
@@ -110,6 +115,7 @@ public class MainMenu : MonoBehaviour {
         Customizable Cu = podium.GetChild(selectionIndex).GetComponent<Customizable>();
         Customizations custms = new Customizations(Cu.rends[0].materials[0].color,Cu.rends[0].materials[1].color);
         Cu.SaveCustomizations(custms);
+        PlayerData.SaveData();
         CustomizePanel.SetActive(false);
         PlayPanel.SetActive(true);
         SingleplayerPanel.SetActive(true);
@@ -147,6 +153,8 @@ public class MainMenu : MonoBehaviour {
 
     IEnumerator LoadLevel(string sceneName)
     {
+        int choice = Random.Range(0, mContent.tips.Length);
+        tipText.text = "Tip : "+ mContent.tips[choice];
         StartCoroutine(ChangeCamPos(camPos2));
         SingleplayerPanel.SetActive(false);
         LoadingPanel.SetActive(true);
@@ -231,7 +239,7 @@ public class MainMenu : MonoBehaviour {
     {
         if(PlayerPrefs.HasKey("GQ"))QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("GQ"));
         if (PlayerPrefs.HasKey("Vo")) AudioListener.volume = PlayerPrefs.GetFloat("Vo");
-        if(PlayerPrefs.HasKey("MuVo")) mixer.SetFloat("AmbientVolume", PlayerPrefs.GetInt("MuVo"));
+        if(PlayerPrefs.HasKey("MuVo")) mixer.SetFloat("MusicVolume", PlayerPrefs.GetInt("MuVo"));
     }
 
     public void OpenSettings()
@@ -270,5 +278,21 @@ public class MainMenu : MonoBehaviour {
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    //public void ClearPickups()
+    //{
+    //    foreach(GameObject pick in Pickup.pickups)
+    //    {
+    //        if(pick!=null)
+    //            Destroy(pick);
+    //    }
+    //    Pickup.pickups = new List<GameObject>();
+    //}
+
+    public void ResetGameEvents()
+    {
+        EventSettings.currentCoins = 0;
+        EventSettings.loadObjective = 0;
     }
 }

@@ -2227,7 +2227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showGizmo: 0
   botsLeft: 0
-  IsObjective: 0
+  IsObjective: 1
   objective: {fileID: 777442984}
   zoneRadius: 250
   appearDistance: 550
@@ -2242,7 +2242,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777442982}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 043fe4d824cf5d6459c662ad41a6a1c8, type: 3}
   m_Name: 
@@ -2254,9 +2254,8 @@ MonoBehaviour:
   completed: 0
   DestroyOnCompletion:
   - {fileID: 1276258437}
-  ActivateOnCompletion:
-  - {fileID: 0}
-  ObjectiveDescription: 
+  ActivateOnCompletion: []
+  ObjectiveDescription: Destroy the turrets on the dock.
   eventSettings: {fileID: 235077736}
 --- !u!4 &777442985
 Transform:
@@ -3626,7 +3625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1276258438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4266,6 +4265,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1502450948608626, guid: e4f6f4b8ac6569348876e8f199f9f2fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4278554633816268, guid: e4f6f4b8ac6569348876e8f199f9f2fb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 447.8
@@ -4451,7 +4454,7 @@ PrefabInstance:
         type: 3}
       propertyPath: objectives.Array.data[0]
       value: 
-      objectReference: {fileID: 1612680409}
+      objectReference: {fileID: 777442984}
     - target: {fileID: 114144603416077112, guid: f9f9fc7a56c1b6d4292654b922541873,
         type: 3}
       propertyPath: objectives.Array.data[1]
@@ -4471,6 +4474,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8687410564458500009, guid: f9f9fc7a56c1b6d4292654b922541873,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9f9fc7a56c1b6d4292654b922541873, type: 3}

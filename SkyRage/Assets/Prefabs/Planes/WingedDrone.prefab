@@ -18608,7 +18608,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e3f143e7ee1d44746b215dab244399bb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0626b924325d1c34cafa6b22297f4e4f, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18792,6 +18792,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4245606358098334}
   - component: {fileID: 82916184115095908}
+  - component: {fileID: 7481828327524597810}
   m_Layer: 0
   m_Name: DisplayPos
   m_TagString: Untagged
@@ -18909,6 +18910,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7481828327524597810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549540297610414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1ee1c62c905bb24ea7c9cf3d9d40b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TraumaExponent: 1
+  MaximumAngularShake: {x: 0, y: 0, z: 0}
+  MaximumTranslationShake: {x: 0.75, y: 0.75, z: 0.75}
 --- !u!1 &1550857335140712
 GameObject:
   m_ObjectHideFlags: 0
@@ -31064,7 +31080,7 @@ MonoBehaviour:
   variableJoy: {fileID: 8012116100716448650}
   On: 1
   maxThrust: 40
-  fanThrust: 25
+  fanThrust: 35
   hoverHeight: 2
   turnSens: 1
   lives: 0
@@ -42518,7 +42534,6 @@ MonoBehaviour:
   impact: {fileID: 1340252739010232, guid: 4ca4f841f52b00b4ea498b5165f11de6, type: 3}
   beamObject: {fileID: 1022179718441014, guid: eb0cdd480fd45754db9abb3998aa1ff6, type: 3}
   chargeDisp: {fileID: 114742718004019810}
-  damage: 1
   wm: {fileID: 114709272759647998}
 --- !u!1 &1967352267922498
 GameObject:

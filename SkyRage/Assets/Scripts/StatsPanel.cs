@@ -12,7 +12,7 @@ public class StatsPanel : MonoBehaviour {
     public Image levelProgression;
     public GameObject profileOptionsPanel;
 
-    public static double[] xpProgress = new double[] {0,100,300,700,1500,2500,5000,7500,10000,12500,15000 };
+    public static double[] xpProgress = new double[] {0,400,1000,2000,3200,5000,7500,10000,12500,15000,20000 };
 
     void Awake()
     {

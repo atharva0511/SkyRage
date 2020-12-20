@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4670423a274c0614fad347e10df219de, type: 3}
+  m_Name: MenuContent
+  m_EditorClassIdentifier: 
+  tips:
+  - Earn extra rage coins by playing Rage Mode.
+  - Earn extra Lives, Upgrade Tokens and Rage Coins by watching video ads.
+  - Staying still invites death.
+  - Keep dashing to survive intense combats.
+  - Use Stun Gun to stun enemies for a while.
+  - Use Laser Gun to have maximised damage in concentrated area.
+  - Use Homing Missile Launcher to lock-on and destroy enemies.
+  - Beep sound while using Missile Launcher indicates a target is locked.
+  - Keep swapping weapons to improve combat efficiency.
+  - Keep swapping weapons to improve combat efficiency.
+  - Keep swapping weapons to improve combat efficiency.
+  - Earn extra rage coins by playing Rage Mode.
+  - Earn extra rage coins by playing Rage Mode.
+  - Earn extra Lives, Upgrade Tokens and Rage Coins by watching video ads.
+  - Earn extra Lives, Upgrade Tokens and Rage Coins by watching video ads.
+  - Bursting blimps rewards handsomely.
+  - Minibots are sneaky and hard to aim.
+  - Turrets impart heavy damage in close range.
+  - Enforcers fire lock-on missiles.
+  - Use barrels to impart damage on enemies.
+  - Podium thrusters will burn your drone.
+  - Collect Rage Coins in Rage Mode to top the leaderboards.
+  - Collect Rage Coins in Rage Mode to top the leaderboards.
+  - Keep upgrading your drones in the workshop.
+  - Keep upgrading your drones in the workshop.
+  - Complete certain tasks to unlock achievements.
+  - Customize your drone to make it look unique.
+  - Customize your drone to make it look good.
+  - Customize your drone to make it look unique.

@@ -50,6 +50,17 @@ public class GPGManager : MonoBehaviour
         }
     }
 
+    public void OnShowAchievement()
+    {
+        if(Social.localUser.authenticated)
+        {
+            Social.ShowAchievementsUI();
+        }
+        else
+        {
+            ErrorPanel.SetActive(true);
+        }
+    }
 
     public void OnLogOut()
     {

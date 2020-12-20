@@ -24,10 +24,60 @@
 
 public static class GPGSIds
 {
-        public const string leaderboard_quadrone_arcade = "CgkIn6fgxcsQEAIQAA"; // <GPGSID>
-        public const string leaderboard_slayerx_arcade = "CgkIn6fgxcsQEAIQBA"; // <GPGSID>
         public const string leaderboard_harbinger_of_death_arcade = "CgkIn6fgxcsQEAIQAg"; // <GPGSID>
+        public const string achievement_stun_master = "CgkIn6fgxcsQEAIQFQ"; // <GPGSID>
+        public const string achievement_sky_monarch = "CgkIn6fgxcsQEAIQBQ"; // <GPGSID>
+        public const string leaderboard_quadrone_arcade = "CgkIn6fgxcsQEAIQAA"; // <GPGSID>
+        public const string achievement_missile_hunter_ii = "CgkIn6fgxcsQEAIQKA"; // <GPGSID>
+        public const string achievement_treasure_hunt_iii = "CgkIn6fgxcsQEAIQMg"; // <GPGSID>
+        public const string achievement_stun_master_ii = "CgkIn6fgxcsQEAIQJg"; // <GPGSID>
+        public const string achievement_turret_annihilator = "CgkIn6fgxcsQEAIQHA"; // <GPGSID>
+        public const string achievement_burn_it_down_ii = "CgkIn6fgxcsQEAIQJw"; // <GPGSID>
+        public const string achievement_happy_watching = "CgkIn6fgxcsQEAIQLQ"; // <GPGSID>
+        public const string achievement_enforcer_drone_annihilator = "CgkIn6fgxcsQEAIQHw"; // <GPGSID>
         public const string leaderboard_wingeddrone_arcade = "CgkIn6fgxcsQEAIQAw"; // <GPGSID>
+        public const string achievement_handy_tokens_iii = "CgkIn6fgxcsQEAIQNA"; // <GPGSID>
+        public const string achievement_elixir_collector = "CgkIn6fgxcsQEAIQEQ"; // <GPGSID>
+        public const string achievement_gunslinger_iii = "CgkIn6fgxcsQEAIQKQ"; // <GPGSID>
+        public const string achievement_minibot_dominator = "CgkIn6fgxcsQEAIQCQ"; // <GPGSID>
+        public const string achievement_enforcer_dominator = "CgkIn6fgxcsQEAIQDQ"; // <GPGSID>
+        public const string achievement_angel_of_destruction = "CgkIn6fgxcsQEAIQBw"; // <GPGSID>
+        public const string achievement_burn_it_down_iii = "CgkIn6fgxcsQEAIQKw"; // <GPGSID>
+        public const string leaderboard_slayerx_arcade = "CgkIn6fgxcsQEAIQBA"; // <GPGSID>
+        public const string achievement_handy_tokens = "CgkIn6fgxcsQEAIQEA"; // <GPGSID>
+        public const string achievement_turret_slayer = "CgkIn6fgxcsQEAIQIQ"; // <GPGSID>
+        public const string achievement_knight_drone_annihilator = "CgkIn6fgxcsQEAIQHg"; // <GPGSID>
+        public const string achievement_elite_mechanic = "CgkIn6fgxcsQEAIQNg"; // <GPGSID>
+        public const string achievement_missile_hunter = "CgkIn6fgxcsQEAIQFw"; // <GPGSID>
+        public const string achievement_kaboom = "CgkIn6fgxcsQEAIQDg"; // <GPGSID>
+        public const string achievement_handy_tokens_ii = "CgkIn6fgxcsQEAIQMw"; // <GPGSID>
+        public const string achievement_knight_drone_dominator = "CgkIn6fgxcsQEAIQDA"; // <GPGSID>
+        public const string achievement_turret_buster = "CgkIn6fgxcsQEAIQCg"; // <GPGSID>
+        public const string achievement_ad_lover = "CgkIn6fgxcsQEAIQLg"; // <GPGSID>
+        public const string achievement_gunslinger_ii = "CgkIn6fgxcsQEAIQJQ"; // <GPGSID>
+        public const string achievement_after_life = "CgkIn6fgxcsQEAIQEg"; // <GPGSID>
+        public const string achievement_minibot_annihilator = "CgkIn6fgxcsQEAIQGw"; // <GPGSID>
+        public const string achievement_missile_turret_slayer = "CgkIn6fgxcsQEAIQIg"; // <GPGSID>
+        public const string achievement_designer = "CgkIn6fgxcsQEAIQGg"; // <GPGSID>
+        public const string achievement_now_i_know_it = "CgkIn6fgxcsQEAIQGQ"; // <GPGSID>
+        public const string achievement_first_reward = "CgkIn6fgxcsQEAIQGA"; // <GPGSID>
+        public const string achievement_stun_master_iii = "CgkIn6fgxcsQEAIQKg"; // <GPGSID>
+        public const string achievement_wrath_god = "CgkIn6fgxcsQEAIQBg"; // <GPGSID>
+        public const string achievement_lone_legend = "CgkIn6fgxcsQEAIQCA"; // <GPGSID>
+        public const string achievement_knight_drone_slayer = "CgkIn6fgxcsQEAIQIw"; // <GPGSID>
+        public const string achievement_enforcer_slayer = "CgkIn6fgxcsQEAIQJA"; // <GPGSID>
+        public const string achievement_i_wanna_look_good = "CgkIn6fgxcsQEAIQLw"; // <GPGSID>
+        public const string achievement_missile_turret_annihilator = "CgkIn6fgxcsQEAIQHQ"; // <GPGSID>
+        public const string achievement_looks_matter = "CgkIn6fgxcsQEAIQMA"; // <GPGSID>
+        public const string achievement_minibot_slayer = "CgkIn6fgxcsQEAIQIA"; // <GPGSID>
+        public const string achievement_treasure_hunter_ii = "CgkIn6fgxcsQEAIQMQ"; // <GPGSID>
+        public const string achievement_missile_turret_eliminator = "CgkIn6fgxcsQEAIQCw"; // <GPGSID>
+        public const string achievement_missile_hunter_iii = "CgkIn6fgxcsQEAIQLA"; // <GPGSID>
+        public const string achievement_treasure_hunter = "CgkIn6fgxcsQEAIQDw"; // <GPGSID>
+        public const string achievement_mechanic = "CgkIn6fgxcsQEAIQNQ"; // <GPGSID>
+        public const string achievement_burn_it_down = "CgkIn6fgxcsQEAIQFg"; // <GPGSID>
+        public const string achievement_gunslinger = "CgkIn6fgxcsQEAIQFA"; // <GPGSID>
+        public const string achievement_near_death_experience = "CgkIn6fgxcsQEAIQEw"; // <GPGSID>
 
 }
 

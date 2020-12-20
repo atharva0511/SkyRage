@@ -19,6 +19,16 @@
       "source": "builtin",
       "dependencies": {}
     },
+    "com.unity.accelerate": {
+      "version": "file:C:/Users/MMG/Downloads/com.unity.accelerate-1.0.0.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "2.0.0",
+        "com.unity.settings-manager": "1.0.3",
+        "com.unity.purchasing": "2.1.0"
+      }
+    },
     "com.unity.ads": {
       "version": "3.4.7",
       "depth": 0,
@@ -83,6 +93,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "2.0.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
     "com.unity.postprocessing": {
       "version": "2.2.2",
       "depth": 0,
@@ -91,8 +108,17 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.purchasing": {
-      "version": "2.0.6",
-      "depth": 0,
+      "version": "2.1.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.ugui": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.settings-manager": {
+      "version": "1.0.3",
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"

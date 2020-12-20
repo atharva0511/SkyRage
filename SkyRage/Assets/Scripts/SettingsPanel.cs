@@ -70,7 +70,7 @@ public class SettingsPanel : MonoBehaviour {
 
     public void OnMusicChanged()
     {
-        mixer.SetFloat("AmbientVolume",Music.value);
+        mixer.SetFloat("MusicVolume",Music.value);
     }
 
     public void LoadSettings()
@@ -87,7 +87,7 @@ public class SettingsPanel : MonoBehaviour {
     {
         QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("GQ"));
         AudioListener.volume = PlayerPrefs.GetFloat("Vo");
-        mixer.SetFloat("AmbientVolume", PlayerPrefs.GetInt("MuVo"));
+        mixer.SetFloat("MusicVolume", PlayerPrefs.GetInt("MuVo"));
         if (eventSettings != null)
         {
             eventSettings.SetTurnSens(PlayerPrefs.GetFloat("TurnSens"));

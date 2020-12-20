@@ -69,6 +69,7 @@ public class Turret : Destructible {
             {
                 if (hit.transform == target)
                 {
+                    //EventSettings.inCombat = true;
                     lastFired = Time.time;
                     StartCoroutine(SerialFire());
                 }
@@ -198,5 +199,33 @@ public class Turret : Destructible {
             GetComponentInParent<BotSpawner>().Died();
         }
         Destroy(this.gameObject, 10f);
+    }
+
+    public override void DeathBlow(Transform hitter, WeaponName weapon)
+    {
+        if (EventSettings.currentPlayer == null) return;
+        if (hitter == EventSettings.currentPlayer)
+        {
+            Stats.data[2] += 1;
+            switch (weapon)
+            {
+                case WeaponName.Minigun:
+                    Stats.data[6] += 1;
+                    break;
+                case WeaponName.MissileLauncher:
+                    Stats.data[7] += 1;
+                    break;
+                case WeaponName.StunGun:
+                    Stats.data[8] += 1;
+                    break;
+                case WeaponName.LaserGun:
+                    Stats.data[9] += 1;
+                    break;
+                case WeaponName.Unknown:
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

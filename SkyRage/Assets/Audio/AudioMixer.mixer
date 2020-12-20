@@ -20,6 +20,8 @@ AudioMixerController:
     name: AmbientVolume
   - guid: e66bc6ab295c58a47aab2f218e18c113
     name: CombatVolume
+  - guid: 3fd43d24f45d5204ca966a782c998ac9
+    name: MusicVolume
   m_AudioMixerGroupViews:
   - guids:
     - 22d679748d441e84e880bf574a4b6f2b
@@ -76,10 +78,10 @@ AudioMixerSnapshotController:
   m_SnapshotID: 15222f79940bad346a7eb66a9d74dbfa
   m_FloatValues:
     2919b9a23336117479cde9f523a6007b: 0.13552584
-    3fd43d24f45d5204ca966a782c998ac9: 0.3945702
-    312eac490a726e5458b1b5adaf77a9b8: -4.560346
+    3fd43d24f45d5204ca966a782c998ac9: 0.10800299
+    312eac490a726e5458b1b5adaf77a9b8: 0
     e66bc6ab295c58a47aab2f218e18c113: -80
-    4333f06f83973ec4eb2f29115c92e5ad: 0.025578512
+    4333f06f83973ec4eb2f29115c92e5ad: 0.10800299
   m_TransitionOverrides: {}
 --- !u!243 &243601737977885036
 AudioMixerGroupController:

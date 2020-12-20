@@ -159,6 +159,7 @@ public class playerPlane : Destructible {
                 coins += pickup.coins;
                 SetCoinDisplay();
                 StartCoroutine(routine);
+                Stats.data[14] += pickup.coins;
                 pickupAudio.clip = pickup.collectSound;
                 pickupAudio.Play();
                 Destroy(col.gameObject);
@@ -167,6 +168,7 @@ public class playerPlane : Destructible {
             {
                 if (PlayerData.lives == 5) return;
                 PlayerData.lives += 1;
+                Stats.data[21] += 1;
                 SetLifeDisp();
                 if (routine != null) StopCoroutine(routine);
                 if (displayInstance != null) Destroy(displayInstance);
@@ -179,6 +181,7 @@ public class playerPlane : Destructible {
             else if(pickup.type == Pickup.pickupType.upgradeToken)
             {
                 PlayerData.upgradeTokens += 1;
+                Stats.data[20] += 1;
                 SetUpgradeTokenDisp();
                 if (routine != null) StopCoroutine(routine);
                 if (displayInstance != null) Destroy(displayInstance);
@@ -313,6 +316,7 @@ public class playerPlane : Destructible {
         DisplayHealth();
         float startTime = Time.time;
         PlayerData.lives -= 1;
+        Stats.data[12] += 1;
         SetLifeDisp();
         pickupAudio.clip = lifeAudio;
         pickupAudio.Play();
@@ -338,6 +342,7 @@ public class playerPlane : Destructible {
             aud.Pause();
         }
         //radarMarker.SetActive(false);
+        Stats.data[13] += 1;
         deathVignette.gameObject.SetActive(true);
         deathVignette.color = new Color(1f, 0.2f, 0, 1);
         deathVignette.CrossFadeAlpha(0, 3, false);

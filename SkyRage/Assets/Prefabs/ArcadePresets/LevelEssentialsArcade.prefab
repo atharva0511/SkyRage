@@ -11116,7 +11116,7 @@ MonoBehaviour:
   warnPanel: {fileID: 7812332149804395045}
   restartWarnPanel: {fileID: 7812450000883331897}
   LoadingPanel: {fileID: 7813025271226086597}
-  FinishPanel: {fileID: 7812344934936514443}
+  finishPanel: {fileID: 7812344934936514443}
   DeadPanel: {fileID: 7812135745764130423}
   loadingProgress: {fileID: 7924616149748238183}
   ObjectiveDesc: {fileID: 7923743679414105261}

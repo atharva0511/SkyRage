@@ -30,6 +30,7 @@ public class HomingLauncher : Weapons {
     int rcktSpeed = 120;
 	// Use this for initialization
 	void Start () {
+        this.owner = GetComponentInParent<Destructible>().transform;
         rocketDisp.text = wm.rockets.ToString();
         //upgrades
         this.damage = CheckUpgrade(9) ? 100 : 50;
@@ -159,6 +160,8 @@ public class HomingLauncher : Weapons {
             p.homing = false;
             p.moveLinearly = true;
         }
+        p.weapon = Destructible.WeaponName.MissileLauncher;
+        p.Shooter = this.owner;
         p.speed = rcktSpeed;
         p.turnRate = 60;
         p.damage = this.damage;

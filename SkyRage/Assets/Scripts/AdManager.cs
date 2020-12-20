@@ -171,6 +171,10 @@ public class AdManager : MonoBehaviour {
     {
         string type = args.Type;
         double amount = args.Amount;
+        Stats.data[11] += 1;
+        FinishPanel.UnlockAchievement(GPGSIds.achievement_first_reward);
+        FinishPanel.IncrementAchievement(GPGSIds.achievement_happy_watching, 1);
+        FinishPanel.IncrementAchievement(GPGSIds.achievement_ad_lover, 1);
         MonoBehaviour.print(
             "HandleRewardedAdRewarded event received for "
                         + amount.ToString() + " " + type);

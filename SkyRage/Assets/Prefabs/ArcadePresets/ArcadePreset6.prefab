@@ -153,7 +153,7 @@ MonoBehaviour:
   objectiveType: 2
   ObjectiveIndex: 0
   active: 0
-  XP: 20
+  xpMultiplier: 1
   completed: 0
   DestroyOnCompletion:
   - {fileID: 1218433742596503025}
@@ -1774,6 +1774,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180.00002
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6a8abfa8fd139084b8d746f060209198, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
 --- !u!4 &5423953408667832640 stripped
@@ -2493,6 +2497,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90.00001
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6a8abfa8fd139084b8d746f060209198, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
 --- !u!4 &5423953409456346154 stripped

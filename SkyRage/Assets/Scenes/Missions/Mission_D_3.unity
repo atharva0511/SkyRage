@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000002, guid: 0b11e60ce450f734e8a1c0d2d27b3954,
     type: 2}
   m_UseShadowmask: 1
@@ -246,6 +247,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
+      propertyPath: m_Name
+      value: TunnelShield (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1374.02
@@ -286,12 +295,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
-      propertyPath: m_Name
-      value: TunnelShield (3)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
+--- !u!23 &48159032 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300000, guid: 3ee80cabe775b724384eb689ae28e707,
+    type: 3}
+  m_PrefabInstance: {fileID: 48159031}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &50161066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -354,31 +365,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114272563829476662, guid: d4f6725bcd8865c448b624669f263022,
-        type: 3}
-      propertyPath: DestroyOnCompletion.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114272563829476662, guid: d4f6725bcd8865c448b624669f263022,
-        type: 3}
-      propertyPath: ObjectiveIndex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114272563829476662, guid: d4f6725bcd8865c448b624669f263022,
-        type: 3}
-      propertyPath: eventSettings
-      value: 
-      objectReference: {fileID: 215719452}
-    - target: {fileID: 114272563829476662, guid: d4f6725bcd8865c448b624669f263022,
-        type: 3}
-      propertyPath: ObjectiveDescription
-      value: Destroy all the enemy bots to open next tunnel seal.
-      objectReference: {fileID: 0}
-    - target: {fileID: 114272563829476662, guid: d4f6725bcd8865c448b624669f263022,
-        type: 3}
-      propertyPath: DestroyOnCompletion.Array.data[1]
-      value: 
-      objectReference: {fileID: 2043484420}
     - target: {fileID: 4269851680812896, guid: d4f6725bcd8865c448b624669f263022, type: 3}
       propertyPath: m_LocalPosition.x
       value: 620.2
@@ -411,6 +397,54 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4825949936139906, guid: d4f6725bcd8865c448b624669f263022, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -40.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825949936139906, guid: d4f6725bcd8865c448b624669f263022, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825949936139906, guid: d4f6725bcd8865c448b624669f263022, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -13.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126571061277122, guid: d4f6725bcd8865c448b624669f263022,
+        type: 3}
+      propertyPath: baseDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126571061277122, guid: d4f6725bcd8865c448b624669f263022,
+        type: 3}
+      propertyPath: Flare
+      value: 
+      objectReference: {fileID: 1587412269697708, guid: 5d273b1bb52fd67428de4464443c4a59,
+        type: 3}
+    - target: {fileID: 114272563829476662, guid: d4f6725bcd8865c448b624669f263022,
+        type: 3}
+      propertyPath: DestroyOnCompletion.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114272563829476662, guid: d4f6725bcd8865c448b624669f263022,
+        type: 3}
+      propertyPath: ObjectiveIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114272563829476662, guid: d4f6725bcd8865c448b624669f263022,
+        type: 3}
+      propertyPath: eventSettings
+      value: 
+      objectReference: {fileID: 215719452}
+    - target: {fileID: 114272563829476662, guid: d4f6725bcd8865c448b624669f263022,
+        type: 3}
+      propertyPath: ObjectiveDescription
+      value: Destroy all the enemy bots to open next tunnel seal.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114272563829476662, guid: d4f6725bcd8865c448b624669f263022,
+        type: 3}
+      propertyPath: DestroyOnCompletion.Array.data[1]
+      value: 
+      objectReference: {fileID: 2043484420}
     - target: {fileID: 114493265798850554, guid: d4f6725bcd8865c448b624669f263022,
         type: 3}
       propertyPath: zoneRadius
@@ -432,29 +466,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114800404339108784, guid: d4f6725bcd8865c448b624669f263022,
-        type: 3}
-      propertyPath: Flare
-      value: 
-      objectReference: {fileID: 1587412269697708, guid: 5d273b1bb52fd67428de4464443c4a59,
-        type: 3}
-    - target: {fileID: 4825949936139906, guid: d4f6725bcd8865c448b624669f263022, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -40.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4825949936139906, guid: d4f6725bcd8865c448b624669f263022, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 8.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4825949936139906, guid: d4f6725bcd8865c448b624669f263022, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -13.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114126571061277122, guid: d4f6725bcd8865c448b624669f263022,
-        type: 3}
-      propertyPath: baseDamage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114126571061277122, guid: d4f6725bcd8865c448b624669f263022,
         type: 3}
       propertyPath: Flare
       value: 
@@ -680,6 +691,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 825982645}
     m_Modifications:
+    - target: {fileID: 1990733080707480, guid: 7121acf61ec41934bba42c32c21c68bd, type: 3}
+      propertyPath: m_Name
+      value: HealthPickup (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 4213766881193718, guid: 7121acf61ec41934bba42c32c21c68bd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -82.48
@@ -723,10 +738,6 @@ PrefabInstance:
     - target: {fileID: 4213766881193718, guid: 7121acf61ec41934bba42c32c21c68bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 120.00001
-      objectReference: {fileID: 0}
-    - target: {fileID: 1990733080707480, guid: 7121acf61ec41934bba42c32c21c68bd, type: 3}
-      propertyPath: m_Name
-      value: HealthPickup (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7121acf61ec41934bba42c32c21c68bd, type: 3}
@@ -835,6 +846,7 @@ LineRenderer:
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -924,6 +936,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1866700009}
     m_Modifications:
+    - target: {fileID: 1990733080707480, guid: 7121acf61ec41934bba42c32c21c68bd, type: 3}
+      propertyPath: m_Name
+      value: HealthPickup (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 4213766881193718, guid: 7121acf61ec41934bba42c32c21c68bd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -407.2
@@ -959,10 +975,6 @@ PrefabInstance:
     - target: {fileID: 4213766881193718, guid: 7121acf61ec41934bba42c32c21c68bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90.00101
-      objectReference: {fileID: 0}
-    - target: {fileID: 1990733080707480, guid: 7121acf61ec41934bba42c32c21c68bd, type: 3}
-      propertyPath: m_Name
-      value: HealthPickup (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7121acf61ec41934bba42c32c21c68bd, type: 3}
@@ -1023,11 +1035,10 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 0.2509804}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, Unity.ugui,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 84487d73ca4b791498332d8f6858417f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -1247,6 +1258,7 @@ LineRenderer:
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -1428,11 +1440,10 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, Unity.ugui,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 8f8d95dab8a47fe44aa266253362e8d9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -1491,11 +1502,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 114895516539226752, guid: ef35ce86149a05049a32229d52ab07a1,
-        type: 3}
-      propertyPath: laserSound
-      value: 
-      objectReference: {fileID: 343361898}
     - target: {fileID: 82115421722928438, guid: ef35ce86149a05049a32229d52ab07a1,
         type: 3}
       propertyPath: OutputAudioMixerGroup
@@ -1507,6 +1513,11 @@ PrefabInstance:
       propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
       value: 0.49444443
       objectReference: {fileID: 0}
+    - target: {fileID: 114895516539226752, guid: ef35ce86149a05049a32229d52ab07a1,
+        type: 3}
+      propertyPath: laserSound
+      value: 
+      objectReference: {fileID: 343361898}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
 --- !u!1 &415609684
@@ -1558,6 +1569,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -1693,6 +1705,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -1787,6 +1800,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1243457502439506, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
+      propertyPath: m_Name
+      value: LaserEmitter (5)
+      objectReference: {fileID: 0}
     - target: {fileID: 4888221551627330, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1372.65
@@ -1823,21 +1840,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -2.371
       objectReference: {fileID: 0}
-    - target: {fileID: 1243457502439506, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
-      propertyPath: m_Name
-      value: LaserEmitter (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114895516539226752, guid: ef35ce86149a05049a32229d52ab07a1,
-        type: 3}
-      propertyPath: laserSound
-      value: 
-      objectReference: {fileID: 992650858}
     - target: {fileID: 82115421722928438, guid: ef35ce86149a05049a32229d52ab07a1,
         type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 243882105725010128, guid: adcf580b09834de4d91b9cf5f02f16b2,
         type: 2}
+    - target: {fileID: 114895516539226752, guid: ef35ce86149a05049a32229d52ab07a1,
+        type: 3}
+      propertyPath: laserSound
+      value: 
+      objectReference: {fileID: 992650858}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
 --- !u!1001 &518346677
@@ -1847,6 +1860,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4469446832982172, guid: 0f8a1d1d81f2b274e9826a65b1b66faa, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4491073541143884, guid: 0f8a1d1d81f2b274e9826a65b1b66faa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 533.4
@@ -1882,10 +1899,6 @@ PrefabInstance:
     - target: {fileID: 4686806229730768, guid: 0f8a1d1d81f2b274e9826a65b1b66faa, type: 3}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4469446832982172, guid: 0f8a1d1d81f2b274e9826a65b1b66faa, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4909206617224152, guid: 0f8a1d1d81f2b274e9826a65b1b66faa, type: 3}
       propertyPath: m_RootOrder
@@ -2036,6 +2049,43 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4991800533059852, guid: f9f9fc7a56c1b6d4292654b922541873, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 294.0501
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991800533059852, guid: f9f9fc7a56c1b6d4292654b922541873, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 54.783783
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991800533059852, guid: f9f9fc7a56c1b6d4292654b922541873, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 173.1485
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991800533059852, guid: f9f9fc7a56c1b6d4292654b922541873, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991800533059852, guid: f9f9fc7a56c1b6d4292654b922541873, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991800533059852, guid: f9f9fc7a56c1b6d4292654b922541873, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991800533059852, guid: f9f9fc7a56c1b6d4292654b922541873, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991800533059852, guid: f9f9fc7a56c1b6d4292654b922541873, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114046478409805204, guid: f9f9fc7a56c1b6d4292654b922541873,
+        type: 3}
+      propertyPath: playerPlane
+      value: 
+      objectReference: {fileID: 1312251190}
     - target: {fileID: 114144603416077112, guid: f9f9fc7a56c1b6d4292654b922541873,
         type: 3}
       propertyPath: objectives.Array.data[0]
@@ -2086,43 +2136,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4991800533059852, guid: f9f9fc7a56c1b6d4292654b922541873, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 294.0501
-      objectReference: {fileID: 0}
-    - target: {fileID: 4991800533059852, guid: f9f9fc7a56c1b6d4292654b922541873, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 54.783783
-      objectReference: {fileID: 0}
-    - target: {fileID: 4991800533059852, guid: f9f9fc7a56c1b6d4292654b922541873, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 173.1485
-      objectReference: {fileID: 0}
-    - target: {fileID: 4991800533059852, guid: f9f9fc7a56c1b6d4292654b922541873, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4991800533059852, guid: f9f9fc7a56c1b6d4292654b922541873, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4991800533059852, guid: f9f9fc7a56c1b6d4292654b922541873, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4991800533059852, guid: f9f9fc7a56c1b6d4292654b922541873, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4991800533059852, guid: f9f9fc7a56c1b6d4292654b922541873, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114046478409805204, guid: f9f9fc7a56c1b6d4292654b922541873,
-        type: 3}
-      propertyPath: playerPlane
-      value: 
-      objectReference: {fileID: 1312251190}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9f9fc7a56c1b6d4292654b922541873, type: 3}
 --- !u!1 &626335161
@@ -2173,6 +2186,7 @@ LineRenderer:
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -2262,6 +2276,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1243457502439506, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
+      propertyPath: m_Name
+      value: LaserEmitter (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 4888221551627330, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 620.85
@@ -2298,21 +2316,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -2.371
       objectReference: {fileID: 0}
-    - target: {fileID: 1243457502439506, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
-      propertyPath: m_Name
-      value: LaserEmitter (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114895516539226752, guid: ef35ce86149a05049a32229d52ab07a1,
-        type: 3}
-      propertyPath: laserSound
-      value: 
-      objectReference: {fileID: 330344108}
     - target: {fileID: 82115421722928438, guid: ef35ce86149a05049a32229d52ab07a1,
         type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 243882105725010128, guid: adcf580b09834de4d91b9cf5f02f16b2,
         type: 2}
+    - target: {fileID: 114895516539226752, guid: ef35ce86149a05049a32229d52ab07a1,
+        type: 3}
+      propertyPath: laserSound
+      value: 
+      objectReference: {fileID: 330344108}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
 --- !u!1 &690057733
@@ -2372,11 +2386,10 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.94471574, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, Unity.ugui,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 84487d73ca4b791498332d8f6858417f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -2444,6 +2457,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1243457502439506, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
+      propertyPath: m_Name
+      value: LaserEmitter (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 4888221551627330, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 619.8
@@ -2480,21 +2497,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -2.371
       objectReference: {fileID: 0}
-    - target: {fileID: 1243457502439506, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
-      propertyPath: m_Name
-      value: LaserEmitter (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114895516539226752, guid: ef35ce86149a05049a32229d52ab07a1,
-        type: 3}
-      propertyPath: laserSound
-      value: 
-      objectReference: {fileID: 1170739040}
     - target: {fileID: 82115421722928438, guid: ef35ce86149a05049a32229d52ab07a1,
         type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 243882105725010128, guid: adcf580b09834de4d91b9cf5f02f16b2,
         type: 2}
+    - target: {fileID: 114895516539226752, guid: ef35ce86149a05049a32229d52ab07a1,
+        type: 3}
+      propertyPath: laserSound
+      value: 
+      objectReference: {fileID: 1170739040}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
 --- !u!1001 &753102886
@@ -2557,6 +2570,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1171822822}
     m_Modifications:
+    - target: {fileID: 1400845508695058, guid: 7e37496c96e43524ea9ac3a0220bcd90, type: 3}
+      propertyPath: m_Name
+      value: BigBlimp (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 4831126415929604, guid: 7e37496c96e43524ea9ac3a0220bcd90, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.13180023
@@ -2601,10 +2618,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.010000001
       objectReference: {fileID: 0}
-    - target: {fileID: 1400845508695058, guid: 7e37496c96e43524ea9ac3a0220bcd90, type: 3}
-      propertyPath: m_Name
-      value: BigBlimp (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 114254321239886264, guid: 7e37496c96e43524ea9ac3a0220bcd90,
         type: 3}
       propertyPath: pickups.Array.size
@@ -2637,6 +2650,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1064949332158150, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
+      propertyPath: m_Name
+      value: SingleCheckpoint (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1064949332158150, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4146009597502650, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4339085610201204, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 901.59
@@ -2673,25 +2698,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90.00001
       objectReference: {fileID: 0}
-    - target: {fileID: 4146009597502650, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
-        type: 3}
-      propertyPath: ObjectiveDescription
-      value: Proceed through the tunnel.
-      objectReference: {fileID: 0}
-    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
-        type: 3}
-      propertyPath: ObjectiveIndex
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
-        type: 3}
-      propertyPath: eventSettings
-      value: 
-      objectReference: {fileID: 215719452}
     - target: {fileID: 65878596628430860, guid: c86ad63616e8725429e845b60564ef3d,
         type: 3}
       propertyPath: m_Size.z
@@ -2722,14 +2728,21 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: 0.54867554
       objectReference: {fileID: 0}
-    - target: {fileID: 1064949332158150, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
-      propertyPath: m_Name
-      value: SingleCheckpoint (1)
+    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
+        type: 3}
+      propertyPath: ObjectiveDescription
+      value: Proceed through the tunnel.
       objectReference: {fileID: 0}
-    - target: {fileID: 1064949332158150, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
+        type: 3}
+      propertyPath: ObjectiveIndex
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
+        type: 3}
+      propertyPath: eventSettings
+      value: 
+      objectReference: {fileID: 215719452}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
 --- !u!114 &775596336 stripped
@@ -2854,11 +2867,10 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, Unity.ugui,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 8f8d95dab8a47fe44aa266253362e8d9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -2927,6 +2939,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -3018,11 +3031,10 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 0.2509804}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, Unity.ugui,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 84487d73ca4b791498332d8f6858417f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -3099,11 +3111,10 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.94471574, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, Unity.ugui,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 84487d73ca4b791498332d8f6858417f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -3130,6 +3141,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1243457502439506, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
+      propertyPath: m_Name
+      value: LaserEmitter (4)
+      objectReference: {fileID: 0}
     - target: {fileID: 4888221551627330, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1373.7
@@ -3166,21 +3181,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -2.371
       objectReference: {fileID: 0}
-    - target: {fileID: 1243457502439506, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
-      propertyPath: m_Name
-      value: LaserEmitter (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114895516539226752, guid: ef35ce86149a05049a32229d52ab07a1,
-        type: 3}
-      propertyPath: laserSound
-      value: 
-      objectReference: {fileID: 1349185550}
     - target: {fileID: 82115421722928438, guid: ef35ce86149a05049a32229d52ab07a1,
         type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 243882105725010128, guid: adcf580b09834de4d91b9cf5f02f16b2,
         type: 2}
+    - target: {fileID: 114895516539226752, guid: ef35ce86149a05049a32229d52ab07a1,
+        type: 3}
+      propertyPath: laserSound
+      value: 
+      objectReference: {fileID: 1349185550}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
 --- !u!1 &933961149
@@ -3230,6 +3241,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1866700009}
     m_Modifications:
+    - target: {fileID: 1243457502439506, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
+      propertyPath: m_Name
+      value: LaserEmitter (6)
+      objectReference: {fileID: 0}
     - target: {fileID: 4888221551627330, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -203.371
@@ -3270,10 +3285,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 100.00006
       objectReference: {fileID: 0}
-    - target: {fileID: 1243457502439506, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
-      propertyPath: m_Name
-      value: LaserEmitter (6)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
 --- !u!1 &1076599125 stripped
@@ -3292,10 +3303,29 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 72b0cb958bcc074439d1bd2ab1e229eb, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
+--- !u!205 &1076599127
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076599125}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1.7493831
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.70226276
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1608727897}
+  m_Enabled: 1
 --- !u!1001 &1078435919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3303,6 +3333,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1866700009}
     m_Modifications:
+    - target: {fileID: 1243457502439506, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
+      propertyPath: m_Name
+      value: LaserEmitter (7)
+      objectReference: {fileID: 0}
     - target: {fileID: 4888221551627330, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -379.54
@@ -3343,10 +3377,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 100.00016
       objectReference: {fileID: 0}
-    - target: {fileID: 1243457502439506, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
-      propertyPath: m_Name
-      value: LaserEmitter (7)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
 --- !u!1001 &1095465118
@@ -3356,6 +3386,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
+      propertyPath: m_Name
+      value: TunnelShield (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
       propertyPath: m_LocalPosition.x
       value: 994.4
@@ -3396,12 +3434,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
-      propertyPath: m_Name
-      value: TunnelShield (2)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
+--- !u!23 &1095465119 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300000, guid: 3ee80cabe775b724384eb689ae28e707,
+    type: 3}
+  m_PrefabInstance: {fileID: 1095465118}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1111024455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3577,10 +3617,29 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 72b0cb958bcc074439d1bd2ab1e229eb, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
+--- !u!205 &1171822820
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171822818}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1.7493831
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.7453647
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1095465119}
+  m_Enabled: 1
 --- !u!4 &1171822822 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 3ee80cabe775b724384eb689ae28e707,
@@ -3642,11 +3701,10 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, Unity.ugui,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 8f8d95dab8a47fe44aa266253362e8d9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -3673,6 +3731,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1064949332158150, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
+      propertyPath: m_Name
+      value: SingleCheckpoint (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1064949332158150, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4146009597502650, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4339085610201204, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1373.6
@@ -3709,25 +3779,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -180.00002
       objectReference: {fileID: 0}
-    - target: {fileID: 4146009597502650, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
-        type: 3}
-      propertyPath: ObjectiveDescription
-      value: Proceed through the tunnel.
-      objectReference: {fileID: 0}
-    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
-        type: 3}
-      propertyPath: ObjectiveIndex
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
-        type: 3}
-      propertyPath: eventSettings
-      value: 
-      objectReference: {fileID: 215719452}
     - target: {fileID: 65878596628430860, guid: c86ad63616e8725429e845b60564ef3d,
         type: 3}
       propertyPath: m_Size.z
@@ -3758,14 +3809,21 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: 0.54867554
       objectReference: {fileID: 0}
-    - target: {fileID: 1064949332158150, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
-      propertyPath: m_Name
-      value: SingleCheckpoint (2)
+    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
+        type: 3}
+      propertyPath: ObjectiveDescription
+      value: Proceed through the tunnel.
       objectReference: {fileID: 0}
-    - target: {fileID: 1064949332158150, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
+        type: 3}
+      propertyPath: ObjectiveIndex
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
+        type: 3}
+      propertyPath: eventSettings
+      value: 
+      objectReference: {fileID: 215719452}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
 --- !u!114 &1191396433 stripped
@@ -3936,16 +3994,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 224650490815548872, guid: c2b0a96c425dd834484bccd99664d902,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224917649717601960, guid: c2b0a96c425dd834484bccd99664d902,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4311573964776816, guid: c2b0a96c425dd834484bccd99664d902, type: 3}
       propertyPath: m_LocalPosition.x
       value: 225.5
@@ -3977,6 +4025,16 @@ PrefabInstance:
     - target: {fileID: 4311573964776816, guid: c2b0a96c425dd834484bccd99664d902, type: 3}
       propertyPath: m_RootOrder
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 224650490815548872, guid: c2b0a96c425dd834484bccd99664d902,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224917649717601960, guid: c2b0a96c425dd834484bccd99664d902,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2b0a96c425dd834484bccd99664d902, type: 3}
@@ -4060,9 +4118,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1323385819
 MeshRenderer:
@@ -4078,6 +4136,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -4179,11 +4238,10 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, Unity.ugui,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 8f8d95dab8a47fe44aa266253362e8d9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -4274,10 +4332,29 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 72b0cb958bcc074439d1bd2ab1e229eb, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
+--- !u!205 &1414164705
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414164703}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1.7493838
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.70226276
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 48159032}
+  m_Enabled: 1
 --- !u!1001 &1427951946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4380,7 +4457,7 @@ MonoBehaviour:
   objectiveType: 2
   ObjectiveIndex: 3
   active: 0
-  XP: 20
+  xpMultiplier: 1
   completed: 0
   DestroyOnCompletion:
   - {fileID: 1887794153}
@@ -4462,10 +4539,29 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 72b0cb958bcc074439d1bd2ab1e229eb, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
+--- !u!205 &1505088526
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505088524}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1.7493838
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.69696504
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1830322423}
+  m_Enabled: 1
 --- !u!4 &1505088528 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 3ee80cabe775b724384eb689ae28e707,
@@ -4524,6 +4620,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
       propertyPath: m_LocalPosition.x
       value: 240.9
@@ -4582,10 +4682,35 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 72b0cb958bcc074439d1bd2ab1e229eb, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
+--- !u!23 &1566818374 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300000, guid: 3ee80cabe775b724384eb689ae28e707,
+    type: 3}
+  m_PrefabInstance: {fileID: 1566818371}
+  m_PrefabAsset: {fileID: 0}
+--- !u!205 &1566818375
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566818372}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1.7493831
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.70226276
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1566818374}
+  m_Enabled: 1
 --- !u!1 &1599860130
 GameObject:
   m_ObjectHideFlags: 0
@@ -4641,11 +4766,10 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, Unity.ugui,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 8f8d95dab8a47fe44aa266253362e8d9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -4672,6 +4796,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1866700009}
     m_Modifications:
+    - target: {fileID: 1990733080707480, guid: 7121acf61ec41934bba42c32c21c68bd, type: 3}
+      propertyPath: m_Name
+      value: HealthPickup (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 4213766881193718, guid: 7121acf61ec41934bba42c32c21c68bd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -517.59
@@ -4708,10 +4836,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 60.001003
       objectReference: {fileID: 0}
-    - target: {fileID: 1990733080707480, guid: 7121acf61ec41934bba42c32c21c68bd, type: 3}
-      propertyPath: m_Name
-      value: HealthPickup (2)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7121acf61ec41934bba42c32c21c68bd, type: 3}
 --- !u!1001 &1605634764
@@ -4721,6 +4845,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1243457502439506, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
+      propertyPath: m_Name
+      value: LaserEmitter (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 4888221551627330, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 549.42
@@ -4757,21 +4885,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -35.038002
       objectReference: {fileID: 0}
-    - target: {fileID: 1243457502439506, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
-      propertyPath: m_Name
-      value: LaserEmitter (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114895516539226752, guid: ef35ce86149a05049a32229d52ab07a1,
-        type: 3}
-      propertyPath: laserSound
-      value: 
-      objectReference: {fileID: 1762587943}
     - target: {fileID: 82115421722928438, guid: ef35ce86149a05049a32229d52ab07a1,
         type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 243882105725010128, guid: adcf580b09834de4d91b9cf5f02f16b2,
         type: 2}
+    - target: {fileID: 114895516539226752, guid: ef35ce86149a05049a32229d52ab07a1,
+        type: 3}
+      propertyPath: laserSound
+      value: 
+      objectReference: {fileID: 1762587943}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef35ce86149a05049a32229d52ab07a1, type: 3}
 --- !u!1001 &1608727896
@@ -4781,6 +4905,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
+      propertyPath: m_Name
+      value: TunnelShield (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1751
@@ -4821,12 +4953,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
-      propertyPath: m_Name
-      value: TunnelShield (4)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
+--- !u!23 &1608727897 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300000, guid: 3ee80cabe775b724384eb689ae28e707,
+    type: 3}
+  m_PrefabInstance: {fileID: 1608727896}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1688195920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4981,9 +5115,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1738637063
 MeshRenderer:
@@ -4999,6 +5133,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -5052,6 +5187,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1064949332158150, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
+      propertyPath: m_Name
+      value: SingleCheckpoint (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1064949332158150, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4146009597502650, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4339085610201204, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1657.67
@@ -5088,25 +5235,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90.00001
       objectReference: {fileID: 0}
-    - target: {fileID: 4146009597502650, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
-        type: 3}
-      propertyPath: ObjectiveDescription
-      value: Proceed through the tunnel.
-      objectReference: {fileID: 0}
-    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
-        type: 3}
-      propertyPath: ObjectiveIndex
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
-        type: 3}
-      propertyPath: eventSettings
-      value: 
-      objectReference: {fileID: 215719452}
     - target: {fileID: 65878596628430860, guid: c86ad63616e8725429e845b60564ef3d,
         type: 3}
       propertyPath: m_Size.z
@@ -5137,14 +5265,21 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: 0.54867554
       objectReference: {fileID: 0}
-    - target: {fileID: 1064949332158150, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
-      propertyPath: m_Name
-      value: SingleCheckpoint (3)
+    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
+        type: 3}
+      propertyPath: ObjectiveDescription
+      value: Proceed through the tunnel.
       objectReference: {fileID: 0}
-    - target: {fileID: 1064949332158150, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
+        type: 3}
+      propertyPath: ObjectiveIndex
+      value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
+        type: 3}
+      propertyPath: eventSettings
+      value: 
+      objectReference: {fileID: 215719452}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
 --- !u!114 &1738757702 stripped
@@ -5271,7 +5406,7 @@ MonoBehaviour:
   objectiveType: 2
   ObjectiveIndex: 1
   active: 0
-  XP: 20
+  xpMultiplier: 1
   completed: 0
   DestroyOnCompletion:
   - {fileID: 2038605668}
@@ -5364,6 +5499,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
+      propertyPath: m_Name
+      value: TunnelShield (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
       propertyPath: m_LocalPosition.x
       value: 621.45
@@ -5404,12 +5547,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
-      propertyPath: m_Name
-      value: TunnelShield (1)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ee80cabe775b724384eb689ae28e707, type: 3}
+--- !u!23 &1830322423 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300000, guid: 3ee80cabe775b724384eb689ae28e707,
+    type: 3}
+  m_PrefabInstance: {fileID: 1830322422}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1847983909
 GameObject:
   m_ObjectHideFlags: 0
@@ -5465,11 +5610,10 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, Unity.ugui,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 8f8d95dab8a47fe44aa266253362e8d9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -5499,6 +5643,10 @@ PrefabInstance:
     - target: {fileID: 1702564470663584, guid: 0f8a1d1d81f2b274e9826a65b1b66faa, type: 3}
       propertyPath: m_Name
       value: HQRing (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4469446832982172, guid: 0f8a1d1d81f2b274e9826a65b1b66faa, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4491073541143884, guid: 0f8a1d1d81f2b274e9826a65b1b66faa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5539,10 +5687,6 @@ PrefabInstance:
     - target: {fileID: 4686806229730768, guid: 0f8a1d1d81f2b274e9826a65b1b66faa, type: 3}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4469446832982172, guid: 0f8a1d1d81f2b274e9826a65b1b66faa, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4909206617224152, guid: 0f8a1d1d81f2b274e9826a65b1b66faa, type: 3}
       propertyPath: m_RootOrder
@@ -5620,6 +5764,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -5940,11 +6085,10 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, Unity.ugui,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 8f8d95dab8a47fe44aa266253362e8d9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -6111,6 +6255,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4146009597502650, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4339085610201204, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 620.1068
@@ -6143,25 +6291,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 4146009597502650, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
-        type: 3}
-      propertyPath: ObjectiveDescription
-      value: Proceed through the tunnel.
-      objectReference: {fileID: 0}
-    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
-        type: 3}
-      propertyPath: ObjectiveIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
-        type: 3}
-      propertyPath: eventSettings
-      value: 
-      objectReference: {fileID: 215719452}
     - target: {fileID: 65878596628430860, guid: c86ad63616e8725429e845b60564ef3d,
         type: 3}
       propertyPath: m_Size.z
@@ -6192,6 +6321,21 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: 0.54867554
       objectReference: {fileID: 0}
+    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
+        type: 3}
+      propertyPath: ObjectiveDescription
+      value: Proceed through the tunnel.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
+        type: 3}
+      propertyPath: ObjectiveIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114686778330434772, guid: c86ad63616e8725429e845b60564ef3d,
+        type: 3}
+      propertyPath: eventSettings
+      value: 
+      objectReference: {fileID: 215719452}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c86ad63616e8725429e845b60564ef3d, type: 3}
 --- !u!114 &2033433628 stripped
@@ -6414,9 +6558,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &2043484422
 MeshRenderer:
@@ -6432,6 +6576,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -6485,6 +6630,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1618409094860272, guid: 31f11fe96f3d5734b812d69af8e3dd82, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1650971312490548, guid: 31f11fe96f3d5734b812d69af8e3dd82, type: 3}
       propertyPath: m_Name
       value: StartPortal
@@ -6532,10 +6681,6 @@ PrefabInstance:
     - target: {fileID: 4176360983695494, guid: 31f11fe96f3d5734b812d69af8e3dd82, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1618409094860272, guid: 31f11fe96f3d5734b812d69af8e3dd82, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31f11fe96f3d5734b812d69af8e3dd82, type: 3}
@@ -6766,6 +6911,7 @@ MonoBehaviour:
   difficulty: 2
   zoneCentre: {x: 0, y: 0, z: 0}
   zoneRadius: 100
+  unreactive: 0
   healthCanvas: {fileID: 1618696094154294, guid: 52430529cf6942e43b5b94b0e8d5e7b8,
     type: 3}
   thrusterL: {fileID: 167000705}
@@ -6886,11 +7032,10 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, Unity.ugui,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 8f8d95dab8a47fe44aa266253362e8d9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -6917,6 +7062,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1866700009}
     m_Modifications:
+    - target: {fileID: 1990733080707480, guid: 7121acf61ec41934bba42c32c21c68bd, type: 3}
+      propertyPath: m_Name
+      value: HealthPickup (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 4213766881193718, guid: 7121acf61ec41934bba42c32c21c68bd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 60.8
@@ -6952,10 +7101,6 @@ PrefabInstance:
     - target: {fileID: 4213766881193718, guid: 7121acf61ec41934bba42c32c21c68bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 1990733080707480, guid: 7121acf61ec41934bba42c32c21c68bd, type: 3}
-      propertyPath: m_Name
-      value: HealthPickup (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7121acf61ec41934bba42c32c21c68bd, type: 3}

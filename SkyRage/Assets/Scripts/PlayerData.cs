@@ -22,6 +22,7 @@ public class PlayerData{
         formatter.Serialize(file, data);
         Debug.Log("Saved player data");
         file.Close();
+        Stats.SaveData();
     }
 
     public static void ResetData()
@@ -33,6 +34,7 @@ public class PlayerData{
         formatter.Serialize(file, data);
         Debug.Log("Data reset");
         file.Close();
+        Stats.ResetData();
     }
 
     public static void LoadData()
@@ -50,6 +52,7 @@ public class PlayerData{
         {
             Debug.Log("Save Files not found");
         }
+        Stats.LoadData();
     }
 }
 

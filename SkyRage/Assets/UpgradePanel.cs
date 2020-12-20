@@ -25,6 +25,9 @@ public class UpgradePanel : MonoBehaviour {
             case 3: Upgrades.slayerX[upgradeIndex] = true; break;
             default: break;
         }
+        Stats.data[22] += 1;
+        FinishPanel.IncrementAchievement(GPGSIds.achievement_elite_mechanic, 1);
+        FinishPanel.IncrementAchievement(GPGSIds.achievement_mechanic, 1);
         PlayerData.upgradeTokens -= tokens;
         foreach (UpgradePanel up in transform.parent.GetComponentsInChildren<UpgradePanel>())
         {

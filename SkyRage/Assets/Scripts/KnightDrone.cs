@@ -77,6 +77,7 @@ public class KnightDrone : Destructible {
                 {
                     if (hit.transform == target)
                     {
+                        EventSettings.inCombat = true;
                         lastShot = Time.time;
                         StartCoroutine(SerialFire());
                     }
@@ -189,5 +190,33 @@ public class KnightDrone : Destructible {
         yield return new WaitForSeconds(0.4f);
         Rb.AddForce((isLeft ? transform.right : -transform.right) * Rb.mass * 40, ForceMode.Impulse);
         yield return new WaitForSeconds(0.4f);
+    }
+
+    public override void DeathBlow(Transform hitter, WeaponName weapon)
+    {
+        if (EventSettings.currentPlayer == null) return;
+        if (hitter == EventSettings.currentPlayer)
+        {
+            Stats.data[4] += 1;
+            switch (weapon)
+            {
+                case WeaponName.Minigun:
+                    Stats.data[6] += 1;
+                    break;
+                case WeaponName.MissileLauncher:
+                    Stats.data[7] += 1;
+                    break;
+                case WeaponName.StunGun:
+                    Stats.data[8] += 1;
+                    break;
+                case WeaponName.LaserGun:
+                    Stats.data[9] += 1;
+                    break;
+                case WeaponName.Unknown:
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

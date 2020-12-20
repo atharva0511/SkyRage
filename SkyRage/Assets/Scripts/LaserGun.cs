@@ -19,6 +19,7 @@ public class LaserGun : Weapons {
 	// Use this for initialization
 	void Start () {
         //upgrades
+        this.owner = GetComponentInParent<Destructible>().transform;
         this.damageRate = CheckUpgrade(5) ? 5 : 4;
         this.chargeDuration = CheckUpgrade(6) ? 3 : 4;
 	}
@@ -77,7 +78,7 @@ public class LaserGun : Weapons {
             Destructible ob = hit.transform.GetComponentInParent<Destructible>();
             if (ob != null)
             {
-                 ob.TakeDamage(damageRate * 30 * Time.deltaTime, owner, 0);
+                 ob.TakeDamage(damageRate * 30 * Time.deltaTime, owner, 0,Destructible.WeaponName.LaserGun);
             }        
             Rigidbody Rb = hit.transform.GetComponent<Rigidbody>();
             if (Rb != null)

@@ -4,6 +4,7 @@ using UnityEngine;
 public class WeaponManager : MonoBehaviour {
 
     public byte vehicleIndex = 0;
+    
 
     public Weapons[] miniguns;
     public Weapons homingLauncher;

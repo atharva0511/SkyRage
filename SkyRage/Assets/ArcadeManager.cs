@@ -13,6 +13,9 @@ public class ArcadeManager : MonoBehaviour {
     int presetIndex = 0;
     bool spawnedUT = true;
     bool spawnedLife = true;
+
+    Vector3 startPos;
+    Quaternion startRot;
 	// Use this for initialization
 	void Awake () {
         if (PlayerPrefs.HasKey("Difficulty"))
@@ -39,7 +42,8 @@ public class ArcadeManager : MonoBehaviour {
         radarCamera.playerPlane = transform.GetChild(veh);
         eventSettings.player = transform.GetChild(veh);
         EventSettings.currentPlayer = transform.GetChild(veh);
-
+        startPos = eventSettings.player.position;
+        startRot = eventSettings.player.rotation;
         NextPreset();
 	}
 	
@@ -56,6 +60,8 @@ public class ArcadeManager : MonoBehaviour {
         presets[0] = swap;
         ArcadePreset ap = currentPreset.GetComponent<ArcadePreset>();
         eventSettings.objectives = ap.objectives;
+        eventSettings.player.position = startPos;
+        eventSettings.player.rotation = startRot;
         if (Random.value>0.5f)
         {
             if (!spawnedUT)

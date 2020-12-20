@@ -83,6 +83,7 @@ public class Enforcer : Destructible {
                 {
                     if (hit.transform == target)
                     {
+                        EventSettings.inCombat = true;
                         lastShot = Time.time;
                         if (rand > 0.5f) StartCoroutine(SerialFire());
                         else FireMissile();
@@ -234,5 +235,33 @@ public class Enforcer : Destructible {
         p.target = this.target;
         p.turnRate = 40;
         p.speed = 70 + 10 * difficulty;
+    }
+
+    public override void DeathBlow(Transform hitter,WeaponName weapon)
+    {
+        if (EventSettings.currentPlayer == null) return;
+        if (hitter == EventSettings.currentPlayer)
+        {
+            Stats.data[5] += 1;
+            switch (weapon)
+            {
+                case WeaponName.Minigun:
+                    Stats.data[6] += 1;
+                    break;
+                case WeaponName.MissileLauncher:
+                    Stats.data[7] += 1;
+                    break;
+                case WeaponName.StunGun:
+                    Stats.data[8] += 1;
+                    break;
+                case WeaponName.LaserGun:
+                    Stats.data[9] += 1;
+                    break;
+                case WeaponName.Unknown:
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

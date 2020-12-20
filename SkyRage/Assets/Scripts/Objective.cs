@@ -38,7 +38,8 @@ public class Objective : MonoBehaviour {
         }
         foreach (GameObject ob in ActivateOnCompletion)
         {
-            ob.SetActive(true);
+            if(ob!=null)
+                ob.SetActive(true);
         }
     }
 

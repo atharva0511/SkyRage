@@ -11,7 +11,7 @@ public class UISettings : MonoBehaviour {
     public GameObject warnPanel;
     public GameObject restartWarnPanel;
     public GameObject LoadingPanel;
-    public GameObject FinishPanel;
+    public GameObject finishPanel;
     public GameObject DeadPanel;
     public Image loadingProgress;
     public Text ObjectiveDesc;
@@ -53,6 +53,7 @@ public class UISettings : MonoBehaviour {
     public void ToMainMenu()
     {
         Time.timeScale = 1;
+        EventSettings.inCombat = false;
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -83,7 +84,7 @@ public class UISettings : MonoBehaviour {
     public void Restart()
     {
         DeadPanel.SetActive(false);
-        FinishPanel.SetActive(false);
+        finishPanel.SetActive(false);
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().name));
     }
 
@@ -91,7 +92,7 @@ public class UISettings : MonoBehaviour {
     {
         Debug.Log("Mission Completed");
         Time.timeScale = 0;
-        FinishPanel.SetActive(true);
+        finishPanel.SetActive(true);
     }
 
     IEnumerator LoadLevel(string sceneName)
@@ -115,8 +116,8 @@ public class UISettings : MonoBehaviour {
     {
         Debug.Log("Mission Completed");
         Time.timeScale = 0;
-        FinishPanel.SetActive(true);
-        FinishPanel.GetComponent<FinishPanel>().SetText(coins);
+        finishPanel.SetActive(true);
+        finishPanel.GetComponent<FinishPanel>().SetText(coins);
     }
 
     public void SetObDescription(string desc)
@@ -136,6 +137,7 @@ public class UISettings : MonoBehaviour {
         {
             s = s + c;
             descDisp.text = s;
+            DisplayObj.SetActive(true);
             // play type audio here
 
             yield return new WaitForSeconds(0.05f);
@@ -147,12 +149,16 @@ public class UISettings : MonoBehaviour {
     public void PlayerDead()
     {
         Time.timeScale = 0;
-        if(evSettings.gameMode== EventSettings.GameMode.arcade)
+        FinishPanel.UnlockAchievement(GPGSIds.achievement_after_life);
+        if (evSettings.gameMode == EventSettings.GameMode.arcade)
         {
-            FinishPanel.SetActive(true);
+            finishPanel.SetActive(true);
         }
         else
+        {
+            FinishPanel.CheckAchievements();
             DeadPanel.SetActive(true);
+        }
     }
 
     public void PauseAudio()
@@ -161,5 +167,14 @@ public class UISettings : MonoBehaviour {
         {
             aud.Pause();
         }
+    }
+
+    public void OnLoadCheckpoint()
+    {
+        PlayerPrefs.SetInt("LoadCheckpoint", 1);
+        EventSettings.currentCoins = int.Parse(EventSettings.currentPlayer.GetComponent<playerPlane>().coinDisp.text);
+        DeadPanel.SetActive(false);
+        finishPanel.SetActive(false);
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().name));
     }
 }

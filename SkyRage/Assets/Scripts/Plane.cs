@@ -12,9 +12,9 @@ public class Destructible : MonoBehaviour {
     public bool dead = false;
     [HideInInspector]
     public bool stunned = false;
-    
-	
-	
+    public enum WeaponName { Minigun, MissileLauncher, StunGun, LaserGun, Unknown }
+
+
 
     public void TakeDamage(float amount, float randomize = 2f)
     {
@@ -26,7 +26,7 @@ public class Destructible : MonoBehaviour {
         if (this.health <= 0 && !dead) Die();
     }
 
-    public void TakeDamage(float amount, Transform hitter,float randomize = 2f)
+    public void TakeDamage(float amount, Transform hitter,float randomize = 2f,WeaponName weapon = WeaponName.Unknown)
     {
         /*if (hitter.GetComponent<Destructible>() != null)
         {
@@ -41,7 +41,11 @@ public class Destructible : MonoBehaviour {
             this.target = hitter;
         }*/
         Damaged();
-        if (this.health <= 0 && !dead) Die();
+        if (this.health <= 0 && !dead)
+        {
+            DeathBlow(hitter,weapon);
+            Die();
+        }
     }
 
     public virtual void Heal(float amount)
@@ -73,5 +77,10 @@ public class Destructible : MonoBehaviour {
             yield return null;
         }
         stunned = false;
+    }
+
+    public virtual void DeathBlow(Transform hitter,WeaponName weapon = WeaponName.Unknown)
+    {
+
     }
 }

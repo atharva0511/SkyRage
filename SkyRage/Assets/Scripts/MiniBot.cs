@@ -7,6 +7,7 @@ public class MiniBot : Destructible {
     public float difficulty = 2;
     public Vector3 zoneCentre;
     public int zoneRadius = 100;
+    public bool unreactive = false;
     public GameObject healthCanvas;
     public GameObject thrusterL;
     public GameObject thrusterR;
@@ -78,8 +79,13 @@ public class MiniBot : Destructible {
                 {
                     if (hit.transform == target)
                     {
+                        
                         lastShot = Time.time;
-                        StartCoroutine(SerialFire());
+                        if (!unreactive)
+                        {
+                            EventSettings.inCombat = true;
+                            StartCoroutine(SerialFire());
+                        }
                     }
                 }
             }
@@ -196,5 +202,33 @@ public class MiniBot : Destructible {
         yield return new WaitForSeconds(0.4f);
         thrusterL.SetActive(false);
         thrusterR.SetActive(false);
+    }
+
+    public override void DeathBlow(Transform hitter, WeaponName weapon)
+    {
+        if (EventSettings.currentPlayer == null) return;
+        if(hitter == EventSettings.currentPlayer)
+        {
+            Stats.data[1] += 1;
+            switch (weapon)
+            {
+                case WeaponName.Minigun:
+                    Stats.data[6] += 1;
+                    break;
+                case WeaponName.MissileLauncher:
+                    Stats.data[7] += 1;
+                    break;
+                case WeaponName.StunGun:
+                    Stats.data[8] += 1;
+                    break;
+                case WeaponName.LaserGun:
+                    Stats.data[9] += 1;
+                    break;
+                case WeaponName.Unknown:
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

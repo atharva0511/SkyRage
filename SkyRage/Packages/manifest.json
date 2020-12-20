@@ -3,6 +3,7 @@
     "com.google.external-dependency-manager": "1.2.157",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
+    "com.unity.accelerate": "file:C:/Users/MMG/Downloads/com.unity.accelerate-1.0.0.tgz",
     "com.unity.ads": "3.4.7",
     "com.unity.analytics": "3.3.5",
     "com.unity.collab-proxy": "1.2.16",
