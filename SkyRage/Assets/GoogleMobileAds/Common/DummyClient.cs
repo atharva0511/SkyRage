@@ -15,7 +15,9 @@
 using System;
 using System.Reflection;
 
+using GoogleMobileAds.Unity;
 using GoogleMobileAds.Api;
+
 using UnityEngine;
 
 namespace GoogleMobileAds.Common
@@ -52,6 +54,7 @@ namespace GoogleMobileAds.Common
         public event EventHandler<CustomNativeClientEventArgs> OnCustomNativeTemplateAdLoaded;
 
         public event EventHandler<CustomNativeClientEventArgs> OnCustomNativeTemplateAdClicked;
+
 #pragma warning restore 67
 
         public string UserId
@@ -76,7 +79,8 @@ namespace GoogleMobileAds.Common
         public void Initialize(Action<IInitializationStatusClient> initCompleteAction)
         {
             Debug.Log("Dummy " + MethodBase.GetCurrentMethod().Name);
-            initCompleteAction(null);
+            var initStatusClient = new InitializationStatusDummyClient();
+            initCompleteAction(initStatusClient);
         }
 
         public void DisableMediationInitialization()

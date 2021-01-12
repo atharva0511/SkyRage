@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<resources>
-  <string name="ddna_application_id">1:570034754463:android:7b7275497c7361647e23aa</string>
-  <string name="ddna_sender_id">570034754463</string>
-  <string name="ddna_fcm_project_id">skyrage-76665007</string>
-  <string name="ddna_fcm_api_key"> AIzaSyAQpsbnb06nm81N3VMVlen65TnM7wAw0lM</string>
-</resources>

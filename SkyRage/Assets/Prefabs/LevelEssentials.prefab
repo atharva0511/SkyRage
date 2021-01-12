@@ -7572,6 +7572,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4937552652254403041}
+        m_MethodName: AppodealInterstitial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 114152031216633896}
         m_MethodName: ProceedToMenu
         m_Mode: 1
@@ -9087,7 +9098,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114650607762652808}
   m_HandleRect: {fileID: 224491907353094110}
   m_Direction: 2
-  m_Value: 0.99999976
+  m_Value: 0.99999946
   m_Size: 0.6855263
   m_NumberOfSteps: 0
   m_OnValueChanged:

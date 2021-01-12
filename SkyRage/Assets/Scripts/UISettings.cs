@@ -17,16 +17,7 @@ public class UISettings : MonoBehaviour {
     public Text ObjectiveDesc;
     public GameObject DisplayObj;
     public EventSettings evSettings;
-	// Use this for initialization
-	void Start () {
-
-    }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-    
 
     public void ClickSound()
     {
@@ -150,10 +141,12 @@ public class UISettings : MonoBehaviour {
     {
         Time.timeScale = 0;
         FinishPanel.UnlockAchievement(GPGSIds.achievement_after_life);
+        
+        AdManager.AppodealInterstitialStatic();
         if (evSettings.gameMode == EventSettings.GameMode.arcade)
         {
             finishPanel.SetActive(true);
-        }
+        } 
         else
         {
             FinishPanel.CheckAchievements();

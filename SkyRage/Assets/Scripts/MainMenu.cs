@@ -1,10 +1,12 @@
 ﻿
 using System.Collections;
-using System.Collections.Generic;
+//using AppodealAds.Unity.Api;
+//using AppodealAds.Unity.Common;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using System;
 
 public class MainMenu : MonoBehaviour {
 
@@ -48,6 +50,15 @@ public class MainMenu : MonoBehaviour {
     }
 	void Start () {
 
+        SetResolution();
+        //bool consent = true;
+        //if (PlayerPrefs.HasKey("Consent"))
+        //{
+        //    consent = PlayerPrefs.GetInt("Consent") == 1;
+        //}
+        //Appodeal.setTesting(true);
+        //Appodeal.initialize("c05c8bfc7f82cd533cea61dafdfb07f7bf4e83f1b9fe1f7b", Appodeal.NON_SKIPPABLE_VIDEO | Appodeal.REWARDED_VIDEO | Appodeal.INTERSTITIAL,consent);
+
         Time.timeScale = 1;
         //ClearPickups();
         ResetGameEvents();
@@ -76,9 +87,19 @@ public class MainMenu : MonoBehaviour {
         }
         DisplayVehicle();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void SetResolution()
+    {
+        int width = Screen.width;
+        int height = Screen.height;
+        if (width > 1000)
+        {
+            Screen.SetResolution((int)(width * 0.6667f), (int)(height * 0.6667f), true);
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
         RenderSettings.skybox.SetFloat("_Rotation", Time.time * 0.9f);
     }
 
@@ -153,7 +174,7 @@ public class MainMenu : MonoBehaviour {
 
     IEnumerator LoadLevel(string sceneName)
     {
-        int choice = Random.Range(0, mContent.tips.Length);
+        int choice = UnityEngine.Random.Range(0, mContent.tips.Length);
         tipText.text = "Tip : "+ mContent.tips[choice];
         StartCoroutine(ChangeCamPos(camPos2));
         SingleplayerPanel.SetActive(false);
@@ -294,5 +315,12 @@ public class MainMenu : MonoBehaviour {
     {
         EventSettings.currentCoins = 0;
         EventSettings.loadObjective = 0;
+    }
+
+    public void ShareApp()
+    {
+        NativeShare nativeShare = new NativeShare();
+        nativeShare.AddTarget("com.ExperienceInfinity.SkyRage");
+        nativeShare.Share();
     }
 }
