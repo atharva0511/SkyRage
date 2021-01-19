@@ -106,29 +106,32 @@ public class FinishPanel : MonoBehaviour {
 
     public void RecieveReward(double amount,string type)
     {
-        switch (type)
+        switch (PlayerPrefs.GetInt("RewardType"))
         {
-            case "coins":
+            case 0:
                 coinAdButton.interactable = false;
-                coinText.text = (int.Parse(coinText.text) + amount).ToString();
+                coinText.text = (int.Parse(coinText.text) + 200).ToString();
                 rewardPanel.SetActive(true);
-                rewardText.text = "You received " + amount.ToString() + " rage coins";
+                rewardText.text = "You received " + "200" + " rage coins";
                 break;
-            case "life":
+            case 2:
                 lifeAdButton.interactable = false;
-                PlayerData.lives += (int)amount;
+                PlayerData.lives += 1;
                 lifeText.text = PlayerData.lives.ToString();
                 rewardPanel.SetActive(true);
-                rewardText.text = "You received +" + amount.ToString() + " bonus life";
+                rewardText.text = "You received +" + "1" + " bonus life";
                 break;
-            case "UpgradeToken":
+            case 1:
                 utAdButton.interactable = false;
-                PlayerData.upgradeTokens += (int)amount;
+                PlayerData.upgradeTokens += 2;
                 utText.text = PlayerData.upgradeTokens.ToString();
                 rewardPanel.SetActive(true);
-                rewardText.text = "You received " + amount.ToString() + " upgrade token";
+                rewardText.text = "You received " + "2" + " upgrade token";
                 break;
         }
+        coinAdButton.interactable = false;
+        lifeAdButton.interactable = false;
+        utAdButton.interactable = false;
     }
 
     public void ShowError()

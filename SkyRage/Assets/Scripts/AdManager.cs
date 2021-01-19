@@ -25,6 +25,7 @@ public class AdManager : MonoBehaviour {
     string UTAdID = "ca-app-pub-9623151168717383/1152871437";
     string coinAdID = "ca-app-pub-9623151168717383/4951040866";
     string customAdID = "ca-app-pub-9623151168717383/5759999153";
+    string interstitialID = "ca-app-pub-9623151168717383/6011860498";
 
     string testVideoAdID = "ca-app-pub-3940256099942544/5224354917";
     string testInterstitialID = "ca-app-pub-3940256099942544/1033173712";
@@ -36,9 +37,9 @@ public class AdManager : MonoBehaviour {
         //coinAd = CreateAndLoadRewardedAd(testVideoAdID);
         //customAd = CreateAndLoadRewardedAd(testVideoAdID);
 
-        lifeAd = CreateAndLoadRewardedAd(lifeAdID);
-        UTAd = CreateAndLoadRewardedAd(UTAdID);
-        coinAd = CreateAndLoadRewardedAd(coinAdID);
+        //lifeAd = CreateAndLoadRewardedAd(lifeAdID);
+        //UTAd = CreateAndLoadRewardedAd(UTAdID);
+        //coinAd = CreateAndLoadRewardedAd(coinAdID);
         if (customAd == null)
         {
             customAd = CreateAndLoadRewardedAd(customAdID);
@@ -48,8 +49,10 @@ public class AdManager : MonoBehaviour {
             customAd = CreateAndLoadRewardedAd(customAdID);
         }
 
-        this.interstitial = new InterstitialAd(testInterstitialID);
-
+        this.interstitial = new InterstitialAd(interstitialID);
+        AdRequest request = new AdRequest.Builder().Build();
+        // Load the interstitial with the request.
+        this.interstitial.LoadAd(request);
         //Appodeal.setRewardedVideoCallbacks(this);
     }
 	
@@ -73,9 +76,9 @@ public class AdManager : MonoBehaviour {
     
     public void ShowLifeAd()
     {
-        if (lifeAd.IsLoaded())
+        if (customAd.IsLoaded())
         {
-            lifeAd.Show();
+            customAd.Show();
         }
         else
         {
@@ -84,7 +87,7 @@ public class AdManager : MonoBehaviour {
             else
                 gamePanel.ShowError();
         }
-        //PlayerPrefs.SetInt("RewardType", 2);
+        PlayerPrefs.SetInt("RewardType", 2);
         //if (Appodeal.isLoaded(Appodeal.REWARDED_VIDEO))
         //    Appodeal.show(Appodeal.REWARDED_VIDEO);
         //else
@@ -98,9 +101,9 @@ public class AdManager : MonoBehaviour {
 
     public void ShowUTAd()
     {
-        if (UTAd.IsLoaded())
+        if (customAd.IsLoaded())
         {
-            UTAd.Show();
+            customAd.Show();
         }
         else
         {
@@ -109,7 +112,7 @@ public class AdManager : MonoBehaviour {
             else
                 gamePanel.ShowError();
         }
-        //PlayerPrefs.SetInt("RewardType", 1);
+        PlayerPrefs.SetInt("RewardType", 1);
         //if (Appodeal.isLoaded(Appodeal.REWARDED_VIDEO))
         //    Appodeal.show(Appodeal.REWARDED_VIDEO);
         //else
@@ -123,9 +126,9 @@ public class AdManager : MonoBehaviour {
 
     public void ShowCoinAd()
     {
-        if (coinAd.IsLoaded())
+        if (customAd.IsLoaded())
         {
-            coinAd.Show();
+            customAd.Show();
         }
         else
         {
@@ -134,7 +137,7 @@ public class AdManager : MonoBehaviour {
             else
                 gamePanel.ShowError();
         }
-        //PlayerPrefs.SetInt("RewardType", 0);
+        PlayerPrefs.SetInt("RewardType", 0);
         //if(Appodeal.isLoaded(Appodeal.REWARDED_VIDEO))
         //    Appodeal.show(Appodeal.REWARDED_VIDEO);
         //else
@@ -159,7 +162,7 @@ public class AdManager : MonoBehaviour {
             else
                 gamePanel.ShowError();
         }
-        //PlayerPrefs.SetInt("RewardType", 0);
+        PlayerPrefs.SetInt("RewardType", 3);
         //if (Appodeal.isLoaded(Appodeal.REWARDED_VIDEO))
         //    Appodeal.show(Appodeal.REWARDED_VIDEO);
         //else

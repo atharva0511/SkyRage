@@ -94,7 +94,7 @@ public class MainMenu : MonoBehaviour {
         int height = Screen.height;
         if (width > 1000)
         {
-            Screen.SetResolution((int)(width * 0.6667f), (int)(height * 0.6667f), true);
+            Screen.SetResolution((int)(width * 0.75f), (int)(height * 0.75f), true);
         }
     }
 
@@ -320,7 +320,7 @@ public class MainMenu : MonoBehaviour {
     public void ShareApp()
     {
         NativeShare nativeShare = new NativeShare();
-        nativeShare.AddTarget("com.ExperienceInfinity.SkyRage");
+        nativeShare.AddTarget("https://play.google.com/store/apps/details?id=com.ExperienceInfinity.SkyRage");
         nativeShare.Share();
     }
 }

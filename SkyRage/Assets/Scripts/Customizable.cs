@@ -12,10 +12,41 @@ public class Customizable : MonoBehaviour{
     public int secColorIndex = 1;
     public Renderer[] rends;
     public Light NeonLight;
-    
+    EventSettings ev;
+    AudioSource music;
+    //public float[] samples = new float[512];
+    public float vol = 0;
+
     void Start()
     {
         LoadCustomizations();
+        //ev = FindObjectOfType<EventSettings>();
+        
+        //if (ev != null)
+        //{
+        //    if (ev.constMusic)
+        //    {
+        //        music = ev.transform.GetChild(0).GetComponent<AudioSource>();
+        //    }
+        //    else
+        //    {
+        //        music = ev.transform.GetChild(1).GetComponent<AudioSource>();
+        //    }
+        //}
+    }
+
+    void Update()
+    {
+        //if (ev.constMusic || EventSettings.inCombat)
+        //{
+        //    music.GetSpectrumData(samples, 0, FFTWindow.Blackman);
+        //    vol = Mathf.Lerp(vol, 3*(1.5f*samples[2] + samples[3]), Time.deltaTime * 20);
+        //    SetGlowColor(vol);
+        //}
+        //else
+        //{
+        //    SetGlowColor(1);
+        //}
     }
 
     public void SaveCustomizations(Customizations custms)
@@ -54,5 +85,12 @@ public class Customizable : MonoBehaviour{
             return null;
         }
         
+    }
+
+    void SetGlowColor(float value)
+    {
+        Material[] mats = rends[0].materials;
+        mats[1].color = Color.Lerp(new Color(0.2f,0,0,1),NeonLight.color,value);
+        rends[0].materials = mats;
     }
 }

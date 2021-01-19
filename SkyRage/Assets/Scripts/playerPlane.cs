@@ -64,7 +64,12 @@ public class playerPlane : Destructible {
             fixedJoy.gameObject.SetActive(true);
             joystick = fixedJoy;
         }
+        if (PlayerPrefs.HasKey("TurnSens"))
+        {
+            SetTurnSensitivity(PlayerPrefs.GetFloat("TurnSens"));
+        }
     }
+
 	
 	// Update is called once per frame
 	void Update () {

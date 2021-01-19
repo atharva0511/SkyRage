@@ -89,7 +89,7 @@ public class Drone : playerPlane {
         touchRot = Vector2.Lerp(touchRot, rot, Time.deltaTime * 8);
 
         //pass inputs
-        MoveDrone(thrust,joystick.Horizontal, joystick.Vertical, 6*Time.deltaTime*touchSens*touchRot.x, touchSens*3*Time.deltaTime*touchRot.y, upInput,downInput);
+        MoveDrone(thrust,joystick.Horizontal, joystick.Vertical, 8*Time.deltaTime*touchSens*touchRot.x, touchSens*4*Time.deltaTime*touchRot.y, upInput,downInput);
 
         //PC Input
         //if (Input.GetKeyDown(KeyCode.LeftShift)) PressDash(false);
